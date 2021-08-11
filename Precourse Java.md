@@ -10,7 +10,7 @@ As developers, we will be covering the following questions as it applies to iOS 
 
 #### What are we building?
 
-Full Stack Applications utilizing modern technologies 
+Full Stack Applications utilizing modern technologies -  **Databases, APIs, Servers,** and more!
 
 #### How?
 
@@ -118,6 +118,22 @@ Note: we are not building Android applications at this point. Instead, we are us
 
     
 
+
+
+### Creating a new Java Module and Class
+
+1.  Open your Android project in Android Studio. If you do not have one, create one.
+2.  Click **File > New Module**. Select **Java Library** and click **Next**.
+3.  Fill in the package name, etc and click **Finish**. You should now see a Java module inside your Android project.
+4.  Add your code to the Java module you've just created.
+5.  Click on the drop down to the left of the run button. Click **Edit Configurations...**
+6.  In the new window, click on the plus sign at the top left of the window and select **Application**
+7.  A new application configuration should appear, enter in the details such as your main class and classpath of your module.
+8.  Click **OK**. Now if you click run, this should compile and run your Java module.
+
+
+![](https://hosting.photobucket.com/images/i/jhuntcd/setup.png?width=285&height=175&crop=fill)
+
 # Programming Paradigms
 
 #### Object Oriented Programming
@@ -200,9 +216,8 @@ A singleton is a class that can only have one object (an instance of the class).
 
 #### Unit Testing
 
-# Decisi
-
-on Making
+# Decision Making
 
 -   DAAS
 -   
+
