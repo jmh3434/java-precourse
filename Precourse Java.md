@@ -77,7 +77,7 @@ A database is simply a collection of data stored in an organized way
         -   store related data tables (relational)
         -   common technology for decades
 
-## Database Assignment 
+## Database Assignment
 
 Given the following data, create a database structure for a NoSQL Database and a Relational Database.
 
@@ -122,6 +122,8 @@ Note: we are not building Android applications at this point. Instead, we are us
 
 ### Creating a new Java Module and Class
 
+You can have Java modules and Android modules in the same project and also have the ability to compile and run Java modules as stand alone Java projects.
+
 1.  Open your Android project in Android Studio. If you do not have one, create one.
 2.  Click **File > New Module**. Select **Java Library** and click **Next**.
 3.  Fill in the package name, etc and click **Finish**. You should now see a Java module inside your Android project.
@@ -140,9 +142,15 @@ Note: we are not building Android applications at this point. Instead, we are us
 
 We aim to be **full stack developers** who keep our code modular and organized. One of the ways we can achieve this is by using OOP, or Object Oriented Programming design (programming architecture built upon the concept of classes and objects)
 
+-   Break down a programming task into objects that expose behavior (methods) and data (members or attributes) using interfaces
+
 #### Procedural Programming
 
+Often, the terms "procedural programming" and "imperative programming" are used synonymously
+
 #### Functional Programming
+
+Functional programming languages support (and heavily use) first-class functions, anonymous functions and closures
 
 #### Reactive Programming
 
@@ -184,15 +192,225 @@ Core application logic that creates the relationship between the view and the mo
 
 -   gets informed of the user’s behavior and updates the Model when needed
 
-
-
 ## Singleton In Java
 
 A singleton is a class that can only have one object (an instance of the class). 
 
-#### Delegation
+## Delegation
+
+Use Delegation in order to achieve the following
+
+-   Delegation can be an alternative to inheritance.
+-   Delegation means that you use an object of another class as an instance variable, and forward messages to the instance.
+
+When you delegate, you are simply calling up some class which knows what must be done. You do not really care how it does it, all you care about is that the class you are calling knows what needs doing.
+
+#### Example Using Delegation
+
+Passing the responsibility to someone else. In OOP, delegation is when you pass a task of an object to another one. 
+
+Let's imagine that we need to build an application and for that we need:
+
+-   a coder
+-   a designer 
+
+We are looking for people who can code and who can design.. 
+
+```java
+class DelegationDemonstration {
+  // we will add the main method here
+}
+interface WhoCanCode {
+    void writeCode();
+}
+interface WhoCanDesign {
+    void design();
+}
+```
+
+Now, we are going to hire an employee who is capable of doing both of these (coding and designing). This employee must implement the methods from our interfaces. 
+
+```java
+class Employee implements WhoCanCode, WhoCanDesign {
+    @Override
+    public void writeCode() {
+    }
+    @Override
+    public void design() {
+    }
+}
+```
+
+This employee is smart enough to **delegate** responsibility to someone else. 
+
+Let's say we are searching for a coder, and we find this coder (this person is a Swift coder)...
+
+```java
+class SwiftDeveloper implements WhoCanCode {
+    @Override
+    public void writeCode() {
+        System.out.println("I'm writing Swift Code");
+    }
+}
+class UXDesigner implements  WhoCanDesign {
+    @Override
+    public void design() {
+        System.out.println("I'm designing UX");
+    }
+}
+```
+
+Now, what the Employee will do.. it will take an instance of WhoCanCode ...coder and designer
+
+Whenever there is an employee, it will take a coder and a designer and pass that resposibility to them. 
+
+```java
+class Employee implements WhoCanCode, WhoCanDesign {
+    WhoCanCode developer;
+    WhoCanDesign designer;
+
+    public Employee(WhoCanCode developer, WhoCanDesign designer){
+        this.developer = developer;
+        this.designer = designer;
+    }
+
+    @Override
+    public void writeCode() {
+        developer.writeCode();
+    }
+    @Override
+    public void design() {
+        designer.design();
+    }
+}
+```
+
+To execute this, we need a main method!
+
+```java
+public class DelegationDemonstration {
+    public static void main(String[] args){
+
+        SwiftDeveloper switDev = new SwiftDeveloper();
+        UXDesigner designer = new UXDesigner();
+
+        Employee james = new Employee(switDev,designer);
+
+        james.writeCode();
+        james.design();
+    }
+}
+```
+
+Now, we could easily add in a new Kotlin developer too!
+
+```java
+class KotlinDeveloper implements WhoCanCode {
+    @Override
+    public void writeCode() {
+        System.out.println("I'm writing Kotlin Code");
+    }
+}
+```
+
+and update the main method too ..
+
+```java
+public class DelegationDemonstration {
+    public static void main(String[] args){
+
+        SwiftDeveloper switDev = new SwiftDeveloper();
+        UXDesigner designer = new UXDesigner();
+        KotlinDeveloper kotlinDev = new KotlinDeveloper();
+
+        Employee james = new Employee(switDev,designer);
+        Employee david = new Employee(kotlinDev,designer);
+
+        james.writeCode();
+        james.design();
+
+        david.writeCode();
+        david.design();
+    }
+}
+```
+
+###### Delegation Pattern Summary
+
+-   Reduce the coupling of methods to their class
+-   Use for components that behave identically, but realize that this situation can change in the future.
+-   If you need to use functionality in another class but you do not want to change that functionality then use delegation instead of inheritance.
+
+Here's the full code for your clarification..
+
+```java
+public class DelegationDemonstration {
+    public static void main(String[] args){
+
+        SwiftDeveloper switDev = new SwiftDeveloper();
+        UXDesigner designer = new UXDesigner();
+        KotlinDeveloper kotlinDev = new KotlinDeveloper();
+
+        Employee james = new Employee(switDev,designer);
+        Employee david = new Employee(kotlinDev,designer);
+
+        james.writeCode();
+        james.design();
+
+        david.writeCode();
+        david.design();
+    }
+}
+
+interface WhoCanCode {
+    void writeCode();
+}
+interface WhoCanDesign {
+    void design();
+}
+
+class Employee implements WhoCanCode, WhoCanDesign {
+    WhoCanCode developer;
+    WhoCanDesign designer;
+
+    public Employee(WhoCanCode developer, WhoCanDesign designer){
+        this.developer = developer;
+        this.designer = designer;
+    }
+
+    @Override
+    public void writeCode() {
+        developer.writeCode();
+    }
+    @Override
+    public void design() {
+        designer.design();
+    }
+}
+
+class SwiftDeveloper implements WhoCanCode {
+    @Override
+    public void writeCode() {
+        System.out.println("I'm writing Swift Code");
+    }
+}
+class UXDesigner implements  WhoCanDesign {
+    @Override
+    public void design() {
+        System.out.println("I'm designing UX");
+    }
+}
+class KotlinDeveloper implements WhoCanCode {
+    @Override
+    public void writeCode() {
+        System.out.println("I'm writing Kotlin Code");
+    }
+}
+```
 
 #### Decorator
+
+
 
 #### Observer-Observable
 
@@ -206,13 +424,19 @@ A singleton is a class that can only have one object (an instance of the class).
 
 #### Array2D
 
+#### Brute-Force String Search
+
 #### Quick Sort
+
+#### Palindrome
 
 # Concurrency
 
 #### AsyncAwait
 
 # Error Handling
+
+#### Try Catch
 
 #### Unit Testing
 
