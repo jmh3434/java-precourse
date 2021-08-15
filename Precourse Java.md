@@ -1,3 +1,5 @@
+
+
 # Precourse Java
 
 Once we begin to understand a programming language and what it offers us as developers, we also need to understand the big picture regarding development in practice and building applications at scale. 
@@ -245,6 +247,8 @@ This employee is smart enough to **delegate** responsibility to someone else.
 
 Let's say we are searching for a coder, and we find this coder (this person is a Swift coder)...
 
+Notice the **implements** keyword. This is how we implement the methods from an interface!
+
 ```java
 class SwiftDeveloper implements WhoCanCode {
     @Override
@@ -262,7 +266,7 @@ class UXDesigner implements  WhoCanDesign {
 
 Now, what the Employee will do.. it will take an instance of WhoCanCode ...coder and designer
 
-Whenever there is an employee, it will take a coder and a designer and pass that resposibility to them. 
+Whenever there is an employee, it will take a coder and a designer, and pass that resposibility to them. 
 
 ```java
 class Employee implements WhoCanCode, WhoCanDesign {
@@ -313,7 +317,7 @@ class KotlinDeveloper implements WhoCanCode {
 }
 ```
 
-and update the main method too ..
+and update the main method ...
 
 ```java
 public class DelegationDemonstration {
@@ -408,11 +412,45 @@ class KotlinDeveloper implements WhoCanCode {
 }
 ```
 
-#### Decorator
+## Decorator
+
+Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality. 
+
+Typically when you want to add additional functionality to a class, you subclass → override some of the functionality of the parent class. 
+
+#### Example
+
+Animal - Superclass
+
+Dog - Subclass 
+
+Speak method on the parent class which you override in the subclass 
 
 
 
-#### Observer-Observable
+The decorator pattern relies on composition instead of inheritance 
+
+Main idea - you can impersonate a class and add additional functionality without any of the users of the class knowing that its different.  
+
+Compute the cost of beverages for a coffee shop.
+
+ (different coffees with options)
+
+
+
+Coffee - Cost and Description 
+
+
+
+We will impersonate the coffee class using abstract classes. 
+
+
+
+## Observer-Observable
+
+One to many - observer
+
+One to one - delegation 
 
 #### Builder
 
@@ -444,4 +482,264 @@ class KotlinDeveloper implements WhoCanCode {
 
 -   DAAS
 -   
+
+## Composition and Inheritance
+
+→ HAS A (Composition)
+
+IS A -> (Inheritance)
+
+<img src="https://miro.medium.com/max/749/0*J_Dm57bKTppN51oZ.png" style="zoom:50%;" />
+
+Subclasses are responsible for implementing their own behavior 
+
+inherits or implements in terms of interface
+
+## Strategy Pattern 
+
+defines a family of algorithms and encapsulates each one and makes them interchangable 
+
+So when we are using **OOP**, we wrap a **class** around this functionality, and makes them interchangable.
+
+We could use an **interface** here so that you could swap out these behaviors at any point in time
+
+The strategy let's the algorithm **vary indepndently** from the clients that use it. 
+
+
+
+Encapsulate a behavior into a class and make that class **interchangable** with other classes.
+
+So a host class can use it and use those low level **encapsulations** of behaviors **without having to know how they are implemented or how they work**. 
+
+
+
+Let's use the example of a duck. Ducks have different **behaviors associated with them**. 
+
+-   All ducks can swim 
+
+
+
+What would happen if we wanted to add the ability to fly for the duck?
+
+-   fly()
+
+Not all ducks fly. In this example, only some ducks fly -- Mallard ducks can fly. Other ducks don't fly. 
+
+![Screen Shot 2021-08-15 at 5.20.37 PM](/Users/jameshunt/Desktop/Screen Shot 2021-08-15 at 5.20.37 PM.png)
+
+
+
+How do we accomplish this? 
+
+
+
+We could add a fly function above. In the subclasses, we could **override** the fly method with something that has no behavior... maybe throw an exception?
+
+But this isn't the best way to do this. This isn't the OOP way. 
+
+
+
+
+
+So what is the correct way? Take a look at these other class diagrams. 
+
+![Screen Shot 2021-08-15 at 5.20.14 PM](/Users/jameshunt/Desktop/Screen Shot 2021-08-15 at 5.20.14 PM.png)
+
+
+
+So we have the Mallard Duck and the Red Duck. 
+
+So a Mallard duck is able to fly. It has the Swim function that it can override or inherit from the parent class.. It also has a fly function. 
+
+But the Red Duck only knows how to swim, it does not know how to fly. 
+
+
+
+So how could we code this fly function in an OOP way but maybe by using an interface or something that makes this more extensible?
+
+So the duck would be the **superclass** and Mallard Duck and Red Duck would be the **subclasses**. 
+
+
+
+Now we want to add fly functionality. We could create a Flyable interface. And then the Flyable interface would have a fly function, and the Mallard Duck would implement the fly() function.
+
+
+
+This would work, and many programmers would go this route! So it makes sense for OOP.
+
+
+
+But the problem with this implementation is .. what if we had a different subclass... 
+
+a Grey Duck.
+
+
+
+And the Grey Duck also needs to fly. We want the fly function to do the SAME thing that exists in the Mallard Duck.
+
+So then the grey duck would also need to implement the fly function as well. 
+
+
+
+That's not very reusable. We want to implement the fly function once, and then have that shared between all of the classes.
+
+
+
+This is where the Stragegy pattern comes in!
+
+
+
+Recap: We have a duck superclass and we want to implement the fly function for some if its subclasses. A natural way to do this is with an interace with a fly function. For the classes that want to implement flyable interface, they can have their own fly function.
+
+
+
+Now any other class that want's the same fly funciton needs to redefine the same fly function used in the other classes.
+
+
+
+How do we fix it with the strategy pattern? 
+
+
+
+<img src="/Users/jameshunt/Desktop/Screen Shot 2021-08-15 at 5.36.46 PM.png" alt="Screen Shot 2021-08-15 at 5.36.46 PM" style="zoom: 50%;" />
+
+We can fix it by...
+
+We won't bind it to any functionality that is defined at compile time. To make it so that we can take that behavior and encapsulate it .. put it into a class that we can reuse so that we can pass it around later. 
+
+
+
+So we do that by using an interface. 
+
+
+
+We will create an **interface** called Fly Behavior. So instead of tying the implementation of Fly Behavior into Mallard and Red Duck, we wil pulll that out and put it into an interface.
+
+This Fly Behavior interface will have a **concrete implementation** it can have as many implementations as you want. 
+
+
+
+So ducks fly with wings. We could have an implementation of the fly behavior interface being called the FlyWithWings implementation. This Fly With Wings class.. it needs to implement something. 
+
+
+
+Let's say that the Fly Behavior had a **function** called fly() that would be implemented by the FlyWithWings class.
+
+Now this FlyWithWings **class** can define **fly()** in any way it wants, and then create an instance of this **FlyWithWings** class, and pass that in to many different Ducks. 
+
+
+
+So now instead of recyling that fly function like we saw previously, we can just create that single instance, and pass that to the duck, and allow that to be used by any of the other classes (Host classes).
+
+
+
+So what do we need to change to our UML class diagram? 
+
+
+
+We need to add an instance level variable of type Fly Behavior in the Duck class. Then we need to add a mechanism to invoke the FlyBehavior fly function. We can do this in many ways. We could create a performFly() Function in the Duck class which would call on the FlyBehavior method. 
+
+
+Then we could change the constructor of the Duck class to take in a Fly Behavior and pass that in at runtime. We could create a setter so that we could change this functionality later so.. if we had many different types of the fly behavior interface, these could be swapped out at runtime. 
+
+
+
+So now, the Mallard Duck when its instantiated, can call the performFly() function, and it will fly. 
+
+And the Red Duck, if we have a different implementing class.... something called NoFly(), this type of duck doesn't fly. 
+
+
+
+The Red duck could use the NoFly() Class because it doesn't fly. 
+
+
+
+So the benefit is that we can create a single instance of this and just pass it along. 
+
+
+
+Now let's use a real coding example!
+
+
+
+`Duck.java` - class
+
+```java
+public abstract class Duck {
+	protected FlyBehavior flyBehavior;
+	public Duck(FlyBehavior flyBehavior){this.flyBehavior = flyBehavior}
+	public void performFly(){ flyBehavior.fly(); }
+}
+```
+
+So we have a Duck class (abstract class)
+
+We have an instance level variable called flyBehavior of type FlyBehavior.
+
+We have a constructor that takes in that flyBehavior and sets that variable.
+
+We have a performFly function that simply invokes the flyBehavior's fly function.
+
+
+
+ `FlyBehavior.java` - interface
+
+```java
+public interface FlyBehavior {
+	public void fly();
+}
+```
+
+the interface has a fly function. 
+
+
+
+`FlyWithWings.java` - concrete class
+
+```java
+public class FlyWithWings implements FlyBehavior {
+	@Override
+	public void fly() {System.out.println("I'm Flying");}
+}
+```
+
+Concrete class implements the FlyBehavior interface
+
+We are ovveriding that FlyBehavior interface by actually implementing it.. printing out "I'm Flying"
+
+
+
+`Mallard Duck.java`
+
+```java
+public class MallardDuck extends Duck {
+	public MallardDuck(FlyBehavior flyBehavior){
+		super(flyBehavior);
+	}
+	public void performFly(){flyBehavior.fly();}
+}
+```
+
+Mallard Duck is an implemention of that abstract Duck class. 
+
+It uses super to call the base constructor 
+
+Performs fly by calling the flyBehavior's fly function.
+
+
+
+If we take a look at the runner of this class... the Main function. What does this look like? 
+
+`Main.java`
+
+```java
+public class Main {
+	public static void main(String[] args){
+		FlyBehavior flyWithWings = new FlyWithWings();
+		Duck mallardDuck = new MallardDuck(flyWithWings);
+		
+		mallardDuck.performFly();
+	}
+}
+```
 
