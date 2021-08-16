@@ -743,3 +743,18 @@ public class Main {
 }
 ```
 
+We instatiate an instance of the Fly Behavior and create a new instance of the mallard duck and passing in flyWithWings.
+
+We only need to define flyWithWings once. 
+
+
+
+Remember that these behaviors can be interchanged with any implementing classes of type FlyBehavior.
+
+So we can swap out the behaviors of these ducks at runtime using a setter function. 
+
+
+
+Strategy Pattern - Encapsulates behavior in a concrete class and lets you pass it around and resuse it!
+
+​                                                                                                                                                                                                
