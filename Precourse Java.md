@@ -412,6 +412,325 @@ class KotlinDeveloper implements WhoCanCode {
 }
 ```
 
+## Strategy Pattern
+
+The Stategy Pattern defines a family of algorithms and encapsulates each one and makes them interchangable. So when we are using **OOP**, we wrap a **class** around this functionality, and makes them interchangable. We could use an **interface** here so that you could swap out these behaviors at any point in time. The strategy let's the algorithm **vary indepndently** from the clients that use it. 
+
+
+
+Encapsulate a behavior into a class,  and make that class **interchangable** with other classes. This allows other classes to use it and use those low level **encapsulations** of behaviors, **without having to know how they are implemented or how they work**. 
+
+
+
+Let's use the example of a person. 
+
+
+
+People have different **behaviors associated with them**. 
+
+-   All people can eat() and talk()
+
+What would happen if we wanted to add the ability to jump for the person?
+
+-   jump()
+
+
+
+Not all people can jump. In this example, only some people can jump -- only athletes can jump. For this example, other types of people can't jump. (Obviously non athlete's can jump, but this is just a good imaginary example!)
+
+
+
+![](https://hosting.photobucket.com/images/i/jhuntcd/stategy-person.png)
+
+
+
+How do we accomplish this? 
+
+
+
+We could add a jump function above. 
+
+In the subclasses that don't allow jumping, we could **override** the jump method with something that has no behavior... maybe throw an exception? But this isn't the best way to do this. This isn't the OOP way. 
+
+
+
+So what is the correct way? Take a look at these other class diagrams. 
+
+<img src="https://hosting.photobucket.com/images/i/jhuntcd/strategy1.png" style="zoom:67%;" />
+
+
+
+So we have the Athlete Person and the Scientist Person. 
+
+So a Athlete Person is able to jump. It has the eat() function that it can override or inherit from the parent class.. It also has a jump() function. 
+
+
+
+But the Scientist Person only knows how to eat, this person does not know how to jump. 
+
+
+
+So how could we code this jump function in an OOP way? Maybe by using an interface or something that makes this more extensible? Yep!
+
+So the Person would be the **superclass** and Athlete Person and Scientist Person would be the **subclasses**. 
+
+
+
+Now we want to add jump functionality. We could create a Jumpable interface. And then the Jumpable interface would have a jump function, and the Athlete Person would implement the jump() function.
+
+This would work, and many programmers would do this very thing! So it makes sense for OOP.
+
+
+
+### The Problem With this implementation
+
+But the problem with this implementation is .. what if we had a different subclass...
+
+a Musician Person.
+
+
+
+And the Musician Person (in this imaginary example) also needs to jump. We want the jump function to do the SAME thing that exists in the Athlete Person.
+
+So then the Musician Person would also need to implement the jump function as well. 
+
+
+
+That's not very reusable. We want to implement the jump function once, and then have that shared between all of the classes.
+
+
+
+This is where the Strategy pattern comes in!
+
+
+
+Recap: We have a Person superclass, and we want to implement the jump function for some if its subclasses. A natural way to do this is with an **interace** called Jumpable with a jump function. For the **classes** that want to implement jumpable interface, they can have their own jump function.
+
+
+
+The problem - Now any other class that want's the same jump funciton needs to redefine the same jump function used in the other classes. This isn't reusable.
+
+
+
+### The Solution - Strategy Pattern
+
+How do we fix it with the strategy pattern? 
+
+
+
+<img src="https://hosting.photobucket.com/images/i/jhuntcd/strategy2.png" style="zoom:67%;" />
+
+We can fix it by...
+
+To make it so that we can take that jump behavior and **encapsulate** it .. put it into a class that we can reuse so that we can pass it around later. 
+
+
+
+So we do that by using an interface. 
+
+
+
+We will create an **interface** called JumpBehavior. So instead of tying the implementation of JumpBehavior into Athlete and Scientist Person, we wil pull that out and put it into an interface.
+
+This Jump Behavior interface will have a **concrete implementation.** ( we can have as many implementations as we want)
+
+
+
+#### Concrete Implementation
+
+So people can Jump With Legs...right?  We could have an implementation of the JumpBehavior interface being called the JumpWithLegs implementation. This JumpWithLegs class.. it needs to implement something. 
+
+Let's say that the JumpBehavior interface had a **function** called jump() that would be implemented by the JumpWithLegs class.
+
+Now this JumpWithLegs **class** can define **jump()** in any way it wants, and then create an instance of this **JumpWithLegs** class, and pass that in to many different People such as the Athlete Person and the Musician Person. 
+
+
+
+So now instead of recyling that jump function like we saw previously, we can just create that **single instance**, and pass that to the Person, and allow that to be used by any of the other classes.
+
+
+
+So what do we need to change to our UML class diagram? 
+
+
+
+#### How do we use the Strategy Pattern?
+
+We need to add an instance level variable of type JumpBehavior in the Person class. 
+
+Then we need to add a mechanism to invoke the JumpBehavior jump function. 
+
+We can do this in many ways. We could create a performJump() function in the Person class which would call on the JumpBehavior method. 
+
+Then we could change the constructor of the Person class to take in a Jump Behavior and pass that in at runtime. We could create a setter so that we could change this functionality later so..
+
+If we had many different types of the implementing classes (of the jump behavior interface), these could be swapped out at runtime. 
+
+
+
+So now, the Athlete Person, when its instantiated, can call the performJump() function, and it will jump. 
+
+And the Scientist Person, if we have a different implementing class.... something called NoJump(), this type of person doesn't jump 
+
+
+
+So the benefit is that we can create a single instance of this and just pass it along. 
+
+
+
+### Strategy Code Example
+
+Now let's use a real coding example!
+
+`Person.java` - class
+
+```java
+abstract class Person {
+    protected JumpBehavior jumpBehavior;
+    public Person(JumpBehavior jumpBehavior){
+        this.jumpBehavior = jumpBehavior;
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
+}
+```
+
+-   So we have a Person class (abstract class)
+-   We have an instance level variable called jumpBehavior of type JumpBehavior.
+-   We have a constructor that takes in that jumpBehavior and sets that variable.
+-   We have a performJump function that simply invokes the jumpBehavior jump function.
+
+
+
+#### Abstract Classes
+
+-    An abstract class is like a template, so you have to extend it and build on it before you can use it.
+-   Abstract classes can not be instantiated
+
+
+
+ `JumpBehavior.java` - interface
+
+```java
+interface JumpBehavior {
+    public void jump();
+}
+```
+
+-   the interface has a jump function. 
+
+
+
+`JumpWithLegs.java` - concrete class
+
+```java
+class JumpWithLegs implements JumpBehavior {
+    @Override
+    public void jump() {
+        System.out.println("I'm Jumping");
+    }
+}
+```
+
+-   Concrete class implements the JumpBehavior interface
+
+-   We are ovveriding that JumpBehavior interface by actually implementing it.. printing out "I'm Jumping"
+
+
+
+`AthletePerson.java`
+
+```java
+class AthletePerson extends Person {
+    public AthletePerson(JumpBehavior jumpBehavior){
+        super(jumpBehavior);
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
+}
+```
+
+-   Athlete Person is an implemention of that abstract Person class. 
+
+-   It uses super to call the base constructor 
+
+-   Performs jump by calling the jumpBehavior's jump function.
+
+
+
+If we take a look at the runner of this class... the Main function. What does this look like? 
+
+`Main Method`
+
+```java
+class StrategyPattern {
+    public static void main(String[] args){
+        JumpBehavior jumpWithLegs = new JumpWithLegs();
+        Person athletePerson = new AthletePerson(jumpWithLegs);
+
+        athletePerson.performJump();
+    }
+}
+```
+
+-   We instatiate an instance of the JumpBehavior and create a new instance of the AthletePerson and passing in jumpWithLegs.
+
+-   We only need to define jumpWithLegs once. 
+
+
+
+### Strategy Conclusion
+
+Remember that these behaviors can be interchanged with any implementing classes of type JumpBehavior.
+
+So we can swap out the behaviors of these People at runtime using a setter function. The Strategy Pattern **encapsulates behavior** in a concrete class and lets you pass it around and resuse it!
+
+​                                                                                                                                                                                                
+
+Here's the full code below for the **Strategy Pattern** using people as an example!
+
+```java
+interface JumpBehavior {
+    public void jump();
+}
+abstract class Person {
+    protected JumpBehavior jumpBehavior;
+    public Person(JumpBehavior jumpBehavior){
+        this.jumpBehavior = jumpBehavior;
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
+}
+class JumpWithLegs implements JumpBehavior {
+    @Override
+    public void jump() {
+        System.out.println("I'm Jumping");
+    }
+}
+class AthletePerson extends Person {
+    public AthletePerson(JumpBehavior jumpBehavior){
+        super(jumpBehavior);
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
+}
+class StrategyPattern {
+    public static void main(String[] args){
+        JumpBehavior jumpWithLegs = new JumpWithLegs();
+        Person athletePerson = new AthletePerson(jumpWithLegs);
+
+        athletePerson.performJump();
+    }
+}
+```
+
+
+
+
 ## Decorator
 
 Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality. 
@@ -494,311 +813,4 @@ IS A -> (Inheritance)
 Subclasses are responsible for implementing their own behavior 
 
 inherits or implements in terms of interface
-
-## Strategy Pattern 
-
-defines a family of algorithms and encapsulates each one and makes them interchangable 
-
-So when we are using **OOP**, we wrap a **class** around this functionality, and makes them interchangable.
-
-We could use an **interface** here so that you could swap out these behaviors at any point in time
-
-The strategy let's the algorithm **vary indepndently** from the clients that use it. 
-
-
-
-Encapsulate a behavior into a class and make that class **interchangable** with other classes.
-
-So a host class can use it and use those low level **encapsulations** of behaviors **without having to know how they are implemented or how they work**. 
-
-
-
-Let's use the example of a person. People have different **behaviors associated with them**. 
-
--   All people can eat 
-
-
-
-What would happen if we wanted to add the ability to jump for the person?
-
--   jump()
-
-Not all people can jump. In this example, only some people can jump -- only athletes can jump. For this example, other types of people can't jump
-
-![](https://hosting.photobucket.com/images/i/jhuntcd/stategy-person.png)
-
-
-
-How do we accomplish this? 
-
-
-
-We could add a jump function above. In the subclasses, we could **override** the jump method with something that has no behavior... maybe throw an exception?
-
-But this isn't the best way to do this. This isn't the OOP way. 
-
-
-
-
-
-So what is the correct way? Take a look at these other class diagrams. 
-
-<img src="https://hosting.photobucket.com/images/i/jhuntcd/strategy1.png" style="zoom:67%;" />
-
-
-
-So we have the Athlete Person and the Scientist Person. 
-
-So a Athlete Person is able to jump. It has the eat() function that it can override or inherit from the parent class.. It also has a jump function. 
-
-But the Scientist Person only knows how to eat, it does not know how to jump. 
-
-
-
-So how could we code this jump function in an OOP way? Maybe by using an interface or something that makes this more extensible?
-
-So the Person would be the **superclass** and Athlete Person and Scientist Person would be the **subclasses**. 
-
-
-
-Now we want to add jump functionality. We could create a Jumpable interface. And then the Jumpable interface would have a jump function, and the Athlete Person would implement the jump() function.
-
-
-
-This would work, and many programmers would go this route! So it makes sense for OOP.
-
-
-
-But the problem with this implementation is .. what if we had a different subclass...
-
-a Musician Person.
-
-
-
-And the Musician Person also needs to jump. We want the jump function to do the SAME thing that exists in the Athlete Person.
-
-So then the Musician Person would also need to implement the jump function as well. 
-
-
-
-That's not very reusable. We want to implement the fly function once, and then have that shared between all of the classes.
-
-
-
-This is where the Stragegy pattern comes in!
-
-
-
-Recap: We have a Person superclass and we want to implement the jump function for some if its subclasses. A natural way to do this is with an interace with a jump function. For the classes that want to implement jumpable interface, they can have their own jump function.
-
-
-
-Now any other class that want's the same jump funciton needs to redefine the same jump function used in the other classes.
-
-
-
-How do we fix it with the strategy pattern? 
-
-
-
-<img src="https://hosting.photobucket.com/images/i/jhuntcd/strategy2.png" style="zoom:67%;" />
-
-We can fix it by...
-
-We won't bind it to any functionality that is defined at compile time. To make it so that we can take that behavior and encapsulate it .. put it into a class that we can reuse so that we can pass it around later. 
-
-
-
-So we do that by using an interface. 
-
-
-
-We will create an **interface** called Jump Behavior. So instead of tying the implementation of Jump Behavior into Athlete and Scientist Person, we wil pulll that out and put it into an interface.
-
-This Jump Behavior interface will have a **concrete implementation** it can have as many implementations as you want. 
-
-
-
-So people can Jump With Legs. We could have an implementation of the jump behavior interface being called the JumpWithLegs implementation. This JumpWithLegs class.. it needs to implement something. 
-
-
-
-Let's say that the Jump Behavior had a **function** called jump() that would be implemented by the JumpWithLegs class.
-
-Now this JumpWithLegs **class** can define **jump()** in any way it wants, and then create an instance of this **JumpWithLegs** class, and pass that in to many different People. 
-
-
-
-So now instead of recyling that jump function like we saw previously, we can just create that single instance, and pass that to the Person, and allow that to be used by any of the other classes.
-
-
-
-So what do we need to change to our UML class diagram? 
-
-
-
-We need to add an instance level variable of type Jump Behavior in the Person class. Then we need to add a mechanism to invoke the JumpBehavior jump function. We can do this in many ways. We could create a performJump() Function in the Person class which would call on the JumpBehavior method. 
-
-
-Then we could change the constructor of the Person class to take in a Jump Behavior and pass that in at runtime. We could create a setter so that we could change this functionality later so.. if we had many different types of the jump behavior interface, these could be swapped out at runtime. 
-
-
-
-So now, the Athlete Person when its instantiated, can call the performJump() function, and it will jump. 
-
-And the Scientist Person, if we have a different implementing class.... something called NoJump(), this type of person doesn't jump 
-
-
-
-So the benefit is that we can create a single instance of this and just pass it along. 
-
-
-
-Now let's use a real coding example!
-
-
-
-`Person.java` - class
-
-```java
-abstract class Person {
-    protected JumpBehavior jumpBehavior;
-    public Person(JumpBehavior jumpBehavior){
-        this.jumpBehavior = jumpBehavior;
-    }
-    public void performJump(){
-        jumpBehavior.jump();
-    }
-}
-```
-
-So we have a Person class (abstract class)
-
-We have an instance level variable called jumpBehavior of type JumpBehavior.
-
-We have a constructor that takes in that jumpBehavior and sets that variable.
-
-We have a performJump function that simply invokes the jumpBehavior jump function.
-
-
-
- `JumpBehavior.java` - interface
-
-```java
-interface JumpBehavior {
-    public void jump();
-}
-```
-
-the interface has a jump function. 
-
-
-
-`JumpWithLegs.java` - concrete class
-
-```java
-class JumpWithLegs implements JumpBehavior {
-    @Override
-    public void jump() {
-        System.out.println("I'm Jumping");
-    }
-}
-```
-
-Concrete class implements the JumpBehavior interface
-
-We are ovveriding that JumpBehavior interface by actually implementing it.. printing out "I'm Jumping"
-
-
-
-`AthletePerson.java`
-
-```java
-class AthletePerson extends Person {
-    public AthletePerson(JumpBehavior jumpBehavior){
-        super(jumpBehavior);
-    }
-    public void performJump(){
-        jumpBehavior.jump();
-    }
-}
-```
-
-Athlete Person is an implemention of that abstract Person class. 
-
-It uses super to call the base constructor 
-
-Performs jump by calling the jumpBehavior's jump function.
-
-
-
-If we take a look at the runner of this class... the Main function. What does this look like? 
-
-`Main Method`
-
-```java
-class StrategyPattern {
-    public static void main(String[] args){
-        JumpBehavior jumpWithLegs = new JumpWithLegs();
-        Person athletePerson = new AthletePerson(jumpWithLegs);
-
-        athletePerson.performJump();
-    }
-}
-```
-
-We instatiate an instance of the JumpBehavior and create a new instance of the AthletePerson and passing in jumpWithLegs.
-
-We only need to define jumpWithLegs once. 
-
-
-
-Remember that these behaviors can be interchanged with any implementing classes of type JumpBehavior.
-
-So we can swap out the behaviors of these People at runtime using a setter function. 
-
-
-
-Strategy Pattern - Encapsulates behavior in a concrete class and lets you pass it around and resuse it!
-
-​                                                                                                                                                                                                
-
-Here's the full code below for the Strategy Pattern using people as an example!
-
-```java
-interface JumpBehavior {
-    public void jump();
-}
-abstract class Person {
-    protected JumpBehavior jumpBehavior;
-    public Person(JumpBehavior jumpBehavior){
-        this.jumpBehavior = jumpBehavior;
-    }
-    public void performJump(){
-        jumpBehavior.jump();
-    }
-}
-class JumpWithLegs implements JumpBehavior {
-    @Override
-    public void jump() {
-        System.out.println("I'm Jumping");
-    }
-}
-class AthletePerson extends Person {
-    public AthletePerson(JumpBehavior jumpBehavior){
-        super(jumpBehavior);
-    }
-    public void performJump(){
-        jumpBehavior.jump();
-    }
-}
-class StrategyPattern {
-    public static void main(String[] args){
-        JumpBehavior jumpWithLegs = new JumpWithLegs();
-        Person athletePerson = new AthletePerson(jumpWithLegs);
-
-        athletePerson.performJump();
-    }
-}
-```
 
