@@ -513,19 +513,19 @@ So a host class can use it and use those low level **encapsulations** of behavio
 
 
 
-Let's use the example of a duck. Ducks have different **behaviors associated with them**. 
+Let's use the example of a person. People have different **behaviors associated with them**. 
 
--   All ducks can swim 
+-   All people can eat 
 
 
 
-What would happen if we wanted to add the ability to fly for the duck?
+What would happen if we wanted to add the ability to jump for the person?
 
--   fly()
+-   jump()
 
-Not all ducks fly. In this example, only some ducks fly -- Mallard ducks can fly. Other ducks don't fly. 
+Not all people can jump. In this example, only some people can jump -- only athletes can jump. For this example, other types of people can't jump
 
-![Screen Shot 2021-08-15 at 5.20.37 PM](/Users/jameshunt/Desktop/Screen Shot 2021-08-15 at 5.20.37 PM.png)
+![](https://hosting.photobucket.com/images/i/jhuntcd/stategy-person.png)
 
 
 
@@ -533,7 +533,7 @@ How do we accomplish this?
 
 
 
-We could add a fly function above. In the subclasses, we could **override** the fly method with something that has no behavior... maybe throw an exception?
+We could add a jump function above. In the subclasses, we could **override** the jump method with something that has no behavior... maybe throw an exception?
 
 But this isn't the best way to do this. This isn't the OOP way. 
 
@@ -543,25 +543,25 @@ But this isn't the best way to do this. This isn't the OOP way.
 
 So what is the correct way? Take a look at these other class diagrams. 
 
-![Screen Shot 2021-08-15 at 5.20.14 PM](/Users/jameshunt/Desktop/Screen Shot 2021-08-15 at 5.20.14 PM.png)
+<img src="https://hosting.photobucket.com/images/i/jhuntcd/strategy1.png" style="zoom:67%;" />
 
 
 
-So we have the Mallard Duck and the Red Duck. 
+So we have the Athlete Person and the Scientist Person. 
 
-So a Mallard duck is able to fly. It has the Swim function that it can override or inherit from the parent class.. It also has a fly function. 
+So a Athlete Person is able to jump. It has the eat() function that it can override or inherit from the parent class.. It also has a jump function. 
 
-But the Red Duck only knows how to swim, it does not know how to fly. 
-
-
-
-So how could we code this fly function in an OOP way but maybe by using an interface or something that makes this more extensible?
-
-So the duck would be the **superclass** and Mallard Duck and Red Duck would be the **subclasses**. 
+But the Scientist Person only knows how to eat, it does not know how to jump. 
 
 
 
-Now we want to add fly functionality. We could create a Flyable interface. And then the Flyable interface would have a fly function, and the Mallard Duck would implement the fly() function.
+So how could we code this jump function in an OOP way? Maybe by using an interface or something that makes this more extensible?
+
+So the Person would be the **superclass** and Athlete Person and Scientist Person would be the **subclasses**. 
+
+
+
+Now we want to add jump functionality. We could create a Jumpable interface. And then the Jumpable interface would have a jump function, and the Athlete Person would implement the jump() function.
 
 
 
@@ -569,15 +569,15 @@ This would work, and many programmers would go this route! So it makes sense for
 
 
 
-But the problem with this implementation is .. what if we had a different subclass... 
+But the problem with this implementation is .. what if we had a different subclass...
 
-a Grey Duck.
+a Musician Person.
 
 
 
-And the Grey Duck also needs to fly. We want the fly function to do the SAME thing that exists in the Mallard Duck.
+And the Musician Person also needs to jump. We want the jump function to do the SAME thing that exists in the Athlete Person.
 
-So then the grey duck would also need to implement the fly function as well. 
+So then the Musician Person would also need to implement the jump function as well. 
 
 
 
@@ -589,11 +589,11 @@ This is where the Stragegy pattern comes in!
 
 
 
-Recap: We have a duck superclass and we want to implement the fly function for some if its subclasses. A natural way to do this is with an interace with a fly function. For the classes that want to implement flyable interface, they can have their own fly function.
+Recap: We have a Person superclass and we want to implement the jump function for some if its subclasses. A natural way to do this is with an interace with a jump function. For the classes that want to implement jumpable interface, they can have their own jump function.
 
 
 
-Now any other class that want's the same fly funciton needs to redefine the same fly function used in the other classes.
+Now any other class that want's the same jump funciton needs to redefine the same jump function used in the other classes.
 
 
 
@@ -601,7 +601,7 @@ How do we fix it with the strategy pattern?
 
 
 
-<img src="/Users/jameshunt/Desktop/Screen Shot 2021-08-15 at 5.36.46 PM.png" alt="Screen Shot 2021-08-15 at 5.36.46 PM" style="zoom: 50%;" />
+<img src="https://hosting.photobucket.com/images/i/jhuntcd/strategy2.png" style="zoom:67%;" />
 
 We can fix it by...
 
@@ -613,23 +613,23 @@ So we do that by using an interface.
 
 
 
-We will create an **interface** called Fly Behavior. So instead of tying the implementation of Fly Behavior into Mallard and Red Duck, we wil pulll that out and put it into an interface.
+We will create an **interface** called Jump Behavior. So instead of tying the implementation of Jump Behavior into Athlete and Scientist Person, we wil pulll that out and put it into an interface.
 
-This Fly Behavior interface will have a **concrete implementation** it can have as many implementations as you want. 
-
-
-
-So ducks fly with wings. We could have an implementation of the fly behavior interface being called the FlyWithWings implementation. This Fly With Wings class.. it needs to implement something. 
+This Jump Behavior interface will have a **concrete implementation** it can have as many implementations as you want. 
 
 
 
-Let's say that the Fly Behavior had a **function** called fly() that would be implemented by the FlyWithWings class.
-
-Now this FlyWithWings **class** can define **fly()** in any way it wants, and then create an instance of this **FlyWithWings** class, and pass that in to many different Ducks. 
+So people can Jump With Legs. We could have an implementation of the jump behavior interface being called the JumpWithLegs implementation. This JumpWithLegs class.. it needs to implement something. 
 
 
 
-So now instead of recyling that fly function like we saw previously, we can just create that single instance, and pass that to the duck, and allow that to be used by any of the other classes (Host classes).
+Let's say that the Jump Behavior had a **function** called jump() that would be implemented by the JumpWithLegs class.
+
+Now this JumpWithLegs **class** can define **jump()** in any way it wants, and then create an instance of this **JumpWithLegs** class, and pass that in to many different People. 
+
+
+
+So now instead of recyling that jump function like we saw previously, we can just create that single instance, and pass that to the Person, and allow that to be used by any of the other classes.
 
 
 
@@ -637,20 +637,16 @@ So what do we need to change to our UML class diagram?
 
 
 
-We need to add an instance level variable of type Fly Behavior in the Duck class. Then we need to add a mechanism to invoke the FlyBehavior fly function. We can do this in many ways. We could create a performFly() Function in the Duck class which would call on the FlyBehavior method. 
+We need to add an instance level variable of type Jump Behavior in the Person class. Then we need to add a mechanism to invoke the JumpBehavior jump function. We can do this in many ways. We could create a performJump() Function in the Person class which would call on the JumpBehavior method. 
 
 
-Then we could change the constructor of the Duck class to take in a Fly Behavior and pass that in at runtime. We could create a setter so that we could change this functionality later so.. if we had many different types of the fly behavior interface, these could be swapped out at runtime. 
-
-
-
-So now, the Mallard Duck when its instantiated, can call the performFly() function, and it will fly. 
-
-And the Red Duck, if we have a different implementing class.... something called NoFly(), this type of duck doesn't fly. 
+Then we could change the constructor of the Person class to take in a Jump Behavior and pass that in at runtime. We could create a setter so that we could change this functionality later so.. if we had many different types of the jump behavior interface, these could be swapped out at runtime. 
 
 
 
-The Red duck could use the NoFly() Class because it doesn't fly. 
+So now, the Athlete Person when its instantiated, can call the performJump() function, and it will jump. 
+
+And the Scientist Person, if we have a different implementing class.... something called NoJump(), this type of person doesn't jump 
 
 
 
@@ -662,99 +658,147 @@ Now let's use a real coding example!
 
 
 
-`Duck.java` - class
+`Person.java` - class
 
 ```java
-public abstract class Duck {
-	protected FlyBehavior flyBehavior;
-	public Duck(FlyBehavior flyBehavior){this.flyBehavior = flyBehavior}
-	public void performFly(){ flyBehavior.fly(); }
+abstract class Person {
+    protected JumpBehavior jumpBehavior;
+    public Person(JumpBehavior jumpBehavior){
+        this.jumpBehavior = jumpBehavior;
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
 }
 ```
 
-So we have a Duck class (abstract class)
+So we have a Person class (abstract class)
 
-We have an instance level variable called flyBehavior of type FlyBehavior.
+We have an instance level variable called jumpBehavior of type JumpBehavior.
 
-We have a constructor that takes in that flyBehavior and sets that variable.
+We have a constructor that takes in that jumpBehavior and sets that variable.
 
-We have a performFly function that simply invokes the flyBehavior's fly function.
+We have a performJump function that simply invokes the jumpBehavior jump function.
 
 
 
- `FlyBehavior.java` - interface
+ `JumpBehavior.java` - interface
 
 ```java
-public interface FlyBehavior {
-	public void fly();
+interface JumpBehavior {
+    public void jump();
 }
 ```
 
-the interface has a fly function. 
+the interface has a jump function. 
 
 
 
-`FlyWithWings.java` - concrete class
+`JumpWithLegs.java` - concrete class
 
 ```java
-public class FlyWithWings implements FlyBehavior {
-	@Override
-	public void fly() {System.out.println("I'm Flying");}
+class JumpWithLegs implements JumpBehavior {
+    @Override
+    public void jump() {
+        System.out.println("I'm Jumping");
+    }
 }
 ```
 
-Concrete class implements the FlyBehavior interface
+Concrete class implements the JumpBehavior interface
 
-We are ovveriding that FlyBehavior interface by actually implementing it.. printing out "I'm Flying"
+We are ovveriding that JumpBehavior interface by actually implementing it.. printing out "I'm Jumping"
 
 
 
-`Mallard Duck.java`
+`AthletePerson.java`
 
 ```java
-public class MallardDuck extends Duck {
-	public MallardDuck(FlyBehavior flyBehavior){
-		super(flyBehavior);
-	}
-	public void performFly(){flyBehavior.fly();}
+class AthletePerson extends Person {
+    public AthletePerson(JumpBehavior jumpBehavior){
+        super(jumpBehavior);
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
 }
 ```
 
-Mallard Duck is an implemention of that abstract Duck class. 
+Athlete Person is an implemention of that abstract Person class. 
 
 It uses super to call the base constructor 
 
-Performs fly by calling the flyBehavior's fly function.
+Performs jump by calling the jumpBehavior's jump function.
 
 
 
 If we take a look at the runner of this class... the Main function. What does this look like? 
 
-`Main.java`
+`Main Method`
 
 ```java
-public class Main {
-	public static void main(String[] args){
-		FlyBehavior flyWithWings = new FlyWithWings();
-		Duck mallardDuck = new MallardDuck(flyWithWings);
-		
-		mallardDuck.performFly();
-	}
+class StrategyPattern {
+    public static void main(String[] args){
+        JumpBehavior jumpWithLegs = new JumpWithLegs();
+        Person athletePerson = new AthletePerson(jumpWithLegs);
+
+        athletePerson.performJump();
+    }
 }
 ```
 
-We instatiate an instance of the Fly Behavior and create a new instance of the mallard duck and passing in flyWithWings.
+We instatiate an instance of the JumpBehavior and create a new instance of the AthletePerson and passing in jumpWithLegs.
 
-We only need to define flyWithWings once. 
+We only need to define jumpWithLegs once. 
 
 
 
-Remember that these behaviors can be interchanged with any implementing classes of type FlyBehavior.
+Remember that these behaviors can be interchanged with any implementing classes of type JumpBehavior.
 
-So we can swap out the behaviors of these ducks at runtime using a setter function. 
+So we can swap out the behaviors of these People at runtime using a setter function. 
 
 
 
 Strategy Pattern - Encapsulates behavior in a concrete class and lets you pass it around and resuse it!
 
 ​                                                                                                                                                                                                
+
+Here's the full code below for the Strategy Pattern using people as an example!
+
+```java
+interface JumpBehavior {
+    public void jump();
+}
+abstract class Person {
+    protected JumpBehavior jumpBehavior;
+    public Person(JumpBehavior jumpBehavior){
+        this.jumpBehavior = jumpBehavior;
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
+}
+class JumpWithLegs implements JumpBehavior {
+    @Override
+    public void jump() {
+        System.out.println("I'm Jumping");
+    }
+}
+class AthletePerson extends Person {
+    public AthletePerson(JumpBehavior jumpBehavior){
+        super(jumpBehavior);
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
+}
+class StrategyPattern {
+    public static void main(String[] args){
+        JumpBehavior jumpWithLegs = new JumpWithLegs();
+        Person athletePerson = new AthletePerson(jumpWithLegs);
+
+        athletePerson.performJump();
+    }
+}
+```
+
