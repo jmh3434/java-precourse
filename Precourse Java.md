@@ -68,7 +68,7 @@ Some examples of backend languages include Java, Python, PHP, Node.js, JavaScrip
 -   a computer or computers that send data over a network and receives and responds to requests
 -   Just about any computer can function as a server. But, computers suited for this particular need do a better job of handling many requests at once for a very long time. 
 
-#### Database
+# Database
 
 A database is simply a collection of data stored in an organized way
 
@@ -81,18 +81,207 @@ A database is simply a collection of data stored in an organized way
         -   store related data tables (relational)
         -   common technology for decades
 
+
+
+SQL stands for Structured Query Language 
+
 ## Database Assignment
 
 Given the following data, create a database structure for a NoSQL Database and a Relational Database.
 
 
 
-#### API
+# API
 
 APIs are not meant to be seen or used by the end user. Instead, an API generally uses RESTful design to give others a large amount of organized data (usually in the form of JSON or XML)
 
 -   RESTful APIs follow a set of rules regarding how they should send and receive information (architectural style)
 -   a set of programming instructions and functions used to access a website or web-based software application.
+
+
+
+Want a build a twitter bot? Uses the twitter API. 
+
+Want to put a google map on you website? use the Google API
+
+## What is it
+
+Let's imagine you need to pay a bill on your bank's website
+
+You sign in, enter the amount you want to pay, and click submit.
+
+How does the bank know that I paid my bill?
+
+-   I clicked on button on their website? 
+
+What happened?
+
+You click submit
+
+Information about the user and the account your acting on is transmitted as an instruction to another computer on the banking system's network
+
+Inside the instruction, contains all the information about the bill you're trying to pay, who you are, and the amount
+
+
+
+The machine on the other end:
+
+-   received 
+-   understood
+-   submitted the transaction
+
+
+
+How does the computer know how to interpret the information?
+
+
+
+This is all solved by the API
+
+**Application Programming Interface**
+
+
+
+We just have to meet the expectations given by the API.
+
+
+For example, we might have a PayBill API - /PayBill
+
+
+The programmer who creates it, may say that this API will take:
+
+-   String  - **accountNumber**
+-   Integer  - **amount**
+-   Interger -  **receiver** (destination account number)
+
+
+
+When the pay bill API is invoked, it returns the balance of the user's account in an integer field called balance.
+
+
+
+The other application's can look at the API's that the Banking Application exposes
+
+
+
+We can create an API that provides:
+
+-   functionality (do something)
+-   information (get something)
+
+#### The Contract
+
+You can think of an API as a contract.
+
+The creator defines the name of the api, what the api does, the arguments it will take in, and the output it will spit out. 
+
+-   payBill
+-   what it does
+-   input (accountId, amount, receiver)
+-   output (balance)
+
+
+
+The internet has infomation and packets flying all over the place between systems (madness!)
+
+
+
+It forces developers to create a plan for what they want their system to do, and encode those behaviors into APIs that will be expose to clients.  
+
+#### Abstraction
+
+APIs provide abstraction between systems
+
+A caller (client) does not need to know **how** the API is implemented, only **what** the API promises to do 
+
+
+
+The API takes an input, performs a job, and produces a certain ouput
+
+-   predictable 
+-   consistent 
+
+
+
+We can actually combine APIs! This is how we can build things together. 
+
+
+
+## API Use
+
+ Let's take the example of the [twitter api](https://developer.twitter.com/en/docs/twitter-api/v1) 
+
+What if we wanted to post a status update? 
+
+
+
+Check out the [Tweets](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/overview) section
+
+-   Post 
+
+![](https://hosting.photobucket.com/images/i/jhuntcd/apis.png)
+
+Here, we can see the **different APIs made available** to us. 
+
+
+
+POST - update information and performing an action
+
+GET - rertreiving information 
+
+
+
+Take a look at the **parameters** needed for using these **endpoints**!
+
+Click on the [API Reference](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/post-statuses-update). 
+
+-   we are looking at the formal agreements in addition to the inputs (parameters) and output 
+-   a lot of these parameters are optional
+
+
+
+Mainly, we are interested in the status (our Twitter status)
+
+
+
+#### Example Request
+
+To obtain the generated oauth_nonce, oauth_token, and oauth_signature you can use a REST tool such as Insomnia or Postman.
+
+```
+curl -XPOST 
+  --url 'https://api.twitter.com/1.1/statuses/update.json?status=hello' 
+  --header 'authorization: OAuth
+  oauth_consumer_key="oauth_customer_key",
+  oauth_nonce="generated_oauth_nonce",
+  oauth_signature="generated_oauth_signature",
+  oauth_signature_method="HMAC-SHA1",
+  oauth_timestamp="generated_timestamp",
+  oauth_token="oauth_token",
+  oauth_version="1.0"'
+```
+
+You many want to change the status from 'hello' to something different.
+
+#### Example Response
+
+```
+{
+   "created_at":"Wed Oct 10 20:19:24 +0000 2018",
+   "id":1050118621198921700,
+   "id_str":"1050118621198921728",
+   "text":"To make room for more expression, we will now count all emojis as equal—including those with gender and skin t… https://t.co/MkGjXf9aXm",
+   "truncated":true,
+   "quote_count":0,
+   "reply_count":0,
+   "retweet_count":0,
+   "favorite_count":0,
+   "favorited":false,
+   "retweeted":false
+}
+```
+
+(response simplified for readability)
 
 
 
