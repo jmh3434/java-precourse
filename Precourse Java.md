@@ -733,35 +733,290 @@ class StrategyPattern {
 
 Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality. 
 
-Typically when you want to add additional functionality to a class, you subclass → override some of the functionality of the parent class. 
+Typically when you want to add additional functionality to a class, you subclass → extend that class and override some of the functionality of the parent class. 
 
-#### Example
-
-Animal - Superclass
-
-Dog - Subclass 
-
-Speak method on the parent class which you override in the subclass 
+A classic example could be an Animal class that is a superclass and then a dog which is the subclass of the animal. You have a speak method on the parent class which you override in the dog class so when the dog speaks, it barks. If you have a cat subclass, when it speaks, it meows. This is typically how you would subclass in OOP and add additional functionality.
 
 
 
-The decorator pattern relies on composition instead of inheritance 
-
-Main idea - you can impersonate a class and add additional functionality without any of the users of the class knowing that its different.  
-
-Compute the cost of beverages for a coffee shop.
-
- (different coffees with options)
+The decorator relies more on **composition** than **inheritance**. 
 
 
 
-Coffee - Cost and Description 
+By using the decorator pattern you can impoersonate a class, and add additional funcionality without any users of that class knowing that its different from the original class. 
+
+#### How we would code a problem WITHOUT the Decorator Pattern
+
+Theme - Build a system to compute the cost of beverages for a coffee shop 
 
 
 
-We will impersonate the coffee class using abstract classes. 
+Coffee Beverages 
+
+-   Dark Roast
+
+-   Light Roast
+
+-   Espresso
+
+-   Latte
+
+Prices added with condiments:
+
+-   cream
+-   almond milk
+-   sugar
+
+![](https://hosting.photobucket.com/images/i/jhuntcd/decorator.png)
+
+Let's assume we have a **coffee** class, with two **attributes**:
+
+-   price
+-   description 
+
+If we want to add different beverages now, for every beverage that we have on our menu (espresso, latte, etc. ), we now need to subclass coffee so that we can implement the cost and description function and override that behavior. 
+
+So what would this look like?
+
+-   **Espresso** needs to extend Coffee and override the cost and description function 
+-   **Dark Roast** needs to extend Coffee and override the cost and description function 
+-   **Light Roast** needs to extend Coffee and override the cost and description function 
+
+#### The issues arises
+
+Say we introduce the concept of **ingredients**. Now, we have an additional cost based on the ingredients:
+
+-   cream 
+-   milk 
+-   sugar 
+
+How do we incorporate the ingredients conecept into our relationship of classes?
+
+-   We could create maybe a **List of Ingredients** 
+    -   each of these types of ingredients (cream, milk, and sugar) would be a different implementation with different costs
+-   When we build the Espresso object, we could add 2x sugar to the Espresso
+-   In the Dark Roast, we could add 2x sugar, and maybe 1x milk 
+    -   compute the cost based on the base cost of the Dark Roast, plus the sugar and milk added on
+
+#### What's wrong with this approach?
+
+The problem arises when we have a **class explosion** as you add all the different ingredients in. 
+
+-   All of the possible combinations would add up to be a big mess!
+
+#### Using the Decorator Pattern instead
+
+We will use **composition** and **type matching** using **Abstract classes** to impersonate the Coffee class
 
 
+
+Using the same example, let's walk through it again.
+
+We have the **Coffee** object, which will have the following attributes:
+
+**Coffee**
+
+-   description
+-   cost 
+
+The coffee class is **Abstract**. Nobody will actually **instantiate an instance** of the coffee class. Instead, subclasses will use it as a **template**
+
+
+
+Let's simplify things, and just use one drink to explain things. 
+
+Let's say we have the **Espresso** beverage class. It has a different base cost than coffee. It's a little more expensive.
+
+It's cost will be different
+
+**Espresso** - implements the Coffee abstract class
+
+-   Cost - $1.99
+
+
+
+Introduce the **Coffee Decorator**! 
+
+This class will impersonate coffee. It will **implement** Coffee, but it will allow us to **add ingredients dynamically**
+
+Coffee Decorator will be abstract - we will never instantiate an instance of the decorator 
+
+Coffee Decorator - allows for clever type matching in the implementation
+
+
+
+**Coffee Decorator**
+
+
+
+Next, we have the concept of adding **ingredients** 
+
+Let's create a class called **WithMilk**, and **WithSugar**
+
+
+
+For all the ingredients that we have, we can add additional classes just like this.
+
+
+
+**WithMilk** implements the Coffee Decorator 
+
+-   Cost - $0.50
+
+**WithSugar** implements the Coffee Decorator 
+
+-   Cost - $0.25
+
+![](https://hosting.photobucket.com/images/i/jhuntcd/coffee_dec.png)
+
+Both of these classes implement the Coffee Decorator. And the Coffee Decorator implements coffee, so WithSugar and WithMilk are of type Coffee... but through this relationship chain that we just built!
+
+
+
+The basic idea is that now when we construct an instance of our Espresso, and we add additional things to it:
+
+-   adding milk ($0.50)
+-   adding sugar ($0.25)
+
+These added costs will be **added dynamically** 
+
+We will compute the cost function as the sum of all the ingredients, and the base - in this case - Espresso. 
+
+#### Decorator Pattern Code
+
+`Coffee.java`
+
+```java
+public abstract class Coffee {
+
+    String description = "Unknown Coffee";
+
+    public String getDescription() {
+        return description;
+    }
+
+    public abstract double cost();
+}
+```
+
+-   Coffee is abstract 
+-   Defines a cost function which is abstract since coffee is abstract
+-   Enforing that all subclasses need to define their cost function
+-   anyone that implements the CoffeeDecorator, needs to implement the getDescription method and the cost function 
+
+`Espresso.java`
+
+```java
+public class Espresso extends Coffee {
+
+    public Espresso() {
+        description = "Espresso";
+    }
+
+    @Override
+    public double cost() {
+        return 1.99;
+    }
+
+}
+```
+
+-   default constructor sets the description
+-   base cost would be 1.99
+
+`CoffeeDecorator.java`
+
+```java
+public abstract class CoffeeDecorator extends Coffee {
+    public abstract String getDescription();
+}
+```
+
+-   abstract class that extends Coffee 
+-   CoffeeDecorator is coffee and you must override getDescription method
+
+`WithMilk.java`
+
+```java
+public class WithMilk extends CoffeeDecorator {
+
+    Coffee coffee;
+
+    public WithMilk(Coffee coffee) {
+        this.coffee = coffee;
+    }
+
+    @Override
+    public String getDescription() {
+        return coffee.getDescription() + ", Milk";
+    }
+
+    @Override
+    public double cost() {
+        return coffee.cost() + .50;
+    }
+}
+```
+
+-   this is where the decorator magic happens!
+-   We have have to override desciption and cost
+-   Keeps a refrence to the parent coffee object that it was called upon. We are holding reference to a coffee object
+-   Whenever the constructor is called (WithMilk), we need to take an already existing coffee object (you would use espresso in this case since this is our base object), and we are holding a reference to it 
+-   in getDescripton and cost, this is where the magic happens. We return the coffee's get description function, and we append Milk to it (in this case)
+-   the object now contains an additional property (which is milk )
+
+`WithSugar.java`
+
+```java
+public class WithSugar extends CoffeeDecorator {
+
+    Coffee coffee;
+
+    public WithSugar(Coffee coffee) {
+        this.coffee = coffee;
+    }
+
+    @Override
+    public String getDescription() {
+        return coffee.getDescription() + ", Sugar";
+    }
+
+    @Override
+    public double cost() {
+        return coffee.cost() + .25;
+    }
+}
+
+```
+
+-   basically the same as Milk! 
+
+`Decorator.java`
+
+```java
+public class Decorator {
+    public static void main(String[] args) {
+
+        Coffee espresso = new Espresso(); 
+        printCoffee(espresso); 
+        // we should see 1.99, and it should be espresso
+
+        espresso = new WithMilk(espresso);
+        printCoffee(espresso);
+        // let's take that espresso object, and add some milk 
+
+        espresso = new WithSugar(espresso);
+        printCoffee(espresso);
+
+    }
+
+    private static void printCoffee(Coffee c) {
+        System.out.println("Cost: " + c.cost() + ", Description: " + c.getDescription());
+    }
+}
+```
+
+-   let's test this out!
 
 ## Observer-Observable
 
@@ -847,6 +1102,8 @@ All we have is one update ocurring, and that's getting pushed to all the observe
 -   great for testability when you're only testing one component
 
 #### Class Diagram Example
+
+![](https://hosting.photobucket.com/images/i/jhuntcd/observer.png)
 
 Let's define an interface called Subject (the thing that broadcasts the messages out)
 
