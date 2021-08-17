@@ -26,9 +26,11 @@ We will go over common **design pattern** solutions to help solve common program
 
 Computers can solve problems faster than humans and that's the power of computer programming. We will go over approaches to speed up computer performance for searching and optimization, analyzing **Big O** (worst and best case peformance for our computers). Computers can do many things at once, and with this in mind, we will go over **concurrency**. 
 
-#### What if something goes wrong?
+#### Are there multiple ways to do the same thing?
 
- We need **error handling** to fail – successfully.
+Yes, there are multiple ways to write the same code. But, we can write our code in a way to make it more powerful, more effecient, more organized, and more useful.
+
+We will learn **Design Patterns** in Java to start wrapping our head around design patterns. 
 
 #### Do we need to create everything ouselves?
 
@@ -763,13 +765,434 @@ We will impersonate the coffee class using abstract classes.
 
 ## Observer-Observable
 
-One to many - observer
-
 One to one - delegation 
 
+##### **One to many - observer**
+
+When one object changes state, all of its dependents are notified and updated automatically. 
 
 
-#### Example
+
+One object is the (subject) and we have multiple (dependents) that care about that object
+
+
+
+Let's take the example of a **weather station** 
+
+the weather station's job is to collect information like temperature, humidity, etc. 
+
+This is the one.. in the **one to many** definition and we can call the one - the subject 
+
+
+
+The **observers** will be **many**
+
+
+
+The observers want the most up to date information that this weather station retrieves. 
+
+
+
+So imagine the weather station got new information once every hour
+
+
+
+Our first observer will be the current display 
+
+
+
+The second observer will be in charge of forcasting 
+
+
+
+In the observer pattern, we have something called a subscription (the **obsevers** need to register for a **subscription** for the **subject**)
+
+
+
+The registration goes from the observer to the subject. Whenever something changes in the subject, the subject will broadcast a message to all of its observers. 
+
+
+
+New data gets populated into the weather station and the subject will broadcast a message to all of its observers. 
+
+
+
+We can handle this in many ways. We could have an update in the Current Display which gets called by the subject. 
+
+That update function, you have a handler that does whatever it needs to do when the data changes.
+
+
+
+In the case of the CurrentDisplay, we could set a local variable. In the Forecasting Display, we could set a list of all the historical things.
+
+
+
+Recap: One subject and mulitple observers (fan out)
+
+
+
+#### Why do we use observer pattern?
+
+If the observers were responsible for getting the data from the subject, they would have to constantly **poll** the **observer** to ask (Did anything change? Did anything change? ...  This would not be effecient)
+
+The number of observers would ultimately multiply the number of polling required. 
+
+#### The solution
+
+We do the opposite. 
+
+All we have is one update ocurring, and that's getting pushed to all the observers. 
+
+-   allows for **loose coupling** (allows systems to operate independently) - the subjects **doesn't have to know** about the observers
+-   great for testability when you're only testing one component
+
+#### Class Diagram Example
+
+Let's define an interface called Subject (the thing that broadcasts the messages out)
+
+(interface) The Subject's methods: 
+
+-   register() - add's an observer
+-   remove() - removes an observer
+-   notify() - broadcasts a message to all the observers
+
+
+
+Next, let's createa **concrete class** called WeatherStation. The WeatherStation will implement the Subject interface. It will define the three methods above (register, remove, notify) 
+
+
+
+Next we need a separate inteface to represent the observers. 
+
+We will call this interface Observer 
+
+(interface) Observer's methods
+
+-   update()
+
+
+
+The observers will implement the update method because that's what's going to tell the weather station what it should do with the observer when a change event happens. 
+
+
+
+The Subject:
+
+-   WeatherStation
+    -   temp
+    -   humidty 
+
+
+
+Our Observers:
+
+-   CurrentConditions (implements Observer)
+    -   temp
+    -   humidy
+    -   getCurrent()
+-   ForecastConditions (implements Observer)
+    -   lastSevenDays()
+
+
+
+**Recap**:
+
+We have a WeatherStation that is our Subject. We register the current conditions concrete classes which are of interface observer type. Whenever there is an update the temp and humidity, let's propogate that update into the observer classes by calling the update method. 
+
+
+
+#### Code Example:
+
+```java
+interface Subject {
+    public void registerObserver(Observer o); // takes in an observer
+    public void removeObserver(Observer o);
+    public void notifyObservers(); // calls the update method for all the observers
+}
+```
+
+
+
+```java
+interface Observer {
+    public void update(int temp, int humidity); // whenever the update is triggered, here is the new measurement
+}
+```
+
+
+
+```java
+class WeatherStation implements Subject {
+    private List<Observer> observers;
+    private int temp; // keep track of last recorded temp and humidity
+    private int humidity;
+
+    public WeatherStation() {
+        this.observers = new ArrayList<>();
+    }
+
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+      // take in the observer being passed and add it to the observer array
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int observerIndex = observers.indexOf(o); //Do I have this observer?
+        if (observerIndex >= 0) {
+            observers.remove(observerIndex);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(o -> o.update(temp, humidity));
+      // taking all of the observers, and for every one, calling the update method with the temperature and the humidity
+    }
+
+    public void measurementsChanged(int temp, int humidity) {
+      // called on the weather station object. (whenever someone does a recording of that weather station, they will call the weather station's measurementsChanged function, pass in the new temp and huidity, set locally, and then call the notify obserers method, )
+        this.temp = temp;
+        this.humidity = humidity;
+        notifyObservers();
+    }
+}
+```
+
+
+
+```java
+class ForecastDisplay implements Observer {
+
+    private List<Integer> tempHistory;
+    private List<Integer> humidityHistory;
+
+    public ForecastDisplay(Subject weatherStation) {
+        tempHistory = new ArrayList<>();
+        humidityHistory = new ArrayList<>();
+        weatherStation.registerObserver(this); // subscribe to the Subject
+    }
+
+    @Override
+    public void update(int temp, int humidity) {
+        this.tempHistory.add(temp);
+        this.humidityHistory.add(temp);
+        display7DayHistory();
+    }
+
+    public void display7DayHistory() {
+        //Print Last 7 days History of Temperature and Humidity
+        System.out.println("Temperature History: " +
+                tempHistory.subList(Math.max(tempHistory.size() - 7, 0), tempHistory.size()));
+        System.out.println("Humidity History: " +
+                humidityHistory.subList(Math.max(humidityHistory.size() - 7, 0), humidityHistory.size()));
+
+    }
+}
+```
+
+
+
+```java
+class CurrentConditionsDisplay implements Observer {
+
+    private int temp;
+    private int humidity;
+
+    public CurrentConditionsDisplay(Subject weatherStation) {
+      // this referes to this instance of the current conditions display class. We are registering ourselves with the subject
+        weatherStation.registerObserver(this);
+    }
+
+    @Override
+    public void update(int temp, int humidity) {
+        this.temp = temp;
+        this.humidity = humidity;
+        displayCurrent();
+    }
+
+    public void displayCurrent() {
+        System.out.println("Current Temperature: " + temp);
+        System.out.println("Current Humidity: " + humidity);
+    }
+}
+```
+
+
+
+```java
+public class ObserverPattern {
+
+    public static void main(String[] args) throws InterruptedException {
+        //Create the data object (publisher / topic)
+        WeatherStation weatherStation = new WeatherStation();
+
+        //Create and register our displays (observers / subscribers)
+        CurrentConditionsDisplay currentConditionsDisplay =
+                new CurrentConditionsDisplay(weatherStation);
+        ForecastDisplay forecastDisplay = new ForecastDisplay(weatherStation);
+
+        //Simulate updates
+        for (int i = 0; i < 5; i++) {
+            System.out.println("\n--- Update " + i + " ---");
+
+            int randomTemp = getRandomint(-50, 40);
+            int randomHumidity = getRandomint(0, 100);
+
+            weatherStation.measurementsChanged(randomTemp, randomHumidity);
+
+            Thread.sleep(1000);
+        }
+    }
+
+    private static int getRandomint(int min, int max) {
+        Random rand = new Random();
+        return rand.nextInt(max + 1 - min) + min;
+    }
+}
+```
+
+
+
+#### Full Code
+
+```java
+package com.example.javalearning.Observer;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+interface Subject {
+    public void registerObserver(Observer o);
+    public void removeObserver(Observer o);
+    public void notifyObservers();
+}
+
+interface Observer {
+    public void update(int temp, int humidity);
+}
+
+class WeatherStation implements Subject {
+    private List<Observer> observers;
+    private int temp;
+    private int humidity;
+
+    public WeatherStation() {
+        this.observers = new ArrayList<>();
+    }
+
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int observerIndex = observers.indexOf(o); //Do I have this observer?
+        if (observerIndex >= 0) {
+            observers.remove(observerIndex);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(o -> o.update(temp, humidity));
+    }
+
+    public void measurementsChanged(int temp, int humidity) {
+        this.temp = temp;
+        this.humidity = humidity;
+        notifyObservers();
+    }
+}
+
+class ForecastDisplay implements Observer {
+
+    private List<Integer> tempHistory;
+    private List<Integer> humidityHistory;
+
+    public ForecastDisplay(Subject weatherStation) {
+        tempHistory = new ArrayList<>();
+        humidityHistory = new ArrayList<>();
+        weatherStation.registerObserver(this);
+    }
+
+    @Override
+    public void update(int temp, int humidity) {
+        this.tempHistory.add(temp);
+        this.humidityHistory.add(temp);
+        display7DayHistory();
+    }
+
+    public void display7DayHistory() {
+        //Print Last 7 days History of Temperature and Humidity
+        System.out.println("Temperature History: " +
+                tempHistory.subList(Math.max(tempHistory.size() - 7, 0), tempHistory.size()));
+        System.out.println("Humidity History: " +
+                humidityHistory.subList(Math.max(humidityHistory.size() - 7, 0), humidityHistory.size()));
+
+    }
+}
+
+class CurrentConditionsDisplay implements Observer {
+
+    private int temp;
+    private int humidity;
+
+    public CurrentConditionsDisplay(Subject weatherStation) {
+        weatherStation.registerObserver(this);
+    }
+
+    @Override
+    public void update(int temp, int humidity) {
+        this.temp = temp;
+        this.humidity = humidity;
+        displayCurrent();
+    }
+
+    public void displayCurrent() {
+        System.out.println("Current Temperature: " + temp);
+        System.out.println("Current Humidity: " + humidity);
+    }
+}
+
+
+
+public class ObserverPattern {
+
+    public static void main(String[] args) throws InterruptedException {
+        //Create the data object (publisher / topic)
+        WeatherStation weatherStation = new WeatherStation();
+
+        //Create and register our displays (observers / subscribers)
+        CurrentConditionsDisplay currentConditionsDisplay =
+                new CurrentConditionsDisplay(weatherStation);
+        ForecastDisplay forecastDisplay = new ForecastDisplay(weatherStation);
+
+        //Simulate updates
+        for (int i = 0; i < 5; i++) {
+            System.out.println("\n--- Update " + i + " ---");
+
+            int randomTemp = getRandomint(-50, 40);
+            int randomHumidity = getRandomint(0, 100);
+
+            weatherStation.measurementsChanged(randomTemp, randomHumidity);
+
+            Thread.sleep(1000);
+        }
+    }
+
+    private static int getRandomint(int min, int max) {
+        Random rand = new Random();
+        return rand.nextInt(max + 1 - min) + min;
+    }
+}
+```
+
+
+
+
 
 #### Code Example of Observer Pattern
 
@@ -843,33 +1266,32 @@ We could use a sychronized block which ensures that only one thread can enter a 
 ### The Code
 
 ```java
-public class Teslacar {
-  
-  // class level static instance
-  private static volatile Teslacar car;
-  
-  // private constructor to prevent mulitple instances
-  private Teslacar(){}
-  
-  // factory method to retreive isntance
-  public static Teslacar getInstance(){
-    if (car == null){
-      car = new Teslacar();
+class Teslacar {
+
+    // class level static instance
+    private static volatile Teslacar car;
+
+    // private constructor to prevent mulitple instances
+    private Teslacar(){}
+
+    // factory method to retreive isntance
+    public static Teslacar getInstance(){
+        if (car == null){
+            car = new Teslacar();
+        }
+        return car;
     }
-    return car;
-  }
 }
 
-
 // main method
-public class Main {
-  public static void main(String[] args){
-    Teslacar car1 = TeslaCar.getInstance();
-    Teslacar car2 = TeslaCar.getInstance();
-    
-    System.out.println(car1);
-    System.out.println(car2);
-  }
+public class Singleton {
+    public static void main(String[] args){
+        Teslacar car1 = Teslacar.getInstance();
+        Teslacar car2 = Teslacar.getInstance();
+
+        System.out.println(car1);
+        System.out.println(car2);
+    }
 }
 ```
 
