@@ -6,7 +6,7 @@ Once we begin to understand a programming language and what it offers us as deve
 
 With mobile development in both iOS and Android, you will encounter many of the same challenges and problems for developing either type of application. 
 
-As a part of the precourse work, we talk about high level concepts that extend past iOS development. Even more, these same ideas extend past Android mobile development and apply to all levels of computer programming. As you hit landmarks in your learning regarding mobile development, having the foundational knowledge will make learning more applicable and useful. 
+As a part of the precourse work, we talk about high level concepts that extend past iOS development. Additionally, these same ideas extend across Android mobile development and apply to all levels of computer programming. As you hit landmarks in your learning regarding mobile development, having the foundational knowledge will make learning more applicable and useful. 
 
 As developers, we will be covering the following questions as it applies to iOS and Android development, but more importantly, how it applies to developers as a whole. 
 
@@ -1020,61 +1020,35 @@ public class Decorator {
 
 ## Observer-Observable
 
-One to one - delegation 
+Where delegation was for **one to one** relationships, Observer is used for **one to many** relationships. 
 
-##### **One to many - observer**
+-   When one object changes state, all of its dependents are notified and updated automatically. 
 
-When one object changes state, all of its dependents are notified and updated automatically. 
+-   One object is the (subject) and then we have multiple (dependents) that care about that object. 
 
+#### Weather Station
 
+Let's take the example of a **weather station**. The weather station's job is to collect information like temperature, humidity, etc. 
 
-One object is the (subject) and we have multiple (dependents) that care about that object
+The Weather Station is the one.. in the **one to many** definition and we can call the one - the subject 
 
-
-
-Let's take the example of a **weather station** 
-
-the weather station's job is to collect information like temperature, humidity, etc. 
-
-This is the one.. in the **one to many** definition and we can call the one - the subject 
+-   The **observers** will be **many**
 
 
 
-The **observers** will be **many**
+The observers want the most up to date information that this weather station retrieves. So, imagine the weather station got new information once every hour and our first observer will be the **current display**. The second observer will be in charge of forecasting. 
 
-
-
-The observers want the most up to date information that this weather station retrieves. 
-
-
-
-So imagine the weather station got new information once every hour
-
-
-
-Our first observer will be the current display 
-
-
-
-The second observer will be in charge of forcasting 
-
-
-
-In the observer pattern, we have something called a subscription (the **obsevers** need to register for a **subscription** for the **subject**)
+-   In the observer pattern, we have something called a subscription (the **obsevers** need to register for a **subscription** for the **subject**)
 
 
 
 The registration goes from the observer to the subject. Whenever something changes in the subject, the subject will broadcast a message to all of its observers. 
 
-
-
-New data gets populated into the weather station and the subject will broadcast a message to all of its observers. 
+-   New data gets populated into the weather station and the subject will broadcast a message to all of its observers. 
 
 
 
-We can handle this in many ways. We could have an update in the Current Display which gets called by the subject. 
-
-That update function, you have a handler that does whatever it needs to do when the data changes.
+We can handle this in many ways. We could have an update in the Current Display which gets called by the subject. And in that  update function, you have a handler that does whatever it needs to do when the data changes.
 
 
 
@@ -1082,7 +1056,7 @@ In the case of the CurrentDisplay, we could set a local variable. In the Forecas
 
 
 
-Recap: One subject and mulitple observers (fan out)
+**Recap**: One subject and mulitple observers (fan out)
 
 
 
@@ -1107,7 +1081,9 @@ All we have is one update ocurring, and that's getting pushed to all the observe
 
 Let's define an interface called Subject (the thing that broadcasts the messages out)
 
-(interface) The Subject's methods: 
+
+
+**Subject (interface)**
 
 -   register() - add's an observer
 -   remove() - removes an observer
@@ -1115,15 +1091,17 @@ Let's define an interface called Subject (the thing that broadcasts the messages
 
 
 
-Next, let's createa **concrete class** called WeatherStation. The WeatherStation will implement the Subject interface. It will define the three methods above (register, remove, notify) 
+Next, let's create a **concrete class** called WeatherStation. The WeatherStation will implement the Subject interface and it will define the three methods above (register, remove, notify) 
 
 
 
 Next we need a separate inteface to represent the observers. 
 
+
+
 We will call this interface Observer 
 
-(interface) Observer's methods
+**Observer (interface)**
 
 -   update()
 
@@ -1133,7 +1111,7 @@ The observers will implement the update method because that's what's going to te
 
 
 
-The Subject:
+**The Subject:**
 
 -   WeatherStation
     -   temp
@@ -1141,7 +1119,7 @@ The Subject:
 
 
 
-Our Observers:
+**Our Observers:**
 
 -   CurrentConditions (implements Observer)
     -   temp
@@ -1160,6 +1138,8 @@ We have a WeatherStation that is our Subject. We register the current conditions
 
 #### Code Example:
 
+`Subject.java`
+
 ```java
 interface Subject {
     public void registerObserver(Observer o); // takes in an observer
@@ -1168,7 +1148,7 @@ interface Subject {
 }
 ```
 
-
+`Observer.java`
 
 ```java
 interface Observer {
@@ -1176,7 +1156,7 @@ interface Observer {
 }
 ```
 
-
+`WeatherStation.java`
 
 ```java
 class WeatherStation implements Subject {
@@ -1217,7 +1197,7 @@ class WeatherStation implements Subject {
 }
 ```
 
-
+`ForecastDisplay.java`
 
 ```java
 class ForecastDisplay implements Observer {
@@ -1249,7 +1229,7 @@ class ForecastDisplay implements Observer {
 }
 ```
 
-
+`CurrentConditionsDisplay.java`
 
 ```java
 class CurrentConditionsDisplay implements Observer {
@@ -1276,7 +1256,7 @@ class CurrentConditionsDisplay implements Observer {
 }
 ```
 
-
+`ObserverPattern.java`
 
 ```java
 public class ObserverPattern {
@@ -1310,148 +1290,11 @@ public class ObserverPattern {
 }
 ```
 
+Don't forget to add your imports!
 
-
-#### Full Code
-
-```java
-package com.example.javalearning.Observer;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
-interface Subject {
-    public void registerObserver(Observer o);
-    public void removeObserver(Observer o);
-    public void notifyObservers();
-}
-
-interface Observer {
-    public void update(int temp, int humidity);
-}
-
-class WeatherStation implements Subject {
-    private List<Observer> observers;
-    private int temp;
-    private int humidity;
-
-    public WeatherStation() {
-        this.observers = new ArrayList<>();
-    }
-
-    @Override
-    public void registerObserver(Observer o) {
-        observers.add(o);
-    }
-
-    @Override
-    public void removeObserver(Observer o) {
-        int observerIndex = observers.indexOf(o); //Do I have this observer?
-        if (observerIndex >= 0) {
-            observers.remove(observerIndex);
-        }
-    }
-
-    @Override
-    public void notifyObservers() {
-        observers.forEach(o -> o.update(temp, humidity));
-    }
-
-    public void measurementsChanged(int temp, int humidity) {
-        this.temp = temp;
-        this.humidity = humidity;
-        notifyObservers();
-    }
-}
-
-class ForecastDisplay implements Observer {
-
-    private List<Integer> tempHistory;
-    private List<Integer> humidityHistory;
-
-    public ForecastDisplay(Subject weatherStation) {
-        tempHistory = new ArrayList<>();
-        humidityHistory = new ArrayList<>();
-        weatherStation.registerObserver(this);
-    }
-
-    @Override
-    public void update(int temp, int humidity) {
-        this.tempHistory.add(temp);
-        this.humidityHistory.add(temp);
-        display7DayHistory();
-    }
-
-    public void display7DayHistory() {
-        //Print Last 7 days History of Temperature and Humidity
-        System.out.println("Temperature History: " +
-                tempHistory.subList(Math.max(tempHistory.size() - 7, 0), tempHistory.size()));
-        System.out.println("Humidity History: " +
-                humidityHistory.subList(Math.max(humidityHistory.size() - 7, 0), humidityHistory.size()));
-
-    }
-}
-
-class CurrentConditionsDisplay implements Observer {
-
-    private int temp;
-    private int humidity;
-
-    public CurrentConditionsDisplay(Subject weatherStation) {
-        weatherStation.registerObserver(this);
-    }
-
-    @Override
-    public void update(int temp, int humidity) {
-        this.temp = temp;
-        this.humidity = humidity;
-        displayCurrent();
-    }
-
-    public void displayCurrent() {
-        System.out.println("Current Temperature: " + temp);
-        System.out.println("Current Humidity: " + humidity);
-    }
-}
-
-
-
-public class ObserverPattern {
-
-    public static void main(String[] args) throws InterruptedException {
-        //Create the data object (publisher / topic)
-        WeatherStation weatherStation = new WeatherStation();
-
-        //Create and register our displays (observers / subscribers)
-        CurrentConditionsDisplay currentConditionsDisplay =
-                new CurrentConditionsDisplay(weatherStation);
-        ForecastDisplay forecastDisplay = new ForecastDisplay(weatherStation);
-
-        //Simulate updates
-        for (int i = 0; i < 5; i++) {
-            System.out.println("\n--- Update " + i + " ---");
-
-            int randomTemp = getRandomint(-50, 40);
-            int randomHumidity = getRandomint(0, 100);
-
-            weatherStation.measurementsChanged(randomTemp, randomHumidity);
-
-            Thread.sleep(1000);
-        }
-    }
-
-    private static int getRandomint(int min, int max) {
-        Random rand = new Random();
-        return rand.nextInt(max + 1 - min) + min;
-    }
-}
-```
-
-
-
-
-
-#### Code Example of Observer Pattern
+-   `import java.util.ArrayList;`
+-   `import java.util.List;`
+-   `import java.util.Random;`
 
 
 
@@ -1565,12 +1408,6 @@ If you take look in the console, you'll see the same instance of the Teslacar ob
 -   we know we created the Singleton correctly!
 
 Singleton - We ensured that a class only has once instance and provided a global point of access to it. 
-
-## Builder
-
-## Facade
-
-## Iterator
 
 # Algorithms and Big O
 
