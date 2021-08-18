@@ -68,6 +68,50 @@ Some examples of backend languages include Java, Python, PHP, Node.js, JavaScrip
 -   a computer or computers that send data over a network and receives and responds to requests
 -   Just about any computer can function as a server. But, computers suited for this particular need do a better job of handling many requests at once for a very long time. 
 
+## Client Server Model
+
+How machines communicate with each other
+
+#### What's a client?
+
+-   Web Browser
+-   iPhone, iPad, Tablet 
+-   Python, Java, C++ program running on your computer
+
+
+
+Clients are the ones **requesting** information (they want to get information from somewhere else)
+
+-   They speak to servers in some network protocol language (HTTP)
+
+#### What's a server?
+
+Doesn't have to be single machine. Instead, this is more of a concept
+
+Server is the **provider** of information 
+
+-   it has access to information 
+-   tied to database usually 
+
+
+
+The server exposes a set of APIs
+
+
+
+The client requests informations through HTTP Requests
+
+-   clients make requests to a server. Server receives that request
+-   When the client calls the API, the server gets the information, queries the database, and return that information back to the client
+    -   Servers are listening for traffic on certain ports (API is associated with the server)
+    -   When API is called, the server knows how to perform a job, and return a result back to the client.
+
+
+
+**Recap**: This is how the internet works everywhere in the world
+
+
+
 # Database
 
 A database is simply a collection of data stored in an organized way
@@ -75,7 +119,7 @@ A database is simply a collection of data stored in an organized way
 -   Stored on the server
 -   Types of Databases:
     -   **NoSQL databases** 
-        -   are designed to handle the more complex, unstructured data, (such as texts, social media posts, photos, videos, email)
+        -   are designed to handle the more complex, unstructured data, (such as texts, social media posts, photos, videos, email) 
         -   stores unstructured or semi-structured data, often in key-value pairs or JSON documents.
     -   **Relational databases** 
         -   store related data tables (relational)
@@ -83,7 +127,72 @@ A database is simply a collection of data stored in an organized way
 
 
 
-SQL stands for Structured Query Language 
+SQL stands for **Structured Query Language**  - SELECT * FROM CUSTOMERS
+
+SQL allows for Create, Read, Update, and Delete (CRUD)
+
+
+
+RDMS (Relational Database Engines)
+
+-   MySQL
+-   PostgresQL
+-   Microsoft SQL Server
+
+
+
+#### SQL
+
+Structure - interact with tables 
+
+-   rows (individual entitiies) and columns (types)
+-   must have a primary key (unique ID that identifies a specific row)
+-   foreign keys are links to other tables
+-   we have constraints (VARCHAR is only a certain size allowed, etc.)
+-   We have **relationships** with other **tables** which allow for powerful queries!  ( e.g. Give me all accounts with an ID of ...)
+
+Accesss
+
+-   Raw SQL
+-   Direct database connection
+-   Object Relational Mappers to create queries (generating queries)
+
+#### NoSQL
+
+Anything that is non relational 
+
+Many implementations:
+
+-   Table
+-   Document
+-   Graph
+
+Built to scale with high performance, but queries are less flexible
+
+
+
+Structure
+
+-   Tables, JSON (Documents), Graphs (think Facebook with friends having friends)
+-   Key Value Strorage
+
+Access
+
+-   REST APIs - hit a specific endpoint with a specific functionality associated with it 
+-   CRUD in vendor specific lanaguage 
+
+#### When to use what?
+
+**SQL**
+
+-   peforming flexible queries (stay flexible)
+-   relational queries 
+
+**NoSQL**
+
+-   When we know exactly how we will be interacting with our database
+-   Primary key is known 
+-   High performance and low latency 
 
 ## Database Assignment
 
@@ -345,11 +454,7 @@ Often, the terms "procedural programming" and "imperative programming" are used 
 
 Functional programming languages support (and heavily use) first-class functions, anonymous functions and closures
 
-#### Reactive Programming
-
-# Application Architecture and Design
-
-# Design Patterns
+# Application Architecture and Design Patterns
 
 As we develop code with Object Oriented principles in mind, programmers have developed best practices and techniques to solve common problems. Design patterns often solve a particular problem and offer a solution. 
 
