@@ -1,5 +1,3 @@
-
-
 # Precourse Java
 
 Once we begin to understand a programming language and what it offers us as developers, we also need to understand the big picture regarding development in practice and building applications at scale. 
@@ -1703,25 +1701,195 @@ If you take look in the console, you'll see the same instance of the Teslacar ob
 
 Singleton - We ensured that a class only has once instance and provided a global point of access to it. 
 
+
+
+Sources:
+
+https://www.oreilly.com/library/view/head-first-design/0596007124/
+
 # Algorithms and Big O
 
-#### Array2D
+O(1) - constant time 
 
-#### Brute-Force String Search
+O(N) - scales linearly with respect of amount of input 
 
-#### Quick Sort
+-   twice amount of data = twice amount of time
 
-#### Palindrome
+
+
+How the time scales with respect to input variables
+
+
+
+Rules
+
+1.   If you have two different steps in your algorithm, you add up those steps
+     -   O(a), O(b) = O(a+b)
+2.   Drop constants 
+3.   If you have different inputs, use different variables
+4.   Drop non-dominate terms
+     -   O(n+n^2) → O(n^2)
+
+## Palindrome
+
+Assignment - To get your hands dirty, write a java program that searches for words that are palindromes
+
+## Array2D
+
+## Brute-Force String Search
+
+## Quick Sort
+
+Quick Sort is popular and effecient 
+
+Let's take an array of integers
+
+```java
+[12,2,3,13,19]
+```
+
+We pick one element to be the pivot element
+
+We will pick the pivot elment randomly for now
+
+We walk through the array, and swap elements around so that the elments less than the pivot, come before all elements bigger than it 
+
+We get a natural division in the array from this.
+
+Then we repeat this process to the left portion and right portion of the array
+
+We do this over and over again until its **sorted**
+
+#### Let's take a closer look
+
+```java
+[15,3,9,8,5,2,7,1,6]
+```
+
+Pick a pivor point randomly - let's say 7
+
+Then we walk through the array
+
+-   from left to right, swapping elements if they are out of order
+-   Right to left, swapping elements if they are out of order
+
+Every element less than 7 should be before every element greater than 7
+
+
+
+<img src="https://hosting.photobucket.com/images/i/jhuntcd/quicksort.png" style="float:left;zoom:100%;" />
+
+First we have 6 and 15
+
+-   6 is smaller than 7 and 15 is bigger than 7  - these should be swapped!
+-   Move the left pointer until we find an element that should be on the other side
+
+```java
+[6,3,9,8,5,2,7,1,15]
+```
+
+Then, let's move the left pointer until we find an element that should be on the other side.
+
+We do this same thing for the right!
+
+-   9 and 1, those should be swapped as well.
+
+```java
+[6,3,1,8,5,2,7,9,15]
+```
+
+-   2 and 8, those should be swapped!
+
+```java
+[6,3,1,2,5,8,7,9,15]
+```
+
+#### We did it!
+
+Now, we have an arrangement such that everything smaller than the pivot is on the left, and everything bigger than the pivot is on the right side. 
+
+Now, we just do quick sort on these two halves
+
+Here's the left side:
+
+```java
+[6,3,1,2,5]
+```
+
+-   let's pick a random pivot 
+
+<img src="https://hosting.photobucket.com/images/i/jhuntcd/quicksort_half.png" style="float:left;zoom:100%;" />
+
+-   Once again, we have the left and right pointer
+
+We move the left pointer over until we have something that should be on the other side of 3. 
+
+We move the right pointer over until we find something that should be swapped. 
+
+-   6 and 2 should be swapped!
+
+As we continue to move the left pointer over, we realize that we are good on this side!
+
+#### Where are we now?
+
+We currently have three sections:
+
+`[2,3,1]` `[6,5]` `[8,7,9,15]`
+
+We move our focus to the left side: `[2,3,1]`
+
+<img src="https://hosting.photobucket.com/images/i/jhuntcd/quick_sort_left_half.png?width=285&height=175&crop=fill" style="float:left;zoom:100%;" />
+
+-   we swap 3 and 1!
+
+we are left with `[2,1,3]`, and we are actually done with this part. 
+
+
+
+Now we have he following sorted:
+
+`[2,1]` `[3]` `[6,5]` `[8,7,9,15]`
+
+
+
+-   Eventually we will wind up with a sorted array!
+
+
+
+#### How effecient is this sorting algorithm?
+
+
+
+#### The Good Case
+
+Ideally, we are dividing the array in half each time - that depends on how we pick our pivot
+
+-   we would ideally pick the median as the pivot
+
+In this case we get O(nlogn)
+
+-   each element gets quicksort called on it log(n) times
+-   So there are n elements, and they go through log(n) swaps
+-   It will take O(nlogn) time overall (Average)
+
+#### Worst Case
+
+In the bad case: 
+
+-   we always pick a very terrible pivot (the very first element in the array)
+-   then we have n^2 as our Big O
+
+
+
+### Coding Quick Sort
+
+
 
 # Concurrency
 
 #### AsyncAwait
 
-# Error Handling
 
-#### Try Catch
-
-#### Unit Testing
 
 # Decision Making
 
@@ -1740,3 +1908,20 @@ Subclasses are responsible for implementing their own behavior
 
 inherits or implements in terms of interface
 
+
+
+
+
+## Class Instances
+
+You must understand the difference between a class and an instance of that class. If you see a car on the street, you know immediately that it's a car even if you can't see which model or type. This is because you compare what you see with the *class* "car". The class contains which is similar to all cars. Think of it as a template or an idea.
+
+At the same time, the car you see is an instance of the class "car" since it has all the properties which you expect: There is someone driving it, it has an engine, wheels.
+
+So the class says "all cars have a color" and the instance says "this specific car is red".
+
+In the OO world, you define the class and inside the class, you define a field of type `Color`. When the class is instantiated (when you create a specific instance), memory is reserved for the color and you can give this specific instance a color. Since these attributes are specific, they are non-static.
+
+Static fields and methods are shared with all instances. They are for values which are specific to the class and not a specific instance. For methods, this usually are global helper methods (like `Integer.parseInt()`). For fields, it's usually constants (like car types, i.e. something where you have a limited set which doesn't change often).
+
+To solve your problem, you need to instantiate an instance (create an object) of your class so the runtime can reserve memory for the instance (otherwise, different instances would overwrite each other which you don't want).
