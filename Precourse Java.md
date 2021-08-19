@@ -431,12 +431,41 @@ You can have Java modules and Android modules in the same project and also have 
 7.  A new application configuration should appear, enter in the details such as your main class and classpath of your module.
 8.  Click **OK**. Now if you click run, this should compile and run your Java module.
 
-
-![](https://hosting.photobucket.com/images/i/jhuntcd/setup.png?width=285&height=175&crop=fill)
-
+<img src="https://hosting.photobucket.com/images/i/jhuntcd/setup.png?" style="float: left;zoom:50%;" />
 
 
-## Object Oriented Programming
+
+# Object Oriented Programming
+
+## Composition and Inheritance
+
+<img src="https://hosting.photobucket.com/images/i/jhuntcd/composition_inheritance.png" style="float:left;zoom:50%;" />
+
+Subclasses are responsible for implementing their own behavior
+
+inherits or implements in terms of interface
+
+## Class Instances
+
+**Class vs Instance of Class**
+
+If you see a car on the street, you know immediately that it's a car even if you can't see which model or type. 
+
+This is because you compare what you see with the *class* "car". The class contains which is similar to all cars. Think of it as a template or an idea.
+
+At the same time, the car you see is an instance of the class "car" since it has all the properties which you expect: There is someone driving it, it has an engine, wheels.
+
+So the class says "all cars have a color" and the instance says "this specific car is red".In the Object Oriented world, you define the class and inside the class, you define a field of type `Color`. 
+
+When the class is instantiated (when you create a specific instance), memory is reserved for the color and you can give this specific instance a color. Since these attributes are specific, they are non-static.
+
+**Static vs Non Static**
+
+Static fields and methods are shared with all instances. 
+
+They are for values which are specific to the class and not a specific instance. For methods, this usually are global helper methods (like `Integer.parseInt()`).
+
+For fields, it's usually constants (like car types, i.e. something where you have a limited set which doesn't change often).
 
 
 
@@ -2261,8 +2290,4 @@ Firebase has supported real-time push and data binding from the start. Itâ€™s â€
 1.   Discover tools, frameworks, libraries and their alternatives
 2.   Apply requirements to the things you found, filtering them
 3.   Make a decision, based on the above, and stick with it
-
-
-
-
 
