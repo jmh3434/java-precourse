@@ -22,7 +22,7 @@ We will go over common **design pattern** solutions to help solve common program
 
 #### What's the point?
 
-Computers can solve problems faster than humans and that's the power of computer programming. We will go over approaches to speed up computer performance for searching and optimization, analyzing **Big O** (worst and best case peformance for our computers). Computers can do many things at once, and with this in mind, we will go over **concurrency**. 
+Computers can solve problems faster than humans and that's the power of computer programming. We will go over approaches to speed up computer performance for searching and optimization, analyzing **Big O** (worst and best case peformance for our computers). 
 
 #### Are there multiple ways to do the same thing?
 
@@ -436,6 +436,87 @@ You can have Java modules and Android modules in the same project and also have 
 
 ![](https://hosting.photobucket.com/images/i/jhuntcd/setup.png?width=285&height=175&crop=fill)
 
+
+
+# Access Control 
+
+Access control is a method of restricting access in Java but in every programming langauge you will encounter as well.
+
+Access control restricts the access of certain members of a class to specific parts of a program
+
+There are four access modifiers in Java. They are:
+
+1.  public
+
+2.  protected
+
+3.  default
+
+4.  private
+
+    *private* is the most restrictive access modifier and *public* is the least restrictive access modifier.
+
+```
+access-modifier  data-type  variable-name;
+```
+
+A private Str
+
+`private int side;`
+
+
+
+In a similar way we can apply access modifiers to methods or classes although
+
+| Access Modifier | Accessible by classes in the same package | Accessible by classes in other packages | Accessible by subclasses in the same package | Accessible by subclasses in other packages |
+| --------------- | ----------------------------------------- | --------------------------------------- | -------------------------------------------- | ------------------------------------------ |
+| Public          | Yes                                       | Yes                                     | Yes                                          | Yes                                        |
+| Protected       | Yes                                       | No                                      | Yes                                          | Yes                                        |
+| Package         | Yes                                       | No                                      | Yes                                          | No                                         |
+| Private         | No                                        | No                                      | No                                           | No                                         |
+
+#### Why Do We Need Access Control?
+
+```java
+class Employee {
+	int  empid;
+	String  empname;
+	float  salary;
+	//Methods which operate on above data members
+}
+```
+
+```java
+Employee e1 = new Employee();
+e1.salary = -1000.00;
+```
+
+```java
+class Employee
+{
+	private int empid;
+	private String emp;
+	private float salary;
+	public void setSalary(float sal)
+	{
+		if(sal &lt; 0){
+			System.out.println("Salary cannot be negative");
+		}
+		else {
+			salary = sal;
+		}
+	}
+}
+```
+
+```java
+Employee e1 = new Employee();
+e1.setSalary(-1000.00);  //Gives error as salary cannot be negative
+e1.setSalary(2000.00);  //salary of e1 will be assigned 2000.00
+```
+
+
+
 # Programming Paradigms
 
 #### Object Oriented Programming
@@ -701,6 +782,19 @@ class KotlinDeveloper implements WhoCanCode {
     }
 }
 ```
+
+## Delegation Assignment
+
+Assignment Part 1
+
+-   use the Delegation Code and add a class that implements `WhoCanCode`.
+-   In the console, you should see ``"I'm writing Kotlin Code"``
+-   upload your code 
+
+Assignment Part 2 
+
+-   it is important that you understand what is going on in the code. Please provide **comments** throughout each class and interface explaining what each part does in your code
+-   comment and explain the new class that you have implemented called "KotlinDeveloper"
 
 ## Strategy Pattern
 
@@ -1709,6 +1803,28 @@ https://www.oreilly.com/library/view/head-first-design/0596007124/
 
 # Algorithms and Big O
 
+As you are developing applications in the future, you must keep in mind time complexity. 
+
+#### Birds vs Humans
+
+In 2009, A pigeon carrying a flash drive stick raced against the area’s fastest internet in South Africa to send a large file. 
+
+Winston the pigeon, took 68 minutes to carry a USB stick 60 miles all because workers wanted to prove how slow wifi was. 
+
+**How did the pigeon win the race?**
+
+Speed matters, and it matters even more at scale! 
+
+Winston the pigeon won the race because large files take a long time to send over slow internet!
+
+Optimization is key.
+
+That's where Big O comes in with computer algorithms. 
+
+#### Variables Introduced
+
+<img src="https://hosting.photobucket.com/images/i/jhuntcd/bigo.png" style="float:left;zoom:40%;" />
+
 O(1) - constant time 
 
 O(N) - scales linearly with respect of amount of input 
@@ -1730,17 +1846,21 @@ Rules
 4.   Drop non-dominate terms
      -   O(n+n^2) → O(n^2)
 
-## Palindrome
+## Bubble Sort
 
-Assignment - To get your hands dirty, write a java program that searches for words that are palindromes
+Take a look at the following visualization of Bubble Sort Sorting Algoritm : https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html. 
 
-## Array2D
+Algorithm visualizations are a great way to compare alrgoritms! 
 
-## Brute-Force String Search
+Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
 
-## Quick Sort
+This simplicity comes at a price! Bubble Sort is quite slow.
 
-Quick Sort is popular and effecient 
+Bubble sort has an average and worst-case running time of **O(n²)**, so in most cases, a faster algorithm is more desirable.
+
+## Quick Sort Example
+
+Quick Sort is popular and effecient way to sort numbers!
 
 Let's take an array of integers
 
@@ -1883,13 +2003,90 @@ In the bad case:
 
 ### Coding Quick Sort
 
+```java
+public class QuickSort {
+    public static void main(String[] args) {
+        Integer[] integerArray = new Integer[] { 12, 13, 24, 10, 3, 6, 90, 70 };
+        quickSort( integerArray, 0, integerArray.length - 1 ); // sort with quicksort
+        System.out.println(Arrays.toString(integerArray)); // check our results!
+    }
+    public static void quickSort(Integer[] array, int low, int high) {
+        if (array == null || array.length == 0){ //check for empty or null array
+            return;
+        }
+        if (low >= high){
+            return;
+        }
+        
+        int middle = low + (high - low) / 2; //Get the pivot element from the middle of the list
+        int pivot = array[middle];
+
+        int i = low; // make left < pivot
+        int j = high; // make right > pivot
+
+        while (i <= j) {
+            
+            while (array[i] < pivot) { // Keep checking until all values on the left side array are lower than pivot
+                i++;
+            }
+            while (array[j] > pivot) { // Keep checking until all values on the left side array are greater than pivot
+                j--;
+            }
+            //Now compare values from both side of lists to see if they need swapping
+            //After swapping move the iterator on both lists
+            if (i <= j) {
+                swap (array, i, j);
+                i++;
+                j--;
+            }
+        }
+        // recursively sort the  two sub arrays (same operation as above)
+        if (low < j){
+            quickSort(array, low, j);
+        }
+        if (high > i){
+            quickSort(array, i, high);
+        }
+    }
+    public static void swap (Integer array[], int x, int y) {
+        int temp = array[x];
+        array[x] = array[y];
+        array[y] = temp;
+    }
+}
+```
 
 
-# Concurrency
 
-#### AsyncAwait
+## Palindrome Assignment
 
+To get your hands dirty, write a java program that searches for words that are palindromes
 
+**Note**: You may use **recursion** if you choose
+
+Your output should look like this:
+
+```
+Enter the String for check:
+qqaabb
+qqaabb is not a palindrome
+```
+
+```
+Enter the String for check:
+cocoococ
+cocoococ is a palindrome
+```
+
+## Merge Sort Assignment - Optional
+
+Just like QuickSort, **Merge Sort** is an algorithm where we divide and conquer! 
+
+Merge Sort divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. The merge() function is used for merging two halves
+
+Optional Assignment: 
+
+1.   Implement Merge Sort in Java and upload your code
 
 # Decision Making
 
