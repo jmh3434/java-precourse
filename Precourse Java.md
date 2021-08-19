@@ -10,25 +10,21 @@ As developers, we will be covering the following questions as it applies to iOS 
 
 #### What are we building?
 
-Full Stack Applications utilizing modern technologies -  **Databases, APIs, Servers,** and more!
+Full Stack iOS and Android Applications utilizing modern technologies -  **Databases, APIs, Servers,** and more!
 
 #### How?
 
 Using **Object Oriented** development techniques to help modularize and enhance code. There are multiple **programming paradigms** and we will go over them. This means that there are multiple ways to accomplish the same code. With proper **access control**, we have access to classes so that we can create objects. 
-
-#### To Solve What Problem?
-
-We will go over common **design pattern** solutions to help solve common programming problems
-
-#### What's the point?
-
-Computers can solve problems faster than humans and that's the power of computer programming. We will go over approaches to speed up computer performance for searching and optimization, analyzing **Big O** (worst and best case peformance for our computers). 
 
 #### Are there multiple ways to do the same thing?
 
 Yes, there are multiple ways to write the same code. But, we can write our code in a way to make it more powerful, more effecient, more organized, and more useful.
 
 We will learn **Design Patterns** in Java to start wrapping our head around design patterns. 
+
+#### What's the point?
+
+Computers can solve problems faster than humans and that's the power of computer programming. We will go over approaches to speed up computer performance for searching and optimization, analyzing **Big O** (worst and best case peformance for our computers). 
 
 #### Do we need to create everything ouselves?
 
@@ -123,7 +119,7 @@ A database is simply a collection of data stored in an organized way
         -   store related data tables (relational)
         -   common technology for decades
 
-
+#### What is SQL?
 
 SQL stands for **Structured Query Language**  - SELECT * FROM CUSTOMERS
 
@@ -139,7 +135,7 @@ RDMS (Relational Database Engines)
 
 
 
-#### SQL
+#### Relational Database with SQL
 
 Structure - interact with tables 
 
@@ -178,6 +174,8 @@ Access
 
 -   REST APIs - hit a specific endpoint with a specific functionality associated with it 
 -   CRUD in vendor specific lanaguage 
+
+
 
 #### When to use what?
 
@@ -569,15 +567,15 @@ In both iOS and Android development, we will encounter different design patterns
 
 #### Creational
 
-class instantiation or object creation
+Class instantiation or object creation
 
 #### Structural
 
-organizing different classes and objects to form larger structures and provide new functionality
+Organizing different classes and objects to form larger structures and provide new functionality
 
 #### Behavorial
 
-identifying common communication patterns between objects and realizing these patterns
+Identifying common communication patterns between objects and realizing these patterns
 
 ## Model View Controller
 
@@ -844,6 +842,131 @@ Assignment Part 2
 
 -   it is important that you understand what is going on in the code. Please provide **comments** throughout each class and interface explaining what each part does in your code
 -   comment and explain the new class that you have implemented called "KotlinDeveloper"
+
+
+
+## Singleton In Java
+
+A Singleton is a class that can only have one object (an instance of the class). 
+
+The Singleton pattern ensures a class has only one instance and provides a global point of access to it. 
+
+#### Singleton Use
+
+1.   Allows for lazy loading. This means that we can initialize your object creation - only when you need it. We could use a global variable which would be created at the init step up your project. 
+2.   When you only need one instance. One example could be a Database Connection. Maybe in some applications you only want one database connection. Restrict databases connections through a class. 
+     -   What if you are building a Tesla Car Guidance System - it only makes sense to have one instance of the guidance system initialized at one time because the system could be performing actions on the hardware of the car. Don't want conflicting instructions in a moving car!
+
+#### How it works
+
+Three main things to know about the Singleton pattern.
+
+1.   Create a class with a private constructor. (We are closing the abiliy of external classes to create an instance of this class)
+
+2.   We need a **private static instance** of the class we are using. 
+
+     So if our constructor is private, how do we actually create an instance of the class? 
+
+     We have a factory method that's responsible for creating an instance.
+
+3.   We have a Factory method for creation (a static method for creation)
+
+### Example
+
+```java
+private static TeslaCar getInstance() {
+  if (teslacar == null) {
+    teslacar = new teslacar();
+  }
+  return teslacar;
+}
+```
+
+-   teslacar is a class level static variable
+-   create a new tesla car instance and return that back if one doesn't exist
+
+#### The Problem With This Code
+
+The multithreading world causes issues here! 
+
+Take the example of two threads 
+
+-   thread 1
+-   thread 2
+
+These two threads operate on the same machine and they want an instance of the teslacar. Remember that in the teslacar class, it will be controlling the guidance system, so its super important to only create one instance of the teslacar.. never more than 1!
+
+Let's say the first thread enters our code block from above. 
+
+We create a new TeslaCar instance. 
+
+What happens if we have thread 2 which also calls this method at exactly the same time? 
+
+Both of these threads both think that the instance is null. 
+
+Whichevever thread finishes last will override the teslacar with whatever instance it has created. 
+
+#### The Fix
+
+We could use a sychronized block which ensures that only one thread can enter a piece of code at once so we don't run into this problem.
+
+### The Code
+
+```java
+class Teslacar {
+
+    // class level static instance
+    private static volatile Teslacar car;
+
+    // private constructor to prevent mulitple instances
+    private Teslacar(){}
+
+    // factory method to retreive isntance
+    public static Teslacar getInstance(){
+        if (car == null){
+            car = new Teslacar();
+        }
+        return car;
+    }
+}
+
+// main method
+public class Singleton {
+    public static void main(String[] args){
+        Teslacar car1 = Teslacar.getInstance();
+        Teslacar car2 = Teslacar.getInstance();
+
+        System.out.println(car1);
+        System.out.println(car2);
+    }
+}
+```
+
+-   the private static instance of the Teslacar class called car
+-   create a private constructor of the Teslacar type that does nothing (prevent external callers from creating an instance UNLESS they are using our factory method)
+-   Factory method - check to see if the car is null (Is this the first time entering this block?)
+    -   taking care of multithreading with synchronized keyword
+    -   create a new instance of the Teslacar and assign it to car!
+
+#### Summary Singleton
+
+If you take look in the console, you'll see the same instance of the Teslacar object. 
+
+-   we know we created the Singleton correctly!
+
+Singleton - We ensured that a class only has once instance and provided a global point of access to it. 
+
+
+
+Sources:
+
+https://www.oreilly.com/library/view/head-first-design/0596007124/
+
+**Source**
+
+Design Patterns in this tutorial have been inspired from the following resource:
+
+Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
 
 ## Strategy Pattern
 
@@ -1166,6 +1289,14 @@ class StrategyPattern {
 Design Patterns in this tutorial have been inspired from the following resource:
 
 Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
+
+
+
+## Strategy Pattern Assignment
+
+Add to the code in this tutorial! Add a new class called `OlympicPerson` which will extend Person.
+
+Add new jumping behavior for the `OlympicPerson` and upload your code below
 
 
 ## Decorator
@@ -1749,129 +1880,6 @@ Design Patterns in this tutorial have been inspired from the following resource:
 
 Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
 
-## Singleton In Java
-
-A Singleton is a class that can only have one object (an instance of the class). 
-
-The Singleton pattern ensures a class has only one instance and provides a global point of access to it. 
-
-#### Singleton Use
-
-1.   Allows for lazy loading. This means that we can initialize your object creation - only when you need it. We could use a global variable which would be created at the init step up your project. 
-2.   When you only need one instance. One example could be a Database Connection. Maybe in some applications you only want one database connection. Restrict databases connections through a class. 
-     -   What if you are building a Tesla Car Guidance System - it only makes sense to have one instance of the guidance system initialized at one time because the system could be performing actions on the hardware of the car. Don't want conflicting instructions in a moving car!
-
-#### How it works
-
-Three main things to know about the Singleton pattern.
-
-1.   Create a class with a private constructor. (We are closing the abiliy of external classes to create an instance of this class)
-
-2.   We need a **private static instance** of the class we are using. 
-
-     So if our constructor is private, how do we actually create an instance of the class? 
-
-     We have a factory method that's responsible for creating an instance.
-
-3.   We have a Factory method for creation (a static method for creation)
-
-### Example
-
-```java
-private static TeslaCar getInstance() {
-  if (teslacar == null) {
-    teslacar = new teslacar();
-  }
-  return teslacar;
-}
-```
-
--   teslacar is a class level static variable
--   create a new tesla car instance and return that back if one doesn't exist
-
-#### The Problem With This Code
-
-The multithreading world causes issues here! 
-
-Take the example of two threads 
-
--   thread 1
--   thread 2
-
-These two threads operate on the same machine and they want an instance of the teslacar. Remember that in the teslacar class, it will be controlling the guidance system, so its super important to only create one instance of the teslacar.. never more than 1!
-
-Let's say the first thread enters our code block from above. 
-
-We create a new TeslaCar instance. 
-
-What happens if we have thread 2 which also calls this method at exactly the same time? 
-
-Both of these threads both think that the instance is null. 
-
-Whichevever thread finishes last will override the teslacar with whatever instance it has created. 
-
-#### The Fix
-
-We could use a sychronized block which ensures that only one thread can enter a piece of code at once so we don't run into this problem.
-
-### The Code
-
-```java
-class Teslacar {
-
-    // class level static instance
-    private static volatile Teslacar car;
-
-    // private constructor to prevent mulitple instances
-    private Teslacar(){}
-
-    // factory method to retreive isntance
-    public static Teslacar getInstance(){
-        if (car == null){
-            car = new Teslacar();
-        }
-        return car;
-    }
-}
-
-// main method
-public class Singleton {
-    public static void main(String[] args){
-        Teslacar car1 = Teslacar.getInstance();
-        Teslacar car2 = Teslacar.getInstance();
-
-        System.out.println(car1);
-        System.out.println(car2);
-    }
-}
-```
-
--   the private static instance of the Teslacar class called car
--   create a private constructor of the Teslacar type that does nothing (prevent external callers from creating an instance UNLESS they are using our factory method)
--   Factory method - check to see if the car is null (Is this the first time entering this block?)
-    -   taking care of multithreading with synchronized keyword
-    -   create a new instance of the Teslacar and assign it to car!
-
-#### Summary Singleton
-
-If you take look in the console, you'll see the same instance of the Teslacar object. 
-
--   we know we created the Singleton correctly!
-
-Singleton - We ensured that a class only has once instance and provided a global point of access to it. 
-
-
-
-Sources:
-
-https://www.oreilly.com/library/view/head-first-design/0596007124/
-
-**Source**
-
-Design Patterns in this tutorial have been inspired from the following resource:
-
-Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
-
 # Algorithms and Big O
 
 As you are developing applications in the future, you must keep in mind time complexity. 
@@ -1896,19 +1904,15 @@ That's where Big O comes in with computer algorithms.
 
 <img src="https://hosting.photobucket.com/images/i/jhuntcd/bigo.png" style="float:left;zoom:40%;" />
 
-O(1) - constant time 
-
-O(N) - scales linearly with respect of amount of input 
-
--   twice amount of data = twice amount of time
-
-
-
-How the time scales with respect to input variables
+-   **O(1) —** Constant Time: it only takes a single step for the algorithm to accomplish the task.
+-   **O(log n) —** Logarithmic Time: The number of steps it takes to accomplish a task are decreased by some factor with each step.
+-   **O(n) —** Scales Linearly Linear Time: The number of of steps required are directly related (1 to 1). twice amount of data = twice amount of time
+-   **O(n²) —** Quadratic Time: The number of steps it takes to accomplish a task is square of n.
+-   **O(C^n) —** Exponential: The number of steps it takes to accomplish a task is a constant to the n power (pretty large number).
 
 
 
-Rules
+#### Rules
 
 1.   If you have two different steps in your algorithm, you add up those steps
      -   O(a), O(b) = O(a+b)
@@ -2131,7 +2135,7 @@ public class QuickSort {
 
 ## Palindrome Assignment
 
-To get your hands dirty, write a java program that searches for words that are palindromes
+To get your hands dirty, write a Java program that searches for words that are palindromes
 
 Hint: Use recursion if you'd like!
 
