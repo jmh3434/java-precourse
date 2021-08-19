@@ -438,7 +438,11 @@ You can have Java modules and Android modules in the same project and also have 
 
 
 
-# Access Control 
+## Object Oriented Programming
+
+
+
+# Access Control
 
 Access control is a method of restricting access in Java but in every programming langauge you will encounter as well.
 
@@ -478,42 +482,64 @@ In a similar way we can apply access modifiers to methods or classes although
 #### Why Do We Need Access Control?
 
 ```java
-class Employee {
-	int  empid;
-	String  empname;
-	float  salary;
-	//Methods which operate on above data members
+public class AccessControl {
+
+    public static void main(String[] args){
+        Pizza pizza = new Pizza();
+        pizza.pizzaCost = -5.00; // pizza becomes negative accidentally!
+    }
+}
+class Pizza {
+    int  orderNumber;
+    String  pizzaName;
+    double  pizzaCost;
+
+    // Methods which operate on above data
 }
 ```
 
-```java
-Employee e1 = new Employee();
-e1.salary = -1000.00;
-```
+Although above code is syntactically correct, it is logically incorrect!
+
+Current Access Modifier: **Package Private** or **no modifier** 
+
+The access modifier for all the three data members is *default*. 
+
+This data is accessible throughout the package, a programmer might, by mistake, try to make an pizza's cost  negative as shown in the code example. 
+
+#### The Fix! Don't forget getters and setters
 
 ```java
-class Employee
-{
-	private int empid;
-	private String emp;
-	private float salary;
-	public void setSalary(float sal)
-	{
-		if(sal &lt; 0){
-			System.out.println("Salary cannot be negative");
-		}
+public class AccessControl {
+
+    public static void main(String[] args){
+
+        Pizza pizza = new Pizza();
+        pizza.setPizzaCost(-5.00);  //Gives error as pizza cost cannot be negative
+        pizza.setPizzaCost(10.00);  //Pizza cost will be assigned 10
+
+        System.out.print("Pizza Cost is: " + pizza.getPizzaCost());
+    }
+}
+class Pizza {
+    private int orderNumber;
+    private String pizzaName;
+    private double pizzaCost;
+
+    public double getPizzaCost() {
+        return pizzaCost;
+    }
+    public void setPizzaCost(double newCost) {
+        if(pizzaCost < 0){
+        System.out.println("Pizza Cost cannot be negative");
+    }
 		else {
-			salary = sal;
-		}
-	}
+            pizzaCost = newCost;
+        }
+    }
 }
 ```
 
-```java
-Employee e1 = new Employee();
-e1.setSalary(-1000.00);  //Gives error as salary cannot be negative
-e1.setSalary(2000.00);  //salary of e1 will be assigned 2000.00
-```
+The modified Pizza class is the best way of writing programs in Java.
 
 
 
@@ -554,6 +580,23 @@ organizing different classes and objects to form larger structures and provide n
 identifying common communication patterns between objects and realizing these patterns
 
 ## Model View Controller
+
+Model-View-Controller builds on top of Object-Oriented Programming. It structures the flow of data and interaction in your app. 
+
+![](https://hosting.photobucket.com/images/i/jhuntcd/MVC(1).png)
+
+
+
+MVC:
+
+1.   increases the modularity of your code
+2.   encourages code reuse. 
+
+Don’t Repeat Yourself (DRY) principle, you want to avoid duplicating similar lines of code as much as possible.
+
+When you’re asking yourself: “How should I pass data from one part of my app to another?” then Model-View-Controller is a smart answer.
+
+Model-View-Controller is a fundamental concept to understand, especially in iOS and Android development.
 
 #### Model
 
@@ -782,6 +825,12 @@ class KotlinDeveloper implements WhoCanCode {
     }
 }
 ```
+
+**Source**
+
+Design Patterns in this tutorial have been inspired from the following resource:
+
+Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
 
 ## Delegation Assignment
 
@@ -1112,7 +1161,11 @@ class StrategyPattern {
 }
 ```
 
+**Source**
 
+Design Patterns in this tutorial have been inspired from the following resource:
+
+Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
 
 
 ## Decorator
@@ -1404,6 +1457,12 @@ public class Decorator {
 
 -   let's test this out!
 
+**Source**
+
+Design Patterns in this tutorial have been inspired from the following resource:
+
+Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
+
 ## Observer-Observable
 
 Where delegation was for **one to one** relationships, Observer is used for **one to many** relationships. 
@@ -1684,6 +1743,12 @@ Don't forget to add your imports!
 
 
 
+**Source**
+
+Design Patterns in this tutorial have been inspired from the following resource:
+
+Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
+
 ## Singleton In Java
 
 A Singleton is a class that can only have one object (an instance of the class). 
@@ -1800,6 +1865,12 @@ Singleton - We ensured that a class only has once instance and provided a global
 Sources:
 
 https://www.oreilly.com/library/view/head-first-design/0596007124/
+
+**Source**
+
+Design Patterns in this tutorial have been inspired from the following resource:
+
+Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
 
 # Algorithms and Big O
 
@@ -2062,20 +2133,20 @@ public class QuickSort {
 
 To get your hands dirty, write a java program that searches for words that are palindromes
 
-**Note**: You may use **recursion** if you choose
+Hint: Use recursion if you'd like!
 
-Your output should look like this:
-
-```
-Enter the String for check:
-qqaabb
-qqaabb is not a palindrome
-```
+**Your output should look like this:**
 
 ```
 Enter the String for check:
-cocoococ
-cocoococ is a palindrome
+codingdojoissomuchfun
+codingdojoissomuchfun is not a palindrome
+```
+
+```
+Enter the String for check:
+racecar
+racecar is a palindrome
 ```
 
 ## Merge Sort Assignment - Optional
@@ -2090,35 +2161,104 @@ Optional Assignment:
 
 # Decision Making
 
--   DAAS
--   
-
-## Composition and Inheritance
-
-→ HAS A (Composition)
-
-IS A -> (Inheritance)
-
-<img src="https://miro.medium.com/max/749/0*J_Dm57bKTppN51oZ.png" style="zoom:50%;" />
-
-Subclasses are responsible for implementing their own behavior 
-
-inherits or implements in terms of interface
+As programmers, we cannot and will not reinvent the wheel. 
 
 
 
+-   How do you choose the right tech stack for your app? 
+
+-   Which platforms, databases, programming languages, should we use? 
+
+-   We should choose the right tools, platforms and libraries. 
 
 
-## Class Instances
 
-You must understand the difference between a class and an instance of that class. If you see a car on the street, you know immediately that it's a car even if you can't see which model or type. This is because you compare what you see with the *class* "car". The class contains which is similar to all cars. Think of it as a template or an idea.
+We have questions to ask ourselves:
 
-At the same time, the car you see is an instance of the class "car" since it has all the properties which you expect: There is someone driving it, it has an engine, wheels.
+-   What platforms do you want to use? What’s your personal preference?
+-   What’s your expertise? Which tools do you know best?
+-   Which solutions costs a lot of effort to implement? What do you have time for?
 
-So the class says "all cars have a color" and the instance says "this specific car is red".
 
-In the OO world, you define the class and inside the class, you define a field of type `Color`. When the class is instantiated (when you create a specific instance), memory is reserved for the color and you can give this specific instance a color. Since these attributes are specific, they are non-static.
 
-Static fields and methods are shared with all instances. They are for values which are specific to the class and not a specific instance. For methods, this usually are global helper methods (like `Integer.parseInt()`). For fields, it's usually constants (like car types, i.e. something where you have a limited set which doesn't change often).
+Start by making a list of “requirements”. Things like:
 
-To solve your problem, you need to instantiate an instance (create an object) of your class so the runtime can reserve memory for the instance (otherwise, different instances would overwrite each other which you don't want).
+-   Should the database be avaiable through the cloud?
+-   What's your budget? Maybe $50 max?
+-   You’re building a prototype now, but version 2 should scale to 100k users
+-   You want to keep the number of 3rd-party libraries to a minimum
+
+
+
+Here’s an example of such a potential tech stack:
+
+-   Databases:  Firebase, Parse Server, SQLite, Realm
+-   Platforms: iOS, Web, Android, J2ME
+-   Frameworks: Cocoa Touch, Angular, React
+-   Design Tools: Sketch, Photoshop
+-   Languages: Java, Swift, Objective-C, JavaScript, Kotlin, Python, C#
+-   Libraries: Alamofire, SDWebImage
+
+
+
+### Dependencies and Package Managers
+
+We should avoid spending time and effort solving problems that others have already solved. As a developer, the most common way of putting this principle into practice is by using third-party libraries
+
+At scale, life is easier when you rely on as few third-party libraries as you can get away with. Fortunately, you don't need that many.
+
+Let's take **iOS Development** for an example: 
+
+Imagine you’re working on an iOS app, and you want to use a third-party library in your project. That third-party library, a depenency, includes code that you want to use in your app, such as for HTTP networking, working with databases, or handling JSON. 
+
+Here are some popular libaries for iOS Developers:
+
+1. AFNetworking
+2. Realm
+
+2. SDWebImage
+
+3.   Alamofire
+4.   MBProgressHUD
+5.   SwiftyJSON
+
+#### How are you going to “add” that code to your own iOS app project?
+
+A few approaches might work:
+
+1.   You download the library’s code from GitHub, or from the author’s website, and copy it manually into your Xcode project
+
+2.   You use a git submodule to add the code to your project, and then sync it via Git\
+3.   You use a package manager, such as CocoaPods, Carthage or Swift Package Manager
+
+Of those 3 options, using a package manager makes the most sense. Here’s why:
+
+-   super convenient, only a couple of lines of code are needed for configuration
+-   helps you manage libraries your code depends on
+
+-   automatically adds the latest version of a library to your Xcode project
+-   you can specify exactly which version of a library you want
+-   resolves dependencies between libraries, so you won’t run into conflicts
+-   automatically downloads, compiles and links libraries, which speeds up project compile times
+
+
+
+#### Thinking Through Options
+
+Firebase has supported real-time push and data binding from the start. It’s “serverless”, so you don’t have to run and maintain your own servers. 
+
+1.   Firebase has two different kinds of cloud database platforms: (Realtime Database and Firestore). 
+2.   If you choose Firebase, you’ll have to apply the tech stack framework again to discover what this means for your app.
+
+
+
+### The Solution:
+
+1.   Discover tools, frameworks, libraries and their alternatives
+2.   Apply requirements to the things you found, filtering them
+3.   Make a decision, based on the above, and stick with it
+
+
+
+
+
