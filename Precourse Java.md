@@ -1,10 +1,10 @@
 # Precourse Java
 
-Once we insert here begin to understand a programming language and what it offers us as developers, we also need to understand the big picture regarding development in practice and building applications at scale. 
+Once we begin to understand a programming language and what it offers us as developers, we also need to understand the big picture regarding development in practice and building applications at scale. 
 
 With mobile development in both iOS and Android, you will encounter many of the same challenges and problems for developing either type of application. 
 
-As a part of the precourse work, we talk about high level concepts that extend past iOS development. Additionally, these same ideas extend across Android mobile development and apply to all levels of computer programming. As you hit landmarks in your learning regarding mobile development, having the foundational knowledge will make learning more applicable and useful. 
+As a part of the precourse work, we will learn about high level concepts that extend past iOS development. Additionally, these same ideas extend across Android mobile development and apply to all levels of computer programming. As you hit landmarks in your learning regarding mobile development, having the foundational knowledge will make learning more applicable and useful. 
 
 As developers, we will be covering the following questions as it applies to iOS and Android development, but more importantly, how it applies to developers as a whole. 
 
@@ -14,7 +14,7 @@ Full Stack iOS and Android Applications utilizing modern technologies -  **Datab
 
 #### How?
 
-Using **Object Oriented** development techniques to help modularize and enhance code. There are multiple **programming paradigms** and we will go over them. This means that there are multiple ways to accomplish the same code. With proper **access control**, we have access to classes so that we can create objects. 
+Using **Object Oriented** development techniques to help modularize, reduce, and make our code more powerful. There are multiple **programming paradigms** and we will go over them. This means that there are multiple ways to accomplish the same code. 
 
 #### Are there multiple ways to do the same thing?
 
@@ -28,7 +28,11 @@ Computers can solve problems faster than humans and that's the power of computer
 
 #### Do we need to create everything ouselves?
 
-We should utilize the community for development purposes and leverage **frameworks** and **libraries** to create great work. Great programmers don't always recreate the wheel. 
+We should utilize the community for development purposes and leverage **frameworks** and **libraries** to create great work. Great programmers don't always recreate the wheel. Using **access control**, we can share code with the community and control what we share with others. 
+
+#### Which Tech Stack Should I use?
+
+Many factors go into the technologies we decide to use as developers. From computer programming languages to cloud storage, decisions are to be made, and making informed decisions is the goal!
 
 # Using Java
 
@@ -42,31 +46,29 @@ When we are building applications with Swift and Kotlin, we will be building ful
 
 #### Front End
 
-The visible part of an application facing the user (responsible for user experience)
+The front end is the visible part of an application facing the user (responsible for user experience)
 
--   Front End Langague Examples: HTML, CSS, JavaScript
+-   Front End Language Examples: HTML, CSS, JavaScript
 -   Front End Famework Examples: Angular, React
 
 #### Back End
 
-What the client doesn't see. Think databases, backend logic, APIs, and servers. Take the example of a user submitting form data to a website. The user types in their email and password and this gets processed by the server and stored in a **database**. None of this processing or storage is seen by the user.
+The back end is what the client doesn't see. Think databases, backend logic, APIs, and servers. Take the example of a user submitting form data to a website. The user types in their email and password and this gets processed by the server and stored in a **database**. None of this processing or storage is seen by the user.
 
-So with the back end, we have backend languages, servers, databases, and APIs. Let's go over these. 
+So with the back end, we have backend languages, servers, databases, and APIs. 
 
-#### Backend languages
-
-Some examples of backend languages include Java, Python, PHP, Node.js, JavaScript
+Backend languages Examples:  Java, Python, PHP, Node.js, JavaScript
 
 #### Server
 
--   a computer or computers that send data over a network and receives and responds to requests
+-   A server is a computer or computers that send data over a network and receives and responds to requests
 -   Just about any computer can function as a server. But, computers suited for this particular need do a better job of handling many requests at once for a very long time. 
 
 ## Client Server Model
 
-How machines communicate with each other
+The client server model describes how machines communicate with each other. 
 
-#### What's a client?
+#### What's a Client?
 
 -   Web Browser
 -   iPhone, iPad, Tablet 
@@ -78,40 +80,30 @@ Clients are the ones **requesting** information (they want to get information fr
 
 -   They speak to servers in some network protocol language (HTTP)
 
-#### What's a server?
+#### What's a Server?
 
-Doesn't have to be single machine. Instead, this is more of a concept
+A Sever doesn't have to be single machine. Instead, this is more of a concept in the software development world. 
 
-Server is the **provider** of information 
+The **server** is the **provider** of information 
 
--   it has access to information 
--   tied to database usually 
+-   The server has access to information and tied to database usually 
+-   The server exposes a set of APIs
 
-
-
-The server exposes a set of APIs
-
-
-
-The client requests informations through HTTP Requests
+The **client** requests informations through HTTP Requests
 
 -   clients make requests to a server. Server receives that request
 -   When the client calls the API, the server gets the information, queries the database, and return that information back to the client
     -   Servers are listening for traffic on certain ports (API is associated with the server)
     -   When API is called, the server knows how to perform a job, and return a result back to the client.
 
-
-
-**Recap**: This is how the internet works everywhere in the world
-
-
+The client server model demonstrates how how the internet works everywhere in the world
 
 # Database
 
 A database is simply a collection of data stored in an organized way
 
--   Stored on the server
--   Types of Databases:
+-   The database is stored on the **server**
+-   Types of databases:
     -   **NoSQL databases** 
         -   are designed to handle the more complex, unstructured data, (such as texts, social media posts, photos, videos, email) 
         -   stores unstructured or semi-structured data, often in key-value pairs or JSON documents.
@@ -120,6 +112,8 @@ A database is simply a collection of data stored in an organized way
         -   common technology for decades
 
 #### What is SQL?
+
+Instead of being a programming language similar to what we'll use for iOS and Android applications, **SQL** is a language that enables storing, retrieving, and manipulating data in databases.
 
 SQL stands for **Structured Query Language**  - SELECT * FROM CUSTOMERS
 
@@ -130,7 +124,7 @@ SQL allows for Create, Read, Update, and Delete (CRUD)
 RDMS (Relational Database Engines)
 
 -   MySQL
--   PostgresQL
+-   PostgreSQL
 -   Microsoft SQL Server
 
 
@@ -194,50 +188,74 @@ Access
 
 Given the following data, create a database structure for a NoSQL Database and a Relational Database.
 
+Part 1 - create a **SQL** (relational database) design given the following data
 
+Part 2 - create a **NoSQL** database design given the following data
+
+**Note**: Your uploaded design may be in the form of a drawing using pen and paper (image upload), in a simple text document, or a screenshot of your work. 
+
+#### Tables
+
+| User       | Data Type |
+| ---------- | --------- |
+| User_ID    | INT       |
+| First Name | STRING    |
+| Last Name  | STRING    |
+| Email      | STRING    |
+
+| Message    | Data Type |
+| ---------- | --------- |
+| Message_ID | INT       |
+| Message    | STRING    |
+| Date       | STRING    |
+| SentByUser | STRING    |
+
+| Conversation  | Data Type |
+| ------------- | --------- |
+| User_ID       | INT       |
+| Messages      | STRING    |
+| LatestMessage | STRING    |
 
 # API
 
-APIs are not meant to be seen or used by the end user. Instead, an API generally uses RESTful design to give others a large amount of organized data (usually in the form of JSON or XML)
+APIs are not meant to be seen or used by the end user. Instead, an API generally uses **RESTful** design to give others a large amount of organized data (usually in the form of JSON or XML)
 
 -   RESTful APIs follow a set of rules regarding how they should send and receive information (architectural style)
 -   a set of programming instructions and functions used to access a website or web-based software application.
 
+#### Practical Uses
 
+Want a build a weather app? We could use the OpenWeather API
 
-Want a build a twitter bot? Uses the twitter API. 
+Want to put a Google map on your website? use the Google Map API
 
-Want to put a google map on you website? use the Google API
+Want to get the latest wind data for you current area? Use the Windy API
 
-## What is it
+## What's an API
 
-Let's imagine you need to pay a bill on your bank's website
-
-You sign in, enter the amount you want to pay, and click submit.
+Let's use a bank to demonstrate what an API could be used for. Let's imagine you need to pay a bill on your bank's website. You sign in, enter the amount you want to pay, and click submit.
 
 How does the bank know that I paid my bill?
 
--   I clicked on button on their website? 
+-   I clicked on button (submit button) on their website? What does clicking a button accomplish?
 
-What happened?
+#### Work is Being Done with APIs
 
-You click submit
+Information about the user and the account your acting on is transmitted as an **instruction** to another computer on the banking system's network. 
 
-Information about the user and the account your acting on is transmitted as an instruction to another computer on the banking system's network
-
-Inside the instruction, contains all the information about the bill you're trying to pay, who you are, and the amount
+Inside the **instruction**, contains all the information about the bill you're trying to pay, who you are, and the amount we are paying as the front end user. 
 
 
 
 The machine on the other end:
 
--   received 
--   understood
+-   received the instruction
+-   understood the instruction
 -   submitted the transaction
 
 
 
-How does the computer know how to interpret the information?
+How does the computer on the back end know how to interpret the information?
 
 
 
@@ -247,10 +265,13 @@ This is all solved by the API
 
 
 
-We just have to meet the expectations given by the API.
+To use an API, we just have to meet the expectations given by the API.
+
+For example, let's take the previous example of paying a bill online. We might have a "PayBill" 
+
+-    /PayBill
 
 
-For example, we might have a PayBill API - /PayBill
 
 
 The programmer who creates it, may say that this API will take:
@@ -271,12 +292,12 @@ The other application's can look at the API's that the Banking Application expos
 
 We can create an API that provides:
 
--   functionality (do something)
--   information (get something)
+-   Functionality (do something)
+-   Information (get something)
 
 #### The Contract
 
-You can think of an API as a contract.
+You can think of an API as a **contract**.
 
 The creator defines the name of the api, what the api does, the arguments it will take in, and the output it will spit out. 
 
@@ -287,11 +308,11 @@ The creator defines the name of the api, what the api does, the arguments it wil
 
 
 
-The internet has infomation and packets flying all over the place between systems (madness!)
+### An APIs Real Use
 
+The internet has infomation and packets flying all over the place between systems. If you think about it, without structure, this would just be chaos and madness. 
 
-
-It forces developers to create a plan for what they want their system to do, and encode those behaviors into APIs that will be expose to clients.  
+An API forces developers to create a plan for what they want their system to do, and encode those behaviors into APIs that will be exposed to clients.  
 
 #### Abstraction
 
@@ -301,24 +322,19 @@ A caller (client) does not need to know **how** the API is implemented, only **w
 
 
 
-The API takes an input, performs a job, and produces a certain ouput
-
--   predictable 
--   consistent 
+The API takes an input, performs a job, and produces a certain ouput. An API is predictable and consistent!
 
 
 
-We can actually combine APIs! This is how we can build things together. 
+As developers, we rely heavily on the developer community to allow our code to scale and become more safe and powerful very quickly. With this in mind, it's important to know that we can actually **combine APIs**! This is how we can build things together as developer community. We can plug powerful code into more powerful code. 
 
 
 
 ## API Use
 
- Let's take the example of the [twitter api](https://developer.twitter.com/en/docs/twitter-api/v1) 
+Let's take the example of the [twitter api](https://developer.twitter.com/en/docs/twitter-api/v1) .
 
 What if we wanted to post a status update? 
-
-
 
 Check out the [Tweets](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/overview) section
 
@@ -330,9 +346,9 @@ Here, we can see the **different APIs made available** to us.
 
 
 
-POST - update information and performing an action
+POST – this is used to update information and when performing an action
 
-GET - rertreiving information 
+GET – this is used for retrieving information 
 
 
 
@@ -345,13 +361,11 @@ Click on the [API Reference](https://developer.twitter.com/en/docs/twitter-api/v
 
 
 
-Mainly, we are interested in the status (our Twitter status)
+Mainly, we are interested in the status – our new Twitter status
 
 
 
 #### Example Request
-
-To obtain the generated oauth_nonce, oauth_token, and oauth_signature you can use a REST tool such as Insomnia or Postman.
 
 ```
 curl -XPOST 
@@ -366,7 +380,10 @@ curl -XPOST
   oauth_version="1.0"'
 ```
 
-You many want to change the status from 'hello' to something different.
+-   You many want to change the status from 'hello' to something different.
+-   The main thing you should pay attention to here is the first two lines: `curl -XPOST 
+      --url 'https://api.twitter.com/1.1/statuses/update.json?status=hello'`
+    -   Don't be confused by all of the oauth authorization! These are simply security measures. 
 
 #### Example Response
 
@@ -388,9 +405,15 @@ You many want to change the status from 'hello' to something different.
 
 (response simplified for readability)
 
+#### API Summary
 
+To summarize, when a company like Twitter offers an API to their customers, it simply means Twitter created a set of **dedicated URLs that return data responses**. The responses won’t contain the presentation or the User Interface (like a website). 
+
+Even more, any piece of software that can be distinctively separated from its environment. APIs are seen all over the web and can be used in your code. 
 
 # Android Studio (For Java Development)
+
+**Note**: You can skip this part if you've already downloaded Android Studio
 
 Now that we have some of the basic concepts down for programming, lets jump right in and download Android Studio. The reason we are using Android Studio for our learning purposes instead of an IDE like Eclipse is that it makes setting up our environment easy (such as downloading the SDK and readying our environment for development)
 
@@ -614,14 +637,14 @@ Model-View-Controller builds on top of Object-Oriented Programming. It structure
 
 
 
-MVC:
+1.   MVC increases the modularity of your code
+2.   MVC encourages code reuse. 
 
-1.   increases the modularity of your code
-2.   encourages code reuse. 
 
-Don’t Repeat Yourself (DRY) principle, you want to avoid duplicating similar lines of code as much as possible.
 
-When you’re asking yourself: “How should I pass data from one part of my app to another?” then Model-View-Controller is a smart answer.
+In programming, we used the Don’t Repeat Yourself (DRY) principle. This means that we want to avoid duplicating similar lines of code as much as possible.
+
+When you’re asking yourself: “How should I pass data from one part of my app to another?” then Model-View-Controller is a great answer in mobile development.
 
 Model-View-Controller is a fundamental concept to understand, especially in iOS and Android development.
 
@@ -853,7 +876,7 @@ class KotlinDeveloper implements WhoCanCode {
 }
 ```
 
-**Source**
+**References**
 
 Design Patterns in this tutorial have been inspired from the following resource:
 
@@ -987,11 +1010,7 @@ Singleton - We ensured that a class only has once instance and provided a global
 
 
 
-Sources:
-
-https://www.oreilly.com/library/view/head-first-design/0596007124/
-
-**Source**
+**References**
 
 Design Patterns in this tutorial have been inspired from the following resource:
 
@@ -1313,7 +1332,7 @@ class StrategyPattern {
 }
 ```
 
-**Source**
+**References**
 
 Design Patterns in this tutorial have been inspired from the following resource:
 
@@ -1617,7 +1636,7 @@ public class Decorator {
 
 -   let's test this out!
 
-**Source**
+**References**
 
 Design Patterns in this tutorial have been inspired from the following resource:
 
@@ -1903,7 +1922,7 @@ Don't forget to add your imports!
 
 
 
-**Source**
+**References**
 
 Design Patterns in this tutorial have been inspired from the following resource:
 
