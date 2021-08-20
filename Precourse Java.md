@@ -1,6 +1,6 @@
 # Precourse Java
 
-Once we begin to understand a programming language and what it offers us as developers, we also need to understand the big picture regarding development in practice and building applications at scale. 
+Once we insert here begin to understand a programming language and what it offers us as developers, we also need to understand the big picture regarding development in practice and building applications at scale. 
 
 With mobile development in both iOS and Android, you will encounter many of the same challenges and problems for developing either type of application. 
 
