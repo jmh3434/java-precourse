@@ -189,7 +189,7 @@ NoSQL databases have many implementations:
 -   Primary key is known 
 -   High performance and low latency 
 
-## Database Assignment
+# Database Assignment
 
 Given the following data, create a database structure for a NoSQL Database and a Relational Database.
 
@@ -718,19 +718,23 @@ We aim to be **full stack developers** who keep our code modular and organized. 
 
 #### Procedural Programming
 
-Often, the terms "procedural programming" and "imperative programming" are used synonymously
+Often, the terms "procedural programming" and "imperative programming" are used synonymously. Simply put, Procedural Programming involves writing down a list of instructions to tell the computer what it should do step-by-step to finish the task at hand.
 
 #### Functional Programming
 
-Functional programming languages support (and heavily use) first-class functions, anonymous functions and closures
+Functional programming heavily emphasizes on the usage of functions that contains a set of code/ instructions to perform a generic set of operations. Functional programming languages support (and heavily use) first-class functions, **anonymous functions** and **closures**.
 
-# Application Architecture and Design Patterns
+-   more on closures and anonymous functions later!
+
+Basically, Functional programming (FP) is a paradigm which concentrates on computing **results** rather than on performing actions. For example, a function is used to compute a value and return it instead of us giving it a finite set of step-by-step instructions to get the desired results. 
+
+## Application Architecture and Design Patterns
 
 As we develop code with Object Oriented principles in mind, programmers have developed best practices and techniques to solve common problems. Design patterns often solve a particular problem and offer a solution. 
 
 In both iOS and Android development, we will encounter different design patterns. In this section, we will offer some common programming problems and how to solve them with design patterns
 
-## Types of Design Patterns
+### Types of Design Patterns
 
 #### Creational
 
@@ -744,7 +748,7 @@ Organizing different classes and objects to form larger structures and provide n
 
 Identifying common communication patterns between objects and realizing these patterns
 
-## Model View Controller
+# Model View Controller
 
 Model-View-Controller builds on top of Object-Oriented Programming. It structures the flow of data and interaction in your app. 
 
@@ -752,12 +756,12 @@ Model-View-Controller builds on top of Object-Oriented Programming. It structure
 
 
 
-1.   MVC increases the modularity of your code
-2.   MVC encourages code reuse. 
+1.   **MVC increases the modularity of your code**
+2.   **MVC encourages code reuse.** 
 
 
 
-In programming, we used the Don’t Repeat Yourself (DRY) principle. This means that we want to avoid duplicating similar lines of code as much as possible.
+In programming, we used the **Don’t Repeat Yourself (DRY)** principle. This means that we want to avoid duplicating similar lines of code as much as possible.
 
 When you’re asking yourself: “How should I pass data from one part of my app to another?” then Model-View-Controller is a great answer in mobile development.
 
@@ -765,19 +769,19 @@ Model-View-Controller is a fundamental concept to understand, especially in iOS 
 
 #### Model
 
-The Model stores application data 
+The Model stores application **data** 
 
 #### View
 
-The View is reponsible for the user interface
+The View is reponsible for the **user interface**
 
 #### Controller
 
-Core application logic that creates the relationship between the view and the model 
+Core application logic that creates the **relationship between the view and the model** 
 
--   gets informed of the user’s behavior and updates the Model when needed
+-   The controller is informed of the **user’s behavior** and updates the **Model** when needed
 
-## Delegation
+# Delegation
 
 Use Delegation in order to achieve the following
 
@@ -997,7 +1001,7 @@ Design Patterns in this tutorial have been inspired from the following resource:
 
 Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
 
-## Delegation Assignment
+# Delegation Assignment
 
 Assignment Part 1
 
@@ -1012,7 +1016,7 @@ Assignment Part 2
 
 
 
-## Singleton In Java
+# Singleton Pattern In Java
 
 A Singleton is a class that can only have one object (an instance of the class). 
 
@@ -1131,7 +1135,7 @@ Design Patterns in this tutorial have been inspired from the following resource:
 
 Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
 
-## Strategy Pattern
+# Strategy Pattern
 
 The Stategy Pattern defines a family of algorithms and encapsulates each one and makes them interchangable. So when we are using **OOP**, we wrap a **class** around this functionality, and makes them interchangable. We could use an **interface** here so that you could swap out these behaviors at any point in time. The strategy let's the algorithm **vary indepndently** from the clients that use it. 
 
@@ -1455,14 +1459,13 @@ Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, I
 
 
 
-## Strategy Pattern Assignment
+# Strategy Pattern Assignment
 
 Add to the code in this tutorial! Add a new class called `OlympicPerson` which will extend Person.
 
 Add new jumping behavior for the `OlympicPerson` and upload your code below
 
-
-## Decorator
+# Decorator Pattern
 
 Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality. 
 
@@ -1757,7 +1760,7 @@ Design Patterns in this tutorial have been inspired from the following resource:
 
 Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, Inc.
 
-## Observer-Observable
+# Observer-Observable Pattern
 
 Where delegation was for **one to one** relationships, Observer is used for **one to many** relationships. 
 
@@ -2294,9 +2297,7 @@ public class QuickSort {
 }
 ```
 
-
-
-## Palindrome Assignment
+# Palindrome Assignment
 
 To get your hands dirty, write a Java program that searches for words that are palindromes
 
@@ -2316,7 +2317,7 @@ racecar
 racecar is a palindrome
 ```
 
-## Merge Sort Assignment - Optional
+# Merge Sort Assignment - Optional
 
 Just like QuickSort, **Merge Sort** is an algorithm where we divide and conquer! 
 
@@ -2424,4 +2425,6 @@ Firebase has supported real-time push and data binding from the start. It’s �
 1.   Discover tools, frameworks, libraries and their alternatives
 2.   Apply requirements to the things you found, filtering them
 3.   Make a decision, based on the above, and stick with it
+
+# Decision Making Assignment
 
