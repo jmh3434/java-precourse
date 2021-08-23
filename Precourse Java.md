@@ -454,13 +454,134 @@ You can have Java modules and Android modules in the same project and also have 
 
 # Object Oriented Programming
 
+In Object Oriented Programming or OOP, we use classes and objects to represent data. 
+
+
+
+Let's take the example of making  cookies to illustrate OOP.
+
+
+
+<img src="https://www.verybestbaking.com/sites/g/files/jgfbjl166/files/styles/gdn_hero_pdp_product_image/public/gdn_product/field_product_images/tollhouse-dpwu3p0vrsqgans3ise3.png.webp?itok=mXQ-TlGP" style="float:left;zoom:40%;" />
+
+
+
+We could use a cookie cutter to create the outline of the cookie. We could even have a chocolate chip cookie cutter and a sugar cookie cutter. The outline represents the **class**.
+
+A **Class** is like an object **constructor**, or a "blueprint" for creating **objects**.
+
+
+
+On the other hand, we have the actual cookies. These represent the **objects** in computer programming. 
+
+
+
+The cookie has **attributes**, such as color and weight, and **methods**, such as `beEaten()` and `meltInYourMouth()`.
+
+
+
+What's powerful about OOP is that we can create cookies based on other cookies. 
+
+
+
+We could have a `Cookie` class. Then we could create a `ChocolateChip` cookie class based on the `Cookie` class. Next, we could create a `SugarCookie` based on the Cookie class. 
+
+
+
+In this simple example, we have already covered some of the high level topics of object oriented programming. 
+
+
+
+By providing this abstraction, our applications become more dynamic and more reusable and powerful. 
+
+
+
+### Example of Inheritance
+
+```javascript
+class Coffee {
+   String desciption="Helps you when you're tired!";
+}
+class Espresso extends Coffee {
+  
+   String type = "Espresso";
+
+   public static void main(String args[]){
+ 
+      Espresso espressoShot = new Espresso();
+     
+      System.out.println("Name:"+espressoShot.desciption);
+      System.out.println("Type:"+espressoShot.type);
+   }
+}
+```
+
+We will learn more about extends below! 
+
+### Example of Composition
+
+```java
+class Drummer {
+}
+class Band {
+   private Drummer drummer;
+   void Band() {
+      this.drummer = new Drummer();
+   }
+}
+```
+
 ## Composition and Inheritance
+
+Composition and Inheritance both provide code reusability by relating classes.  We can also get the functionality of inheritance when you use composition. 
 
 <img src="https://hosting.photobucket.com/images/i/jhuntcd/composition_inheritance.png" style="float:left;zoom:50%;" />
 
 Subclasses are responsible for implementing their own behavior
 
 inherits or implements in terms of interface
+
+#### Composition
+
+The composition is a design technique in which your class can have an instance of another class as a field of your class. 
+
+We can use **composition** in when one object "has" (or is part of) another object. 
+
+-   A car *has a* speaker (a speaker *is part of* a car).
+-   A person *has a* brain (a brain *is part of* a person).
+-   A house *has a* living room (a living room *is part of* a house).
+
+### Inheritance
+
+Inheritance is a describes the practice of having one object acquire the properties and behavior of the parent object by extending a class.
+
+We can use **inheritance** when we know there is an "is a" relationship between a child and its parent class. 
+
+-   A *olympian* *is an* athlete.
+-   A cat *is an* animal.
+-   A car *is a* vehicle.
+
+
+
+|    Type    |                         Inheritance                          |                       Composition                        |
+| :--------: | :----------------------------------------------------------: | :------------------------------------------------------: |
+|   Basic    |                     "is-a" relationship                      |                   "has-a" relationship                   |
+| Code Reuse | In Inheritance, a class lass can extend only one interface, therefore, you can reuse your code only in one class only |           We can reuse code in multiple class            |
+|   Scope    |            Provides its features at compile time             |        Composition is easily achieved at runtime         |
+|   Final    |           We can’t reuse code from the final class           |       It allows code reuse even from final classes       |
+|  Methods   | It exposes both public and protected method of the parent class | It doesn’t expose. They interact using public interface. |
+
+### Extends and Implements
+
+**Extends** **and Implements** are reserved keywords in Java which we use to **inherit** the features of an **already existing parent block** in the newly created child block.
+
+| **Comparison Features** | **Extends**                                                  | **Implements**                                               |
+| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **Implementation**      | The keyword **extends** is used when a class wants to inherit all the properties from another class or an interface that wants to inherit an interface. | We use the **implements** keyword when we want a class to implement an interface. |
+| **Associated with**     | It is associated with Inheritance                            | It is associated with Abstraction                            |
+| **Method**              | The child class that extends a parent class may or may not override all the methods present in the parent class. | The class that implements an interface must define or provide the implementation of all the methods declared in the interface, or else the class should be declared as abstract. |
+| **Class**               | A subclass or more than one subclass can extend only one parent class at the same time. | A class can implement one or more than one interface at the same time. |
+| **Interface**           | An interface can extend any number of interfaces.            | An interface can never implement any other interface.        |
 
 ## Class Instances
 
