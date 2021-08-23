@@ -781,9 +781,9 @@ Core application logic that creates the **relationship between the view and the 
 
 -   The controller is informed of the **user’s behavior** and updates the **Model** when needed
 
-# Delegation
+# Delegation Pattern
 
-Use Delegation in order to achieve the following
+We can use the delegation pattern in order to achieve the following
 
 -   Delegation can be an alternative to inheritance
 -   Delegation means that you use an object of another class as an instance variable, and forward messages to the instance.
@@ -830,7 +830,7 @@ This employee is smart enough to **delegate** responsibility to someone else.
 
 Let's say we are searching for a coder, and we find this coder (this person is a Swift coder)...
 
-Notice the **implements** keyword. This is how we implement the methods from an interface!
+Notice the **implements** keyword. Remember, this is how we **implement** the methods from an **interface**!
 
 ```java
 class SwiftDeveloper implements WhoCanCode {
@@ -847,9 +847,9 @@ class UXDesigner implements  WhoCanDesign {
 }
 ```
 
-Now, what the Employee will do.. it will take an instance of WhoCanCode ...coder and designer
+Now, what the `Employee` will do.. it will take an instance of `WhoCanCode` ...coder and designer
 
-Whenever there is an employee, it will take a coder and a designer, and pass that resposibility to them. 
+Whenever there is an employee, it will take a coder and a designer, and pass that responsibility to them. 
 
 ```java
 class Employee implements WhoCanCode, WhoCanDesign {
@@ -922,7 +922,7 @@ public class DelegationDemonstration {
 }
 ```
 
-###### Delegation Pattern Summary
+#### Delegation Pattern Summary
 
 -   Reduce the coupling of methods to their class
 -   Use for components that behave identically, but realize that this situation can change in the future.
@@ -1056,11 +1056,11 @@ Take the example of two threads
 -   thread 1
 -   thread 2
 
-These two threads operate on the same machine and they want an instance of the teslacar. Remember that in the teslacar class, it will be controlling the guidance system, so its super important to only create one instance of the teslacar.. never more than 1!
+These two threads operate on the same machine and they want an instance of the teslacar. Remember that in the `TeslaCar` class, it will be controlling the guidance system, so its super important to only create one instance of the teslacar.. never more than 1!
 
 Let's say the first thread enters our code block from above. 
 
-We create a new TeslaCar instance. 
+We create a new `TeslaCar` instance. 
 
 What happens if we have thread 2 which also calls this method at exactly the same time? 
 
@@ -1132,8 +1132,6 @@ The Stategy Pattern defines a family of algorithms and encapsulates each one and
 
 We **encapsulate** a behavior into a class,  and make that class **interchangable** with other classes. This allows other classes to use it and use those low level **encapsulations** of behaviors, **without having to know how they are implemented or how they work**. 
 
-
-
 ### Example
 
 Let's use the example of a person. 
@@ -1154,17 +1152,13 @@ Not all people can jump. In this example, only some people can jump -- only athl
 
 
 
-How do we accomplish this? 
-
-
+#### How do we accomplish this?
 
 We could add a jump function above. 
 
 In the subclasses that don't allow jumping, we could **override** the jump method with something that has no behavior... maybe throw an exception? But this isn't the best way to do this. This isn't the OOP way. 
 
-
-
-So what is the correct way? Take a look at these other class diagrams. 
+-   So what is the correct way? Take a look at these other class diagrams. 
 
 <img src="https://hosting.photobucket.com/images/i/jhuntcd/strategy1.png" style="zoom:67%;" />
 
@@ -1172,7 +1166,7 @@ So what is the correct way? Take a look at these other class diagrams.
 
 So we have the Athlete Person and the Scientist Person. 
 
-So a Athlete Person is able to jump. It has the eat() function that it can override or inherit from the parent class.. It also has a jump() function. 
+So an Athlete Person is able to jump. It has the eat() function that it can override or inherit from the parent class.. It also has a jump() function. 
 
 But the Scientist Person only knows how to eat, this person does not know how to jump. 
 
@@ -1184,39 +1178,27 @@ So the Person would be the **superclass** and Athlete Person and Scientist Perso
 
 
 
-Now we want to add jump functionality. We could create a Jumpable interface. And then the Jumpable interface would have a jump function, and the Athlete Person would implement the jump() function.
+Now we want to add jump functionality. We could create a `Jumpable` interface. And then the Jumpable interface would have a jump function, and the Athlete Person would implement the jump() function.
 
 This would work, and many programmers would do this very thing! So it makes sense for OOP.
-
-
 
 ### The Problem With this implementation
 
 But the problem with this implementation is .. what if we had a different subclass...
 
-a Musician Person.
+**a Musician Person.**
 
 And the Musician Person (in this imaginary example) also needs to jump. We want the jump function to do the SAME thing that exists in the Athlete Person.
 
-So then the Musician Person would also need to implement the jump function as well. 
+So then the Musician Person would also need to implement the jump function as well. That's not very reusable. We want to implement the jump function once, and then have that shared between all of the classes.
 
 
 
-That's not very reusable. We want to implement the jump function once, and then have that shared between all of the classes.
-
-
-
-This is where the Strategy pattern comes in!
-
-
+#### This is where the Strategy pattern comes in!
 
 Recap: We have a Person superclass, and we want to implement the jump function for some if its subclasses. A natural way to do this is with an **interace** called Jumpable with a jump function. For the **classes** that want to implement jumpable interface, they can have their own jump function.
 
-
-
 The problem - Now any other class that want's the same jump funciton needs to redefine the same jump function used in the other classes. This isn't reusable.
-
-
 
 ### The Solution - Strategy Pattern
 
@@ -1230,17 +1212,11 @@ We can fix it by...
 
 To make it so that we can take that jump behavior and **encapsulate** it .. put it into a class that we can reuse so that we can pass it around later. 
 
-
-
-So we do that by using an interface. 
-
-
+-   We do this by using an interface. 
 
 We will create an **interface** called JumpBehavior. So instead of tying the implementation of JumpBehavior into Athlete and Scientist Person, we wil pull that out and put it into an interface.
 
 This Jump Behavior interface will have a **concrete implementation.** ( we can have as many implementations as we want)
-
-
 
 #### Concrete Implementation
 
@@ -1250,15 +1226,9 @@ Let's say that the JumpBehavior interface had a **function** called jump() that 
 
 Now this JumpWithLegs **class** can define **jump()** in any way it wants, and then create an instance of this **JumpWithLegs** class, and pass that in to many different People such as the Athlete Person and the Musician Person. 
 
-
-
 So now instead of recyling that jump function like we saw previously, we can just create that **single instance**, and pass that to the Person, and allow that to be used by any of the other classes.
 
-
-
 So what do we need to change to our UML class diagram? 
-
-
 
 #### How do we use the Strategy Pattern?
 
@@ -1272,17 +1242,11 @@ Then we could change the constructor of the Person class to take in a Jump Behav
 
 If we had many different types of the implementing classes (of the jump behavior interface), these could be swapped out at runtime. 
 
-
-
 So now, the Athlete Person, when its instantiated, can call the performJump() function, and it will jump. 
 
 And the Scientist Person, if we have a different implementing class.... something called NoJump(), this type of person doesn't jump 
 
-
-
 So the benefit is that we can create a single instance of this and just pass it along. 
-
-
 
 ### Strategy Code Example
 
@@ -1338,7 +1302,6 @@ class JumpWithLegs implements JumpBehavior {
 ```
 
 -   Concrete class implements the JumpBehavior interface
-
 -   We are ovveriding that JumpBehavior interface by actually implementing it.. printing out "I'm Jumping"
 
 
@@ -1448,25 +1411,21 @@ Add new jumping behavior for the `OlympicPerson` and upload your code below
 
 # Decorator Pattern
 
-Attaches additional responsibilities to an object dynamically. Decorators provide a flexible alternative to subclassing for extending functionality. 
+The decorator pattern attaches additional responsibilities to an object dynamically. 
 
-Typically when you want to add additional functionality to a class, you subclass → extend that class and override some of the functionality of the parent class. 
+-   Decorators provide a flexible alternative to subclassing for extending functionality. 
+
+Typically when you want to add additional functionality to a class, you subclass → we extend that class and override some of the functionality of the parent class. 
 
 A classic example could be an Animal class that is a superclass and then a dog which is the subclass of the animal. You have a speak method on the parent class which you override in the dog class so when the dog speaks, it barks. If you have a cat subclass, when it speaks, it meows. This is typically how you would subclass in OOP and add additional functionality.
 
-
-
 The decorator relies more on **composition** than **inheritance**. 
-
-
 
 By using the decorator pattern you can impoersonate a class, and add additional funcionality without any users of that class knowing that its different from the original class. 
 
 #### How we would code a problem WITHOUT the Decorator Pattern
 
 Theme - Build a system to compute the cost of beverages for a coffee shop 
-
-
 
 Coffee Beverages 
 
@@ -1521,11 +1480,9 @@ The problem arises when we have a **class explosion** as you add all the differe
 
 -   All of the possible combinations would add up to be a big mess!
 
-#### Using the Decorator Pattern instead
+## Using the Decorator Pattern instead
 
 We will use **composition** and **type matching** using **Abstract classes** to impersonate the Coffee class
-
-
 
 Using the same example, let's walk through it again.
 
@@ -1550,11 +1507,9 @@ It's cost will be different
 
 -   Cost - $1.99
 
+#### Introduce the **Coffee Decorator**! 
 
-
-Introduce the **Coffee Decorator**! 
-
-This class will impersonate coffee. It will **implement** Coffee, but it will allow us to **add ingredients dynamically**
+This class will "impersonate" coffee. It will **implement** Coffee, but it will allow us to **add ingredients dynamically**
 
 Coffee Decorator will be abstract - we will never instantiate an instance of the decorator 
 
@@ -1563,8 +1518,6 @@ Coffee Decorator - allows for clever type matching in the implementation
 
 
 **Coffee Decorator**
-
-
 
 Next, we have the concept of adding **ingredients** 
 
