@@ -1,4 +1,4 @@
-# Precourse Java
+# Introduction
 
 Once we begin to understand a programming language and what it offers us as developers, we also need to understand the big picture regarding development in practice and building applications at scale. 
 
@@ -34,13 +34,13 @@ We should utilize the community for development purposes and leverage **framewor
 
 Many factors go into the technologies we decide to use as developers. From computer programming languages to cloud storage, decisions are to be made, and making informed decisions is the goal!
 
-# Using Java
+# Front End and Backend Development
 
 We will be using Java to demonstrate coding concepts that extend past Swift and Kotlin. Since both Swift, Kotlin, and Java are C based langugages, Java emerges as a language that is perfect for this learning opportunity. 
 
 It's important to note that Java is more verbose than Swift and Kotlin. With this in mind, be sure to focus on the main principles at hand and don't get too caught up on the small intricacies of Java.
 
-## Full Stack Development
+## The Big Picture
 
 When we are building applications with Swift and Kotlin, we will be building full stack applications. The **front end** of the application is the client side (user-facing) and the **backend** is the server side of an application. 
 
