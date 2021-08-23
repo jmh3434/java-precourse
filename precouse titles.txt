@@ -1,0 +1,43 @@
+# Introduction
+
+# Front End and Backend Development
+
+# Database
+
+# Database Assignment
+
+# API
+
+# Android Studio (For Java Development)
+
+# Object Oriented Programming
+
+# Access Control
+
+# Programming Paradigms
+
+# Model View Controller
+
+# Delegation Pattern
+
+# Delegation Assignment
+
+# Singleton Pattern In Java
+
+# Strategy Pattern
+
+# Strategy Pattern Assignment
+
+# Decorator Pattern
+
+# Observer-Observable Pattern
+
+# Algorithms and Big O
+
+# Palindrome Assignment
+
+# Merge Sort Assignment - Optional
+
+# Decision Making
+
+# Decision Making Assignment

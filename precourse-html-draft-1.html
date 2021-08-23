@@ -1,0 +1,2030 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+<title>Precourse Java</title>
+</head>
+<body>
+<h1 id='introduction'>Introduction</h1>
+<p>Once we begin to understand a programming language and what it offers us as developers, we also need to understand the big picture regarding development in practice and building applications at scale. </p>
+<p>With mobile development in both iOS and Android, you will encounter many of the same challenges and problems for developing either type of application. </p>
+<p>As a part of the precourse work, we will learn about high level concepts that extend past iOS development. Additionally, these same ideas extend across Android mobile development and apply to all levels of computer programming. As you hit landmarks in your learning regarding mobile development, having the foundational knowledge will make learning more applicable and useful. </p>
+<p>As developers, we will be covering the following questions as it applies to iOS and Android development, but more importantly, how it applies to developers as a whole. </p>
+<h4 id='what-are-we-building'>What are we building?</h4>
+<p>Full Stack iOS and Android Applications utilizing modern technologies -  <strong>Databases, APIs, Servers,</strong> and more!</p>
+<h4 id='how'>How?</h4>
+<p>Using <strong>Object Oriented</strong> development techniques to help modularize, reduce, and make our code more powerful. There are multiple <strong>programming paradigms</strong> and we will go over them. This means that there are multiple ways to accomplish the same code. </p>
+<h4 id='are-there-multiple-ways-to-do-the-same-thing'>Are there multiple ways to do the same thing?</h4>
+<p>Yes, there are multiple ways to write the same code. But, we can write our code in a way to make it more powerful, more effecient, more organized, and more useful.</p>
+<p>We will learn <strong>Design Patterns</strong> in Java to start wrapping our head around programming architecture. </p>
+<h4 id='whats-the-point'>What&#39;s the Point?</h4>
+<p>Computers can solve problems faster than humans and that&#39;s the power of computer programming. We will go over approaches to speed up computer performance for searching and optimization, analyzing <strong>Big O</strong> (worst and best case peformance for our computers). </p>
+<h4 id='do-we-need-to-create-everything-ouselves'>Do we need to create everything ouselves?</h4>
+<p>We should utilize the community for development purposes and leverage <strong>frameworks</strong> and <strong>libraries</strong> to create great work. Good programmers don&#39;t always recreate the wheel. Using <strong>access control</strong>, we can share code with the community and control what we share with others. </p>
+<h4 id='which-tech-stack-should-i-use'>Which Tech Stack Should I use?</h4>
+<p>Many factors go into the technologies we decide to use as developers. From computer programming languages to cloud storage, decisions are to be made, and making informed decisions is the goal!</p>
+
+<h1 id='front-end-and-backend-development'>Front End and Backend Development</h1>
+<p>We will be using Java to demonstrate coding concepts that extend past Swift and Kotlin. Since both Swift, Kotlin, and Java are C based langugages, Java emerges as a language that is perfect for this learning opportunity. </p>
+<p>It&#39;s important to note that Java is more verbose than Swift and Kotlin. With this in mind, be sure to focus on the main principles at hand and don&#39;t get too caught up on the small intricacies of Java.</p>
+<h2 id='the-big-picture'>The Big Picture</h2>
+<p>When we are building applications with Swift and Kotlin, we will be building full stack applications. The <strong>front end</strong> of the application is the client side (user-facing) and the <strong>backend</strong> is the server side of an application. </p>
+<h4 id='front-end'>Front End</h4>
+<p>The front end is the visible part of an application facing the user (responsible for user experience)</p>
+<ul>
+<li>Front End Language Examples: HTML, CSS, JavaScript etc. </li>
+<li>Front End Famework Examples: Angular, React, Bootstrap, etc. </li>
+
+</ul>
+<h4 id='back-end'>Back End</h4>
+<p>The back end is what the client doesn&#39;t see. Think databases, backend logic, APIs, and servers. Take the example of a user submitting form data to a website. The user types in their email and password and this gets processed by the server and stored in a <strong>database</strong>. None of this processing or storage is seen by the user.</p>
+<p><strong>Recap</strong>: So with the back end, we have backend languages, servers, databases, and APIs. </p>
+<p>&nbsp;</p>
+<p>Backend languages Examples:  Java, Python, PHP, Node.js, JavaScript, etc ..</p>
+<h4 id='server'>Server</h4>
+<ul>
+<li>A server is a computer or computers that send data over a network</li>
+<li>receives and responds to requests</li>
+<li>Just about any computer can function as a server! But, computers suited for this particular need do a better job of handling many requests at once for a very long time. </li>
+
+</ul>
+<h2 id='client-server-model'>Client Server Model</h2>
+<p>The client server model describes how machines communicate with each other. Apply this client sever model to what you already know about servers, databases, and APIs. </p>
+<h4 id='whats-a-client'>What&#39;s a Client?</h4>
+<ul>
+<li>A client could be a web browser</li>
+<li>A client could be an iPhone, iPad, Tablet </li>
+<li>A client could even be a Python, Java, or C++ program running on your computer!</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>Clients are the ones <strong>requesting</strong> information (they want to get information from somewhere else)</p>
+<ul>
+<li>Clients speak to servers in some network protocol language (HTTP usually)</li>
+
+</ul>
+<h4 id='whats-a-server'>What&#39;s a Server?</h4>
+<p>A Sever doesn&#39;t have to be single machine. Instead, this is more of a concept in the software development world. </p>
+<p>The <strong>server</strong> is the <strong>provider</strong> of information </p>
+<ul>
+<li>The server has access to information and tied to database usually </li>
+<li>The server exposes a set of APIs</li>
+
+</ul>
+<p>The <strong>client</strong> requests informations through HTTP Requests</p>
+<ul>
+<li><p>Clients make requests to a server and the server receives that request</p>
+</li>
+<li><p>When the client calls the API, the server gets the information, queries the database, and returns that information back to the client</p>
+<ul>
+<li>Servers are listening for traffic on certain ports (API is associated with the server)</li>
+<li>When an API is called, the server knows how to perform a job, and return a result back to the client.</li>
+
+</ul>
+</li>
+
+</ul>
+<p><strong>Recap</strong>: The client server model demonstrates how how the internet works everywhere in the world.</p>
+
+<h1 id='database'>Database</h1>
+<p>A database is simply a collection of data stored in an organized way</p>
+<ul>
+<li><p>The database is stored on the <strong>server</strong></p>
+</li>
+<li><p>Types of databases:</p>
+<ul>
+<li><p><strong>NoSQL databases</strong> </p>
+<ul>
+<li>NoSQL databases are designed to handle the more complex, unstructured data, (such as texts, social media posts, photos, videos, email) </li>
+<li>NoSQL database store unstructured or semi-structured data, often in key-value pairs or JSON documents.</li>
+
+</ul>
+</li>
+<li><p><strong>Relational databases</strong> </p>
+<ul>
+<li>Relational databases store related data tables (relational)</li>
+<li>Relational databases have been a common technology for decades</li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+
+</ul>
+<h4 id='what-is-sql'>What is SQL?</h4>
+<p>Instead of being a programming language similar to what we&#39;ll use for iOS and Android applications, <strong>SQL</strong> is a language that enables storing, retrieving, and manipulating data in databases.</p>
+<p>SQL stands for <strong>Structured Query Language</strong>  - e.g.  <code>SELECT * FROM CUSTOMERS</code></p>
+<ul>
+<li>SQL allows for Create, Read, Update, and Delete (CRUD) with a database. </li>
+
+</ul>
+<p>(SQL is often pronounced in two ways. </p>
+<p>You can pronounce it by speaking each letter individually like “S-Q-L”, or pronounce it using the word “sequel”</p>
+<p>&nbsp;</p>
+<p>A relational database management system (RDBMS) is a program that allows you to create, update, and administer a relational database. For example:</p>
+<ul>
+<li>MySQL</li>
+<li>PostgreSQL</li>
+<li>Microsoft SQL Server</li>
+
+</ul>
+<p>&nbsp;</p>
+<h2 id='structure-and-access-differences'>Structure and Access Differences</h2>
+<h4 id='relational-database-with-sql'>Relational Database with SQL</h4>
+<p><strong>Structure</strong></p>
+<ul>
+<li>Rows (the individual entitiies) and columns (the types)</li>
+<li>Must have a primary key (unique ID that identifies a specific row)</li>
+<li>Roreign keys are links to other tables</li>
+<li>We have constraints (VARCHAR is only a certain size allowed, etc.)</li>
+<li>We have <strong>relationships</strong> with other <strong>tables</strong> which allow for powerful queries!  ( e.g. Give me all accounts with an ID of ...)</li>
+
+</ul>
+<p><strong>Access</strong></p>
+<ul>
+<li>Raw SQL</li>
+<li>Direct database connection</li>
+<li>Object Relational Mappers to create queries (generating queries)</li>
+
+</ul>
+<h4 id='nosql'>NoSQL</h4>
+<p>NoSQL databases are anything that is non relational. They are built to <strong>scale up</strong> with high performance, but queries are less flexible. </p>
+<p>NoSQL databases have many implementations:</p>
+<ul>
+<li>Table</li>
+<li>Document</li>
+<li>Graph</li>
+
+</ul>
+<p><strong>Structure</strong></p>
+<ul>
+<li>Tables, JSON (Documents), Graphs (think Facebook with friends having friends)</li>
+<li>Key Value Strorage</li>
+
+</ul>
+<p><strong>Access</strong></p>
+<ul>
+<li>REST APIs - hit a specific endpoint with a specific functionality associated with it </li>
+<li>CRUD in vendor specific lanaguage </li>
+
+</ul>
+<p>&nbsp;</p>
+<h4 id='when-to-use-what'>When to use what?</h4>
+<p><strong>SQL</strong></p>
+<ul>
+<li>Peforming flexible queries (stay flexible)</li>
+<li>Relational queries </li>
+
+</ul>
+<p><strong>NoSQL</strong></p>
+<ul>
+<li>When we know exactly how we will be interacting with our database</li>
+<li>Primary key is known </li>
+<li>High performance and low latency </li>
+
+</ul>
+<h1 id='database-assignment'>Database Assignment</h1>
+<p>Given the following data, create a database structure for a NoSQL Database and a Relational Database.</p>
+<p>Part 1 - create a <strong>SQL</strong> (relational database) design given the following data</p>
+<p>Part 2 - create a <strong>NoSQL</strong> database design given the following data</p>
+<p><strong>Note</strong>: Your uploaded design may be in the form of a drawing using pen and paper (image upload), in a simple text document, or a screenshot of your work. </p>
+<h4 id='tables'>Tables</h4>
+<figure><table>
+<thead>
+<tr><th>User</th><th>Data Type</th></tr></thead>
+<tbody><tr><td>User_ID</td><td>INT</td></tr><tr><td>First Name</td><td>STRING</td></tr><tr><td>Last Name</td><td>STRING</td></tr><tr><td>Email</td><td>STRING</td></tr></tbody>
+</table></figure>
+<figure><table>
+<thead>
+<tr><th>Message</th><th>Data Type</th></tr></thead>
+<tbody><tr><td>Message_ID</td><td>INT</td></tr><tr><td>Message</td><td>STRING</td></tr><tr><td>Date</td><td>STRING</td></tr><tr><td>SentByUser</td><td>STRING</td></tr></tbody>
+</table></figure>
+<figure><table>
+<thead>
+<tr><th>Conversation</th><th>Data Type</th></tr></thead>
+<tbody><tr><td>User_ID</td><td>INT</td></tr><tr><td>Messages</td><td>STRING</td></tr><tr><td>LatestMessage</td><td>STRING</td></tr></tbody>
+</table></figure>
+<h1 id='api'>API</h1>
+<p>APIs are not meant to be seen or used by the end user. Instead, an API generally uses <strong>RESTful</strong> design to give others a large amount of organized data (usually in the form of JSON or XML)</p>
+<ul>
+<li>RESTful APIs follow a set of rules regarding how they should send and receive information (this is an architectural style)</li>
+<li>A set of programming instructions and functions used to access a website or web-based software application.</li>
+
+</ul>
+<h4 id='practical-uses'>Practical Uses</h4>
+<ul>
+<li>Want to get the latest wind data for you current area? Use the Windy API</li>
+<li>Want a build a weather app? We could use the OpenWeather API</li>
+
+</ul>
+<ul>
+<li>Want to put a Google map on your website? use the Google Map API</li>
+
+</ul>
+<h2 id='whats-an-api'>What&#39;s an API</h2>
+<p>Let&#39;s use a bank to demonstrate what an API could be used for. Let&#39;s imagine you need to pay a bill on your bank&#39;s website. You sign in, enter the amount you want to pay, and click submit.</p>
+<p>How does the bank know that I paid my bill?</p>
+<ul>
+<li>I clicked on button (submit button) on their website? What does clicking a button accomplish?</li>
+
+</ul>
+<h4 id='well-work-is-being-done-with-apis'>Well, Work is Being Done with APIs</h4>
+<p>Information about the user and the account your acting on is transmitted as an <strong>instruction</strong> to another computer on the banking system&#39;s network. </p>
+<p>Inside the <strong>instruction</strong>, contains all the information about the bill you&#39;re trying to pay, who you are, and the amount we are paying as the front end user. </p>
+<p>&nbsp;</p>
+<p>The machine on the other end:</p>
+<ul>
+<li>Received the instruction</li>
+<li>Understood the instruction</li>
+<li>Submitted the transaction</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>How does the computer on the back end know how to interpret the information?</p>
+<p>&nbsp;</p>
+<p>Answer: This is all solved by the API</p>
+<p><strong>Application Programming Interface</strong></p>
+<p>&nbsp;</p>
+<p>To use an API, we just have to meet the expectations given by the API.</p>
+<p>For example, let&#39;s take the previous example of paying a bill online. We might have a &quot;PayBill&quot; endpoint:</p>
+<ul>
+<li><code>/PayBill</code></li>
+
+</ul>
+<p>&nbsp;</p>
+<p>The programmer who creates it, may say that <strong>this API will take</strong>:</p>
+<ul>
+<li>String  - <strong>accountNumber</strong></li>
+<li>Integer  - <strong>amount</strong></li>
+<li>Interger -  <strong>receiver</strong> (destination account number)</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>When the pay bill API is invoked, it returns the balance of the user&#39;s account in an integer field called balance.</p>
+<p>The other application&#39;s (using the API) can look at the API&#39;s that the Banking Application exposes</p>
+<p>&nbsp;</p>
+<h4 id='why-would-i-build-an-api'>Why Would I Build an API?</h4>
+<p>We can create an API that provides:</p>
+<ul>
+<li>Functionality (do something)</li>
+<li>Information (get something)</li>
+
+</ul>
+<h4 id='the-contract'>The Contract</h4>
+<p>You can think of an API as a <strong>contract</strong>.</p>
+<p>The creator defines the name of the api, what the api does, the arguments it will take in, and the output it will spit out. </p>
+<ul>
+<li><code>payBill</code></li>
+<li>What does it do?</li>
+<li>Input (accountId, amount, receiver)</li>
+<li>Output (balance)</li>
+
+</ul>
+<h3 id='an-apis-real-use'>An APIs Real Use</h3>
+<p>The internet has infomation and packets flying all over the place between systems. If you think about it, without structure, this would just be chaos and madness!</p>
+<p>An API forces developers to create a plan for what they want their system to do, and encode those behaviors into APIs that will be exposed to clients.  </p>
+<h4 id='abstraction'>Abstraction</h4>
+<p>APIs provide abstraction between systems</p>
+<ul>
+<li>A caller (client) does not need to know <strong>how</strong> the API is implemented, only <strong>what</strong> the API promises to do </li>
+
+</ul>
+<ul>
+<li>The API takes an input, performs a job, and produces a certain ouput. An API is predictable and consistent!</li>
+
+</ul>
+<p>As developers, we rely heavily on the developer community to allow our code to scale and become more safe and powerful very quickly. With this in mind, it&#39;s important to know that we can actually <strong>combine APIs</strong>! This is how we can build things together as developer community. We can plug powerful code into more powerful code. </p>
+<h2 id='api-use'>API Use</h2>
+<p>Let&#39;s take the example of the <a href='https://developer.twitter.com/en/docs/twitter-api/v1'>twitter api</a> .</p>
+<p>What if we wanted to post a status update? </p>
+<p>Check out the <a href='https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/overview'>Tweets</a> section</p>
+<ul>
+<li>Post </li>
+
+</ul>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/apis.png" referrerpolicy="no-referrer"></p>
+<p>Here, we can see the <strong>different APIs made available</strong> to us. </p>
+<p>&nbsp;</p>
+<p><strong>POST</strong> – this is used to update information and when performing an action</p>
+<p><strong>GET</strong> – this is used for retrieving information </p>
+<p>&nbsp;</p>
+<p>Take a look at the <strong>parameters</strong> needed for using these <strong>endpoints</strong>!</p>
+<p>Click on the <a href='https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/post-statuses-update'>API Reference</a>. </p>
+<ul>
+<li>we are looking at the <strong>formal agreements</strong> in addition to the inputs (<strong>parameters</strong>) and output </li>
+<li>a lot of these parameters are optional</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>Mainly, we are interested in the status – our new Twitter status</p>
+<h4 id='example-request'>Example Request</h4>
+<pre><code>curl -XPOST 
+  --url &#39;https://api.twitter.com/1.1/statuses/update.json?status=hello&#39; 
+  --header &#39;authorization: OAuth
+  oauth_consumer_key=&quot;oauth_customer_key&quot;,
+  oauth_nonce=&quot;generated_oauth_nonce&quot;,
+  oauth_signature=&quot;generated_oauth_signature&quot;,
+  oauth_signature_method=&quot;HMAC-SHA1&quot;,
+  oauth_timestamp=&quot;generated_timestamp&quot;,
+  oauth_token=&quot;oauth_token&quot;,
+  oauth_version=&quot;1.0&quot;&#39;
+</code></pre>
+<ul>
+<li><p>You many want to change the status from &#39;hello&#39; to something different.</p>
+</li>
+<li><p>The main thing you should pay attention to here is the first two lines: <code>curl -XPOST 
+  --url &#39;https://api.twitter.com/1.1/statuses/update.json?status=hello&#39;</code></p>
+<ul>
+<li>Don&#39;t be confused by all of the oauth authorization! These are simply security measures. </li>
+
+</ul>
+</li>
+
+</ul>
+<h4 id='example-response'>Example Response</h4>
+<pre><code>{
+   &quot;created_at&quot;:&quot;Wed Oct 10 20:19:24 +0000 2018&quot;,
+   &quot;id&quot;:1050118621198921700,
+   &quot;id_str&quot;:&quot;1050118621198921728&quot;,
+   &quot;text&quot;:&quot;To make room for more expression, we will now count all emojis as equal—including those with gender and skin t… https://t.co/MkGjXf9aXm&quot;,
+   &quot;truncated&quot;:true,
+   &quot;quote_count&quot;:0,
+   &quot;reply_count&quot;:0,
+   &quot;retweet_count&quot;:0,
+   &quot;favorite_count&quot;:0,
+   &quot;favorited&quot;:false,
+   &quot;retweeted&quot;:false
+}
+</code></pre>
+<p>(response simplified for readability)</p>
+<h4 id='api-summary'>API Summary</h4>
+<p>To summarize, when a company like Twitter offers an API to their customers, it simply means Twitter created a set of <strong>dedicated URLs that return data responses</strong>. The responses won’t contain the presentation or the User Interface (like a website). </p>
+<p>To add on to this powerful idea and practice, any piece of software that can be <strong>distinctively separated from its environment</strong>. APIs are seen all over the web and can be used in your code. </p>
+
+
+<h1 id='android-studio-for-java-development'>Android Studio (For Java Development)</h1>
+<h3 id='note-you-can-skip-this-part-if-youve-already-downloaded-android-studio'><strong>Note: You can skip this part if you&#39;ve already downloaded Android Studio</strong></h3>
+<p>Now that we have some of the basic concepts down for programming, lets jump right in and download Android Studio. The reason we are using Android Studio for our learning purposes instead of an IDE like Eclipse is that it makes setting up our environment easy (such as downloading the SDK and readying our environment for development)</p>
+<p>Note: we are not building Android applications at this point. Instead, we are using Andriod Studio as our IDE (Integrated Development Enivronment) so we can build on our development skills!</p>
+<p><strong>For Mac Users:</strong> </p>
+<ol start='' >
+<li><p>Go to <a href='https://developer.android.com/studio' target='_blank' class='url'>https://developer.android.com/studio</a> and click download Android Studio (with Intel or Apple Chip depending on if you have an older Mac vs Newer M1.)</p>
+</li>
+<li><p>Launch the Android Studio DMG file.</p>
+</li>
+<li><p>Drag and drop Android Studio into the Applications folder, then launch Android Studio.</p>
+</li>
+<li><p>Select whether you want to import previous Android Studio settings, then click <strong>OK</strong>.</p>
+</li>
+<li><p>The Android Studio Setup Wizard guides you through the rest of the setup, which includes downloading Android SDK components that are required for development.</p>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/wizard.png?width=285&amp;height=175&amp;crop=fill" referrerpolicy="no-referrer"></p>
+</li>
+<li><p>Create a new project (Phone and Tablet) with <strong>No Activity</strong> </p>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/newproject.png?width=285&amp;height=175&amp;crop=fill" referrerpolicy="no-referrer"></p>
+<p>&nbsp;</p>
+</li>
+
+</ol>
+<p>&nbsp;</p>
+<h3 id='creating-a-new-java-module-and-class'>Creating a new Java Module and Class</h3>
+<p>You can have Java modules and Android modules in the same project and also have the ability to compile and run Java modules as stand alone Java projects.</p>
+<ol start='' >
+<li>Open your Android project in Android Studio. If you do not have one, create one.</li>
+<li>Click <strong>File &gt; New Module</strong>. Select <strong>Java Library</strong> and click <strong>Next</strong>.</li>
+<li>Fill in the package name, etc and click <strong>Finish</strong>. You should now see a Java module inside your Android project.</li>
+<li>Add your code to the Java module you&#39;ve just created.</li>
+<li>Click on the drop down to the left of the run button. Click <strong>Edit Configurations...</strong></li>
+<li>In the new window, click on the plus sign at the top left of the window and select <strong>Application</strong></li>
+<li>A new application configuration should appear, enter in the details such as your main class and classpath of your module.</li>
+<li>Click <strong>OK</strong>. Now if you click run, this should compile and run your Java module.</li>
+
+</ol>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/setup.png?" style="float: left;zoom:50%;" /></p>
+<p>&nbsp;</p>
+
+
+<h1 id='object-oriented-programming-1'>Object Oriented Programming</h1>
+<p>In Object Oriented Programming or OOP, we use classes and objects to represent data. </p>
+<p>&nbsp;</p>
+<p>Let&#39;s take the example of making  cookies to illustrate OOP.</p>
+<p>&nbsp;</p>
+<p><img src="https://www.verybestbaking.com/sites/g/files/jgfbjl166/files/styles/gdn_hero_pdp_product_image/public/gdn_product/field_product_images/tollhouse-dpwu3p0vrsqgans3ise3.png.webp?itok=mXQ-TlGP" style="float:left;zoom:40%;" /></p>
+<p>&nbsp;</p>
+<p>We could use a cookie cutter to create the outline of the cookie. We could even have a chocolate chip cookie cutter and a sugar cookie cutter. The outline represents the <strong>class</strong>.</p>
+<p>A <strong>Class</strong> is like an object <strong>constructor</strong>, or a &quot;blueprint&quot; for creating <strong>objects</strong>.</p>
+<p>&nbsp;</p>
+<p>On the other hand, we have the actual cookies. These represent the <strong>objects</strong> in computer programming. </p>
+<p>&nbsp;</p>
+<p>The cookie has <strong>attributes</strong>, such as color and weight, and <strong>methods</strong>, such as <code>beEaten()</code> and <code>meltInYourMouth()</code>.</p>
+<p>&nbsp;</p>
+<p>What&#39;s powerful about OOP is that we can create cookies based on other cookies. </p>
+<p>&nbsp;</p>
+<p>We could have a <code>Cookie</code> class. Then we could create a <code>ChocolateChip</code> cookie class based on the <code>Cookie</code> class. Next, we could create a <code>SugarCookie</code> based on the Cookie class. </p>
+<p>&nbsp;</p>
+<p>In this simple example, we have already covered some of the high level topics of object oriented programming. </p>
+<p>&nbsp;</p>
+<p>By providing this abstraction, our applications become more dynamic and more reusable and powerful. </p>
+<p>&nbsp;</p>
+<h3 id='example-of-inheritance'>Example of Inheritance</h3>
+<pre><code class='language-javascript' lang='javascript'>class Coffee {
+   String desciption=&quot;Helps you when you&#39;re tired!&quot;;
+}
+class Espresso extends Coffee {
+  
+   String type = &quot;Espresso&quot;;
+
+   public static void main(String args[]){
+ 
+      Espresso espressoShot = new Espresso();
+     
+      System.out.println(&quot;Name:&quot;+espressoShot.desciption);
+      System.out.println(&quot;Type:&quot;+espressoShot.type);
+   }
+}
+</code></pre>
+<p>We will learn more about extends below! </p>
+<h3 id='example-of-composition'>Example of Composition</h3>
+<pre><code class='language-java' lang='java'>class Drummer {
+}
+class Band {
+   private Drummer drummer;
+   void Band() {
+      this.drummer = new Drummer();
+   }
+}
+</code></pre>
+<h2 id='composition-and-inheritance'>Composition and Inheritance</h2>
+<p>Composition and Inheritance both provide code reusability by relating classes.  We can also get the functionality of inheritance when you use composition. </p>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/composition_inheritance.png" style="float:left;zoom:50%;" /></p>
+<p>Subclasses are responsible for implementing their own behavior</p>
+<p>inherits or implements in terms of interface</p>
+<h4 id='composition'>Composition</h4>
+<p>The composition is a design technique in which your class can have an instance of another class as a field of your class. </p>
+<p>We can use <strong>composition</strong> in when one object &quot;has&quot; (or is part of) another object. </p>
+<ul>
+<li>A car <em>has a</em> speaker (a speaker <em>is part of</em> a car).</li>
+<li>A person <em>has a</em> brain (a brain <em>is part of</em> a person).</li>
+<li>A house <em>has a</em> living room (a living room <em>is part of</em> a house).</li>
+
+</ul>
+<h3 id='inheritance'>Inheritance</h3>
+<p>Inheritance is a describes the practice of having one object acquire the properties and behavior of the parent object by extending a class.</p>
+<p>We can use <strong>inheritance</strong> when we know there is an &quot;is a&quot; relationship between a child and its parent class. </p>
+<ul>
+<li>A <em>olympian</em> <em>is an</em> athlete.</li>
+<li>A cat <em>is an</em> animal.</li>
+<li>A car <em>is a</em> vehicle.</li>
+
+</ul>
+<p>&nbsp;</p>
+<figure><table>
+<thead>
+<tr><th style='text-align:center;' >Type</th><th style='text-align:center;' >Inheritance</th><th style='text-align:center;' >Composition</th></tr></thead>
+<tbody><tr><td style='text-align:center;' >Basic  </td><td style='text-align:center;' >&quot;is-a&quot; relationship </td><td style='text-align:center;' >&quot;has-a&quot; relationship  </td></tr><tr><td style='text-align:center;' >Code Reuse  </td><td style='text-align:center;' >In Inheritance, a class lass can extend only one interface, therefore, you can reuse your code only in one class only  </td><td style='text-align:center;' >We can reuse code in multiple class  </td></tr><tr><td style='text-align:center;' >Scope  </td><td style='text-align:center;' >Provides its features at compile time </td><td style='text-align:center;' >Composition is easily achieved at runtime  </td></tr><tr><td style='text-align:center;' >Final  </td><td style='text-align:center;' > We can’t reuse code from the final class  </td><td style='text-align:center;' >It allows code reuse even from final classes </td></tr><tr><td style='text-align:center;' >Methods  </td><td style='text-align:center;' >It exposes both public and protected method of the parent class  </td><td style='text-align:center;' >It doesn’t expose. They interact using public interface. </td></tr></tbody>
+</table></figure>
+<h3 id='extends-and-implements'>Extends and Implements</h3>
+<p><strong>Extends</strong> <strong>and Implements</strong> are reserved keywords in Java which we use to <strong>inherit</strong> the features of an <strong>already existing parent block</strong> in the newly created child block.</p>
+<figure><table>
+<thead>
+<tr><th><strong>Comparison Features</strong></th><th><strong>Extends</strong></th><th><strong>Implements</strong></th></tr></thead>
+<tbody><tr><td><strong>Implementation</strong></td><td>The keyword <strong>extends</strong> is used when a class wants to inherit all the properties from another class or an interface that wants to inherit an interface.</td><td>We use the <strong>implements</strong> keyword when we want a class to implement an interface.</td></tr><tr><td><strong>Associated with</strong></td><td>It is associated with Inheritance</td><td>It is associated with Abstraction</td></tr><tr><td><strong>Method</strong></td><td>The child class that extends a parent class may or may not override all the methods present in the parent class.</td><td>The class that implements an interface must define or provide the implementation of all the methods declared in the interface, or else the class should be declared as abstract.</td></tr><tr><td><strong>Class</strong></td><td>A subclass or more than one subclass can extend only one parent class at the same time.</td><td>A class can implement one or more than one interface at the same time.</td></tr><tr><td><strong>Interface</strong></td><td>An interface can extend any number of interfaces.</td><td>An interface can never implement any other interface.</td></tr></tbody>
+</table></figure>
+<h2 id='class-instances'>Class Instances</h2>
+<p><strong>Class vs Instance of Class</strong></p>
+<p>If you see a car on the street, you know immediately that it&#39;s a car even if you can&#39;t see which model or type. </p>
+<p>This is because you compare what you see with the <em>class</em> &quot;car&quot;. The class contains which is similar to all cars. Think of it as a template or an idea.</p>
+<p>At the same time, the car you see is an instance of the class &quot;car&quot; since it has all the properties which you expect: There is someone driving it, it has an engine, wheels.</p>
+<p>So the class says &quot;all cars have a color&quot; and the instance says &quot;this specific car is red&quot;.In the Object Oriented world, you define the class and inside the class, you define a field of type <code>Color</code>. </p>
+<p>When the class is instantiated (when you create a specific instance), memory is reserved for the color and you can give this specific instance a color. Since these attributes are specific, they are non-static.</p>
+<p><strong>Static vs Non Static</strong></p>
+<p>Static fields and methods are shared with all instances. </p>
+<p>They are for values which are specific to the class and not a specific instance. For methods, this usually are global helper methods (like <code>Integer.parseInt()</code>).</p>
+<p>For fields, it&#39;s usually constants (like car types, i.e. something where you have a limited set which doesn&#39;t change often).</p>
+<p>&nbsp;</p>
+
+
+<h1 id='access-control'>Access Control</h1>
+<p>Access control is a method of restricting access in Java but in every programming langauge you will encounter as well.</p>
+<p>Access control restricts the access of certain members of a class to specific parts of a program</p>
+<p>There are four access modifiers in Java. They are:</p>
+<ol start='' >
+<li><p>public</p>
+</li>
+<li><p>protected</p>
+</li>
+<li><p>default</p>
+</li>
+<li><p>private</p>
+<p><em>private</em> is the most restrictive access modifier and <em>public</em> is the least restrictive access modifier.</p>
+</li>
+
+</ol>
+<pre><code>access-modifier  data-type  variable-name;
+</code></pre>
+<p>A private Str</p>
+<p><code>private int side;</code></p>
+<p>&nbsp;</p>
+<p>In a similar way we can apply access modifiers to methods or classes although</p>
+<figure><table>
+<thead>
+<tr><th>Access Modifier</th><th>Accessible by classes in the same package</th><th>Accessible by classes in other packages</th><th>Accessible by subclasses in the same package</th><th>Accessible by subclasses in other packages</th></tr></thead>
+<tbody><tr><td>Public</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td></tr><tr><td>Protected</td><td>Yes</td><td>No</td><td>Yes</td><td>Yes</td></tr><tr><td>Package</td><td>Yes</td><td>No</td><td>Yes</td><td>No</td></tr><tr><td>Private</td><td>No</td><td>No</td><td>No</td><td>No</td></tr></tbody>
+</table></figure>
+<h4 id='why-do-we-need-access-control'>Why Do We Need Access Control?</h4>
+<pre><code class='language-java' lang='java'>public class AccessControl {
+
+    public static void main(String[] args){
+        Pizza pizza = new Pizza();
+        pizza.pizzaCost = -5.00; // pizza becomes negative accidentally!
+    }
+}
+class Pizza {
+    int  orderNumber;
+    String  pizzaName;
+    double  pizzaCost;
+
+    // Methods which operate on above data
+}
+</code></pre>
+<p>Although above code is syntactically correct, it is logically incorrect!</p>
+<p>Current Access Modifier: <strong>Package Private</strong> or <strong>no modifier</strong> </p>
+<p>The access modifier for all the three data members is <em>default</em>. </p>
+<p>This data is accessible throughout the package, a programmer might, by mistake, try to make an pizza&#39;s cost  negative as shown in the code example. </p>
+<h4 id='the-fix-dont-forget-getters-and-setters'>The Fix! Don&#39;t forget getters and setters</h4>
+<pre><code class='language-java' lang='java'>public class AccessControl {
+
+    public static void main(String[] args){
+
+        Pizza pizza = new Pizza();
+        pizza.setPizzaCost(-5.00);  //Gives error as pizza cost cannot be negative
+        pizza.setPizzaCost(10.00);  //Pizza cost will be assigned 10
+
+        System.out.print(&quot;Pizza Cost is: &quot; + pizza.getPizzaCost());
+    }
+}
+class Pizza {
+    private int orderNumber;
+    private String pizzaName;
+    private double pizzaCost;
+
+    public double getPizzaCost() {
+        return pizzaCost;
+    }
+    public void setPizzaCost(double newCost) {
+        if(pizzaCost &lt; 0){
+        System.out.println(&quot;Pizza Cost cannot be negative&quot;);
+    }
+		else {
+            pizzaCost = newCost;
+        }
+    }
+}
+</code></pre>
+<p>The modified Pizza class is the best way of writing programs in Java.</p>
+<p>&nbsp;</p>
+
+
+<h1 id='programming-paradigms'>Programming Paradigms</h1>
+<h4 id='object-oriented-programming-2'>Object Oriented Programming</h4>
+<p>We aim to be <strong>full stack developers</strong> who keep our code modular and organized. One of the ways we can achieve this is by using OOP, or Object Oriented Programming design (programming architecture built upon the concept of classes and objects)</p>
+<ul>
+<li>Break down a programming task into objects that expose behavior (methods) and data (members or attributes) using interfaces</li>
+
+</ul>
+<h4 id='procedural-programming'>Procedural Programming</h4>
+<p>Often, the terms &quot;procedural programming&quot; and &quot;imperative programming&quot; are used synonymously. Simply put, Procedural Programming involves writing down a list of instructions to tell the computer what it should do step-by-step to finish the task at hand.</p>
+<h4 id='functional-programming'>Functional Programming</h4>
+<p>Functional programming heavily emphasizes on the usage of functions that contains a set of code/ instructions to perform a generic set of operations. Functional programming languages support (and heavily use) first-class functions, <strong>anonymous functions</strong> and <strong>closures</strong>.</p>
+<ul>
+<li>more on closures and anonymous functions later!</li>
+
+</ul>
+<p>Basically, Functional programming (FP) is a paradigm which concentrates on computing <strong>results</strong> rather than on performing actions. For example, a function is used to compute a value and return it instead of us giving it a finite set of step-by-step instructions to get the desired results. </p>
+<h2 id='application-architecture-and-design-patterns'>Application Architecture and Design Patterns</h2>
+<p>As we develop code with Object Oriented principles in mind, programmers have developed best practices and techniques to solve common problems. Design patterns often solve a particular problem and offer a solution. </p>
+<p>In both iOS and Android development, we will encounter different design patterns. In this section, we will offer some common programming problems and how to solve them with design patterns</p>
+<h3 id='types-of-design-patterns'>Types of Design Patterns</h3>
+<h4 id='creational'>Creational</h4>
+<p>Class instantiation or object creation</p>
+<h4 id='structural'>Structural</h4>
+<p>Organizing different classes and objects to form larger structures and provide new functionality</p>
+<h4 id='behavorial'>Behavorial</h4>
+<p>Identifying common communication patterns between objects and realizing these patterns</p>
+
+
+<h1 id='model-view-controller'>Model View Controller</h1>
+<p>Model-View-Controller builds on top of Object-Oriented Programming. It structures the flow of data and interaction in your app. </p>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/MVC(1).png" referrerpolicy="no-referrer"></p>
+<p>&nbsp;</p>
+<ol start='' >
+<li><strong>MVC increases the modularity of your code</strong></li>
+<li><strong>MVC encourages code reuse.</strong> </li>
+
+</ol>
+<p>&nbsp;</p>
+<p>In programming, we used the <strong>Don’t Repeat Yourself (DRY)</strong> principle. This means that we want to avoid duplicating similar lines of code as much as possible.</p>
+<p>When you’re asking yourself: “How should I pass data from one part of my app to another?” then Model-View-Controller is a great answer in mobile development.</p>
+<p>Model-View-Controller is a fundamental concept to understand, especially in iOS and Android development.</p>
+<h4 id='model'>Model</h4>
+<p>The Model stores application <strong>data</strong> </p>
+<h4 id='view'>View</h4>
+<p>The View is reponsible for the <strong>user interface</strong></p>
+<h4 id='controller'>Controller</h4>
+<p>Core application logic that creates the <strong>relationship between the view and the model</strong> </p>
+<ul>
+<li>The controller is informed of the <strong>user’s behavior</strong> and updates the <strong>Model</strong> when needed</li>
+
+</ul>
+
+
+<h1 id='delegation-pattern'>Delegation Pattern</h1>
+<p>We can use the delegation pattern in order to achieve the following</p>
+<ul>
+<li>Delegation can be an alternative to inheritance</li>
+<li>Delegation means that you use an object of another class as an instance variable, and forward messages to the instance.</li>
+
+</ul>
+<p>When you delegate, you are simply calling up some class which knows what must be done. You do not really care how it does it, all you care about is that the class you are calling knows what needs doing.</p>
+<h4 id='example-using-delegation'>Example Using Delegation</h4>
+<p><strong>We are passing the responsibility to someone else.</strong> In OOP, delegation is when you pass a task of an object to another one. </p>
+<p>Let&#39;s imagine that we need to build an application and for that we need:</p>
+<ul>
+<li>a coder</li>
+<li>a designer </li>
+
+</ul>
+<p>We are looking for people who can code and who can design.. </p>
+<pre><code class='language-java' lang='java'>class DelegationDemonstration {
+  // we will add the main method here
+}
+interface WhoCanCode {
+    void writeCode();
+}
+interface WhoCanDesign {
+    void design();
+}
+</code></pre>
+<p>Now, we are going to hire an employee who is capable of doing both of these (coding and designing). This employee must implement the methods from our interfaces. </p>
+<pre><code class='language-java' lang='java'>class Employee implements WhoCanCode, WhoCanDesign {
+    @Override
+    public void writeCode() {
+    }
+    @Override
+    public void design() {
+    }
+}
+</code></pre>
+<p>This employee is smart enough to <strong>delegate</strong> responsibility to someone else. </p>
+<p>Let&#39;s say we are searching for a coder, and we find this coder (this person is a Swift coder)...</p>
+<p>Notice the <strong>implements</strong> keyword. Remember, this is how we <strong>implement</strong> the methods from an <strong>interface</strong>!</p>
+<pre><code class='language-java' lang='java'>class SwiftDeveloper implements WhoCanCode {
+    @Override
+    public void writeCode() {
+        System.out.println(&quot;I&#39;m writing Swift Code&quot;);
+    }
+}
+class UXDesigner implements  WhoCanDesign {
+    @Override
+    public void design() {
+        System.out.println(&quot;I&#39;m designing UX&quot;);
+    }
+}
+</code></pre>
+<p>Now, what the <code>Employee</code> will do.. it will take an instance of <code>WhoCanCode</code> ...coder and designer</p>
+<p>Whenever there is an employee, it will take a coder and a designer, and pass that responsibility to them. </p>
+<pre><code class='language-java' lang='java'>class Employee implements WhoCanCode, WhoCanDesign {
+    WhoCanCode developer;
+    WhoCanDesign designer;
+
+    public Employee(WhoCanCode developer, WhoCanDesign designer){
+        this.developer = developer;
+        this.designer = designer;
+    }
+
+    @Override
+    public void writeCode() {
+        developer.writeCode();
+    }
+    @Override
+    public void design() {
+        designer.design();
+    }
+}
+</code></pre>
+<p>To execute this, we need a main method!</p>
+<pre><code class='language-java' lang='java'>public class DelegationDemonstration {
+    public static void main(String[] args){
+
+        SwiftDeveloper switDev = new SwiftDeveloper();
+        UXDesigner designer = new UXDesigner();
+
+        Employee james = new Employee(switDev,designer);
+
+        james.writeCode();
+        james.design();
+    }
+}
+</code></pre>
+<p>Now, we could easily add in a new Kotlin developer too!</p>
+<pre><code class='language-java' lang='java'>class KotlinDeveloper implements WhoCanCode {
+    @Override
+    public void writeCode() {
+        System.out.println(&quot;I&#39;m writing Kotlin Code&quot;);
+    }
+}
+</code></pre>
+<p>and update the main method ...</p>
+<pre><code class='language-java' lang='java'>public class DelegationDemonstration {
+    public static void main(String[] args){
+
+        SwiftDeveloper switDev = new SwiftDeveloper();
+        UXDesigner designer = new UXDesigner();
+        KotlinDeveloper kotlinDev = new KotlinDeveloper();
+
+        Employee james = new Employee(switDev,designer);
+        Employee david = new Employee(kotlinDev,designer);
+
+        james.writeCode();
+        james.design();
+
+        david.writeCode();
+        david.design();
+    }
+}
+</code></pre>
+<h4 id='delegation-pattern-summary'>Delegation Pattern Summary</h4>
+<ul>
+<li>Reduce the coupling of methods to their class</li>
+<li>Use for components that behave identically, but realize that this situation can change in the future.</li>
+<li>If you need to use functionality in another class but you do not want to change that functionality then use delegation instead of inheritance.</li>
+
+</ul>
+<p>Here&#39;s the full code for your clarification..</p>
+<pre><code class='language-java' lang='java'>public class DelegationDemonstration {
+    public static void main(String[] args){
+
+        SwiftDeveloper switDev = new SwiftDeveloper();
+        UXDesigner designer = new UXDesigner();
+
+        Employee james = new Employee(switDev,designer);
+        Employee david = new Employee(kotlinDev,designer);
+
+        james.writeCode();
+        james.design();
+
+        david.writeCode();
+        david.design();
+    }
+}
+
+interface WhoCanCode {
+    void writeCode();
+}
+interface WhoCanDesign {
+    void design();
+}
+
+class Employee implements WhoCanCode, WhoCanDesign {
+    WhoCanCode developer;
+    WhoCanDesign designer;
+
+    public Employee(WhoCanCode developer, WhoCanDesign designer){
+        this.developer = developer;
+        this.designer = designer;
+    }
+
+    @Override
+    public void writeCode() {
+        developer.writeCode();
+    }
+    @Override
+    public void design() {
+        designer.design();
+    }
+}
+
+class SwiftDeveloper implements WhoCanCode {
+    @Override
+    public void writeCode() {
+        System.out.println(&quot;I&#39;m writing Swift Code&quot;);
+    }
+}
+class UXDesigner implements  WhoCanDesign {
+    @Override
+    public void design() {
+        System.out.println(&quot;I&#39;m designing UX&quot;);
+    }
+}
+</code></pre>
+<p><strong>References</strong></p>
+<p>Design Patterns in this tutorial have been inspired from the following resource:</p>
+<p>Sierra, K. and Bates, B., 2008. <em>Head First Java</em>. Sebastopol: O&#39;Reilly Media, Inc.</p>
+
+
+
+
+<h1 id='delegation-assignment'>Delegation Assignment</h1>
+<p>Assignment Part 1</p>
+<ul>
+<li>use the Delegation Code and add a class that implements <code>WhoCanCode</code>.</li>
+<li>In the console, you should see <code>&quot;I&#39;m writing Kotlin Code&quot;</code></li>
+<li>upload your code </li>
+
+</ul>
+<p>Assignment Part 2 </p>
+<ul>
+<li>it is important that you understand what is going on in the code. Please provide <strong>comments</strong> throughout each class and interface explaining what each part does in your code</li>
+<li>comment and explain the new class that you have implemented called &quot;KotlinDeveloper&quot;</li>
+
+</ul>
+
+
+
+
+
+<h1 id='singleton-pattern-in-java'>Singleton Pattern In Java</h1>
+<p>A Singleton is a class that can only have one object (an instance of the class). </p>
+<p>The Singleton pattern ensures a class has only one instance and provides a global point of access to it. </p>
+<h4 id='singleton-use'>Singleton Use</h4>
+<ol start='' >
+<li><p>Allows for lazy loading. This means that we can initialize your object creation - only when you need it. We could use a global variable which would be created at the init step up your project. </p>
+</li>
+<li><p>When you only need one instance. One example could be a Database Connection. Maybe in some applications you only want one database connection. Restrict databases connections through a class. </p>
+<ul>
+<li>What if you are building a Tesla Car Guidance System - it only makes sense to have one instance of the guidance system initialized at one time because the system could be performing actions on the hardware of the car. Don&#39;t want conflicting instructions in a moving car!</li>
+
+</ul>
+</li>
+
+</ol>
+<h4 id='how-it-works'>How it works</h4>
+<p>Three main things to know about the Singleton pattern.</p>
+<ol start='' >
+<li><p>Create a class with a private constructor. (We are closing the abiliy of external classes to create an instance of this class)</p>
+</li>
+<li><p>We need a <strong>private static instance</strong> of the class we are using. </p>
+<p>So if our constructor is private, how do we actually create an instance of the class? </p>
+<p>We have a factory method that&#39;s responsible for creating an instance.</p>
+</li>
+<li><p>We have a Factory method for creation (a static method for creation)</p>
+</li>
+
+</ol>
+<h3 id='example-1'>Example</h3>
+<pre><code class='language-java' lang='java'>private static TeslaCar getInstance() {
+  if (teslacar == null) {
+    teslacar = new teslacar();
+  }
+  return teslacar;
+}
+</code></pre>
+<ul>
+<li>teslacar is a class level static variable</li>
+<li>create a new tesla car instance and return that back if one doesn&#39;t exist</li>
+
+</ul>
+<h4 id='the-problem-with-this-code'>The Problem With This Code</h4>
+<p>The multithreading world causes issues here! </p>
+<p>Take the example of two threads </p>
+<ul>
+<li>thread 1</li>
+<li>thread 2</li>
+
+</ul>
+<p>These two threads operate on the same machine and they want an instance of the teslacar. Remember that in the <code>TeslaCar</code> class, it will be controlling the guidance system, so its super important to only create one instance of the teslacar.. never more than 1!</p>
+<p>Let&#39;s say the first thread enters our code block from above. </p>
+<p>We create a new <code>TeslaCar</code> instance. </p>
+<p>What happens if we have thread 2 which also calls this method at exactly the same time? </p>
+<p>Both of these threads both think that the instance is null. </p>
+<p>Whichevever thread finishes last will override the teslacar with whatever instance it has created. </p>
+<h4 id='the-fix'>The Fix</h4>
+<p>We could use a sychronized block which ensures that only one thread can enter a piece of code at once so we don&#39;t run into this problem.</p>
+<h3 id='the-code'>The Code</h3>
+<pre><code class='language-java' lang='java'>class Teslacar {
+
+    // class level static instance
+    private static volatile Teslacar car;
+
+    // private constructor to prevent mulitple instances
+    private Teslacar(){}
+
+    // factory method to retreive isntance
+    public static Teslacar getInstance(){
+        if (car == null){
+            car = new Teslacar();
+        }
+        return car;
+    }
+}
+
+// main method
+public class Singleton {
+    public static void main(String[] args){
+        Teslacar car1 = Teslacar.getInstance();
+        Teslacar car2 = Teslacar.getInstance();
+
+        System.out.println(car1);
+        System.out.println(car2);
+    }
+}
+</code></pre>
+<ul>
+<li><p>the private static instance of the Teslacar class called car</p>
+</li>
+<li><p>create a private constructor of the Teslacar type that does nothing (prevent external callers from creating an instance UNLESS they are using our factory method)</p>
+</li>
+<li><p>Factory method - check to see if the car is null (Is this the first time entering this block?)</p>
+<ul>
+<li>taking care of multithreading with synchronized keyword</li>
+<li>create a new instance of the Teslacar and assign it to car!</li>
+
+</ul>
+</li>
+
+</ul>
+<h4 id='summary-singleton'>Summary Singleton</h4>
+<p>If you take look in the console, you&#39;ll see the same instance of the Teslacar object. </p>
+<ul>
+<li>we know we created the Singleton correctly!</li>
+
+</ul>
+<p>Singleton - We ensured that a class only has once instance and provided a global point of access to it. </p>
+<p>&nbsp;</p>
+<p><strong>References</strong></p>
+<p>Design Patterns in this tutorial have been inspired from the following resource:</p>
+<p>Sierra, K. and Bates, B., 2008. <em>Head First Java</em>. Sebastopol: O&#39;Reilly Media, Inc.</p>
+
+
+
+
+
+<h1 id='strategy-pattern'>Strategy Pattern</h1>
+<p>The Stategy Pattern defines a family of algorithms and encapsulates each one and makes them interchangable. So when we are using <strong>OOP</strong>, we wrap a <strong>class</strong> around this functionality, and makes them interchangable. We could use an <strong>interface</strong> here so that you could swap out these behaviors at any point in time. The strategy let&#39;s the algorithm <strong>vary indepndently</strong> from the clients that use it. </p>
+<p>We <strong>encapsulate</strong> a behavior into a class,  and make that class <strong>interchangable</strong> with other classes. This allows other classes to use it and use those low level <strong>encapsulations</strong> of behaviors, <strong>without having to know how they are implemented or how they work</strong>. </p>
+<h3 id='example-2'>Example</h3>
+<p>Let&#39;s use the example of a person. </p>
+<p>People have different <strong>behaviors associated with them</strong>. </p>
+<ul>
+<li>All people can eat() and talk()</li>
+
+</ul>
+<p>What would happen if we wanted to add the ability to jump for the person?</p>
+<ul>
+<li>jump()</li>
+
+</ul>
+<p>Not all people can jump. In this example, only some people can jump -- only athletes can jump. For this example, other types of people can&#39;t jump. (Obviously non athlete&#39;s can jump, but this is just a good imaginary example!)</p>
+<p>&nbsp;</p>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/stategy-person.png" referrerpolicy="no-referrer"></p>
+<p>&nbsp;</p>
+<h4 id='how-do-we-accomplish-this'>How do we accomplish this?</h4>
+<p>We could add a jump function above. </p>
+<p>In the subclasses that don&#39;t allow jumping, we could <strong>override</strong> the jump method with something that has no behavior... maybe throw an exception? But this isn&#39;t the best way to do this. This isn&#39;t the OOP way. </p>
+<ul>
+<li>So what is the correct way? Take a look at these other class diagrams. </li>
+
+</ul>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/strategy1.png" style="zoom:67%;" /></p>
+<p>&nbsp;</p>
+<p>So we have the Athlete Person and the Scientist Person. </p>
+<p>So an Athlete Person is able to jump. It has the eat() function that it can override or inherit from the parent class.. It also has a jump() function. </p>
+<p>But the Scientist Person only knows how to eat, this person does not know how to jump. </p>
+<p>&nbsp;</p>
+<p>So how could we code this jump function in an OOP way? Maybe by using an interface or something that makes this more extensible? Yep!</p>
+<p>So the Person would be the <strong>superclass</strong> and Athlete Person and Scientist Person would be the <strong>subclasses</strong>. </p>
+<p>&nbsp;</p>
+<p>Now we want to add jump functionality. We could create a <code>Jumpable</code> interface. And then the Jumpable interface would have a jump function, and the Athlete Person would implement the jump() function.</p>
+<p>This would work, and many programmers would do this very thing! So it makes sense for OOP.</p>
+<h3 id='the-problem-with-this-implementation'>The Problem With this implementation</h3>
+<p>But the problem with this implementation is .. what if we had a different subclass...</p>
+<p><strong>a Musician Person.</strong></p>
+<p>And the Musician Person (in this imaginary example) also needs to jump. We want the jump function to do the SAME thing that exists in the Athlete Person.</p>
+<p>So then the Musician Person would also need to implement the jump function as well. That&#39;s not very reusable. We want to implement the jump function once, and then have that shared between all of the classes.</p>
+<p>&nbsp;</p>
+<h4 id='this-is-where-the-strategy-pattern-comes-in'>This is where the Strategy pattern comes in!</h4>
+<p>Recap: We have a Person superclass, and we want to implement the jump function for some if its subclasses. A natural way to do this is with an <strong>interace</strong> called Jumpable with a jump function. For the <strong>classes</strong> that want to implement jumpable interface, they can have their own jump function.</p>
+<p>The problem - Now any other class that want&#39;s the same jump funciton needs to redefine the same jump function used in the other classes. This isn&#39;t reusable.</p>
+<h3 id='the-solution---strategy-pattern'>The Solution - Strategy Pattern</h3>
+<p>How do we fix it with the strategy pattern? </p>
+<p>&nbsp;</p>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/strategy2.png" style="zoom:67%;" /></p>
+<p>We can fix it by...</p>
+<p>To make it so that we can take that jump behavior and <strong>encapsulate</strong> it .. put it into a class that we can reuse so that we can pass it around later. </p>
+<ul>
+<li>We do this by using an interface. </li>
+
+</ul>
+<p>We will create an <strong>interface</strong> called JumpBehavior. So instead of tying the implementation of JumpBehavior into Athlete and Scientist Person, we wil pull that out and put it into an interface.</p>
+<p>This Jump Behavior interface will have a <strong>concrete implementation.</strong> ( we can have as many implementations as we want)</p>
+<h4 id='concrete-implementation'>Concrete Implementation</h4>
+<p>So people can Jump With Legs...right?  We could have an implementation of the JumpBehavior interface being called the JumpWithLegs implementation. This JumpWithLegs class.. it needs to implement something. </p>
+<p>Let&#39;s say that the JumpBehavior interface had a <strong>function</strong> called jump() that would be implemented by the JumpWithLegs class.</p>
+<p>Now this JumpWithLegs <strong>class</strong> can define <strong>jump()</strong> in any way it wants, and then create an instance of this <strong>JumpWithLegs</strong> class, and pass that in to many different People such as the Athlete Person and the Musician Person. </p>
+<p>So now instead of recyling that jump function like we saw previously, we can just create that <strong>single instance</strong>, and pass that to the Person, and allow that to be used by any of the other classes.</p>
+<p>So what do we need to change to our UML class diagram? </p>
+<h4 id='how-do-we-use-the-strategy-pattern'>How do we use the Strategy Pattern?</h4>
+<p>We need to add an instance level variable of type JumpBehavior in the Person class. </p>
+<p>Then we need to add a mechanism to invoke the JumpBehavior jump function. </p>
+<p>We can do this in many ways. We could create a performJump() function in the Person class which would call on the JumpBehavior method. </p>
+<p>Then we could change the constructor of the Person class to take in a Jump Behavior and pass that in at runtime. We could create a setter so that we could change this functionality later so..</p>
+<p>If we had many different types of the implementing classes (of the jump behavior interface), these could be swapped out at runtime. </p>
+<p>So now, the Athlete Person, when its instantiated, can call the performJump() function, and it will jump. </p>
+<p>And the Scientist Person, if we have a different implementing class.... something called NoJump(), this type of person doesn&#39;t jump </p>
+<p>So the benefit is that we can create a single instance of this and just pass it along. </p>
+<h3 id='strategy-code-example'>Strategy Code Example</h3>
+<p>Now let&#39;s use a real coding example!</p>
+<p><code>Person.java</code> - class</p>
+<pre><code class='language-java' lang='java'>abstract class Person {
+    protected JumpBehavior jumpBehavior;
+    public Person(JumpBehavior jumpBehavior){
+        this.jumpBehavior = jumpBehavior;
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
+}
+</code></pre>
+<ul>
+<li>So we have a Person class (abstract class)</li>
+<li>We have an instance level variable called jumpBehavior of type JumpBehavior.</li>
+<li>We have a constructor that takes in that jumpBehavior and sets that variable.</li>
+<li>We have a performJump function that simply invokes the jumpBehavior jump function.</li>
+
+</ul>
+<h4 id='abstract-classes'>Abstract Classes</h4>
+<ul>
+<li>An abstract class is like a template, so you have to extend it and build on it before you can use it.</li>
+<li>Abstract classes can not be instantiated</li>
+
+</ul>
+<p>&nbsp;</p>
+<p> <code>JumpBehavior.java</code> - interface</p>
+<pre><code class='language-java' lang='java'>interface JumpBehavior {
+    public void jump();
+}
+</code></pre>
+<ul>
+<li>the interface has a jump function. </li>
+
+</ul>
+<p>&nbsp;</p>
+<p><code>JumpWithLegs.java</code> - concrete class</p>
+<pre><code class='language-java' lang='java'>class JumpWithLegs implements JumpBehavior {
+    @Override
+    public void jump() {
+        System.out.println(&quot;I&#39;m Jumping&quot;);
+    }
+}
+</code></pre>
+<ul>
+<li>Concrete class implements the JumpBehavior interface</li>
+<li>We are ovveriding that JumpBehavior interface by actually implementing it.. printing out &quot;I&#39;m Jumping&quot;</li>
+
+</ul>
+<p>&nbsp;</p>
+<p><code>AthletePerson.java</code></p>
+<pre><code class='language-java' lang='java'>class AthletePerson extends Person {
+    public AthletePerson(JumpBehavior jumpBehavior){
+        super(jumpBehavior);
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
+}
+</code></pre>
+<ul>
+<li>Athlete Person is an implemention of that abstract Person class. </li>
+<li>It uses super to call the base constructor </li>
+<li>Performs jump by calling the jumpBehavior&#39;s jump function.</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>If we take a look at the runner of this class... the Main function. What does this look like? </p>
+<p><code>Main Method</code></p>
+<pre><code class='language-java' lang='java'>class StrategyPattern {
+    public static void main(String[] args){
+        JumpBehavior jumpWithLegs = new JumpWithLegs();
+        Person athletePerson = new AthletePerson(jumpWithLegs);
+
+        athletePerson.performJump();
+    }
+}
+</code></pre>
+<ul>
+<li>We instatiate an instance of the JumpBehavior and create a new instance of the AthletePerson and passing in jumpWithLegs.</li>
+<li>We only need to define jumpWithLegs once. </li>
+
+</ul>
+<p>&nbsp;</p>
+<h3 id='strategy-conclusion'>Strategy Conclusion</h3>
+<p>Remember that these behaviors can be interchanged with any implementing classes of type JumpBehavior.</p>
+<p>So we can swap out the behaviors of these People at runtime using a setter function. The Strategy Pattern <strong>encapsulates behavior</strong> in a concrete class and lets you pass it around and resuse it!</p>
+<p>                                                                                                                                                                                                </p>
+<p>Here&#39;s the full code below for the <strong>Strategy Pattern</strong> using people as an example!</p>
+<pre><code class='language-java' lang='java'>interface JumpBehavior {
+    public void jump();
+}
+abstract class Person {
+    protected JumpBehavior jumpBehavior;
+    public Person(JumpBehavior jumpBehavior){
+        this.jumpBehavior = jumpBehavior;
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
+}
+class JumpWithLegs implements JumpBehavior {
+    @Override
+    public void jump() {
+        System.out.println(&quot;I&#39;m Jumping&quot;);
+    }
+}
+class AthletePerson extends Person {
+    public AthletePerson(JumpBehavior jumpBehavior){
+        super(jumpBehavior);
+    }
+    public void performJump(){
+        jumpBehavior.jump();
+    }
+}
+class StrategyPattern {
+    public static void main(String[] args){
+        JumpBehavior jumpWithLegs = new JumpWithLegs();
+        Person athletePerson = new AthletePerson(jumpWithLegs);
+
+        athletePerson.performJump();
+    }
+}
+</code></pre>
+<p><strong>References</strong></p>
+<p>Design Patterns in this tutorial have been inspired from the following resource:</p>
+<p>Sierra, K. and Bates, B., 2008. <em>Head First Java</em>. Sebastopol: O&#39;Reilly Media, Inc.</p>
+<p>&nbsp;</p>
+
+
+
+
+<h1 id='strategy-pattern-assignment'>Strategy Pattern Assignment</h1>
+<p>Add to the code in this tutorial! Add a new class called <code>OlympicPerson</code> which will extend Person.</p>
+<p>Add new jumping behavior for the <code>OlympicPerson</code> and upload your code below</p>
+
+
+
+
+
+
+<h1 id='decorator-pattern'>Decorator Pattern</h1>
+<p>The decorator pattern attaches additional responsibilities to an object dynamically. </p>
+<ul>
+<li>Decorators provide a flexible alternative to subclassing for extending functionality. </li>
+
+</ul>
+<p>Typically when you want to add additional functionality to a class, you subclass → we extend that class and override some of the functionality of the parent class. </p>
+<p>A classic example could be an Animal class that is a superclass and then a dog which is the subclass of the animal. You have a speak method on the parent class which you override in the dog class so when the dog speaks, it barks. If you have a cat subclass, when it speaks, it meows. This is typically how you would subclass in OOP and add additional functionality.</p>
+<p>The decorator relies more on <strong>composition</strong> than <strong>inheritance</strong>. </p>
+<p>By using the decorator pattern you can impoersonate a class, and add additional funcionality without any users of that class knowing that its different from the original class. </p>
+<h4 id='how-we-would-code-a-problem-without-the-decorator-pattern'>How we would code a problem WITHOUT the Decorator Pattern</h4>
+<p>Theme - Build a system to compute the cost of beverages for a coffee shop </p>
+<p>Coffee Beverages </p>
+<ul>
+<li>Dark Roast</li>
+<li>Light Roast</li>
+<li>Espresso</li>
+<li>Latte</li>
+
+</ul>
+<p>Prices added with condiments:</p>
+<ul>
+<li>cream</li>
+<li>almond milk</li>
+<li>sugar</li>
+
+</ul>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/decorator.png" referrerpolicy="no-referrer"></p>
+<p>Let&#39;s assume we have a <strong>coffee</strong> class, with two <strong>attributes</strong>:</p>
+<ul>
+<li>price</li>
+<li>description </li>
+
+</ul>
+<p>If we want to add different beverages now, for every beverage that we have on our menu (espresso, latte, etc. ), we now need to subclass coffee so that we can implement the cost and description function and override that behavior. </p>
+<p>So what would this look like?</p>
+<ul>
+<li><strong>Espresso</strong> needs to extend Coffee and override the cost and description function </li>
+<li><strong>Dark Roast</strong> needs to extend Coffee and override the cost and description function </li>
+<li><strong>Light Roast</strong> needs to extend Coffee and override the cost and description function </li>
+
+</ul>
+<h4 id='the-issues-arises'>The issues arises</h4>
+<p>Say we introduce the concept of <strong>ingredients</strong>. Now, we have an additional cost based on the ingredients:</p>
+<ul>
+<li>cream </li>
+<li>milk </li>
+<li>sugar </li>
+
+</ul>
+<p>How do we incorporate the ingredients conecept into our relationship of classes?</p>
+<ul>
+<li><p>We could create maybe a <strong>List of Ingredients</strong> </p>
+<ul>
+<li>each of these types of ingredients (cream, milk, and sugar) would be a different implementation with different costs</li>
+
+</ul>
+</li>
+<li><p>When we build the Espresso object, we could add 2x sugar to the Espresso</p>
+</li>
+<li><p>In the Dark Roast, we could add 2x sugar, and maybe 1x milk </p>
+<ul>
+<li>compute the cost based on the base cost of the Dark Roast, plus the sugar and milk added on</li>
+
+</ul>
+</li>
+
+</ul>
+<h4 id='whats-wrong-with-this-approach'>What&#39;s wrong with this approach?</h4>
+<p>The problem arises when we have a <strong>class explosion</strong> as you add all the different ingredients in. </p>
+<ul>
+<li>All of the possible combinations would add up to be a big mess!</li>
+
+</ul>
+<h2 id='using-the-decorator-pattern-instead'>Using the Decorator Pattern instead</h2>
+<p>We will use <strong>composition</strong> and <strong>type matching</strong> using <strong>Abstract classes</strong> to impersonate the Coffee class</p>
+<p>Using the same example, let&#39;s walk through it again.</p>
+<p>We have the <strong>Coffee</strong> object, which will have the following attributes:</p>
+<p><strong>Coffee</strong></p>
+<ul>
+<li>description</li>
+<li>cost </li>
+
+</ul>
+<p>The coffee class is <strong>Abstract</strong>. Nobody will actually <strong>instantiate an instance</strong> of the coffee class. Instead, subclasses will use it as a <strong>template</strong></p>
+<p>&nbsp;</p>
+<p>Let&#39;s simplify things, and just use one drink to explain things. </p>
+<p>Let&#39;s say we have the <strong>Espresso</strong> beverage class. It has a different base cost than coffee. It&#39;s a little more expensive.</p>
+<p>It&#39;s cost will be different</p>
+<p><strong>Espresso</strong> - implements the Coffee abstract class</p>
+<ul>
+<li>Cost - $1.99</li>
+
+</ul>
+<h4 id='introduce-the-coffee-decorator'>Introduce the <strong>Coffee Decorator</strong>! </h4>
+<p>This class will &quot;impersonate&quot; coffee. It will <strong>implement</strong> Coffee, but it will allow us to <strong>add ingredients dynamically</strong></p>
+<p>Coffee Decorator will be abstract - we will never instantiate an instance of the decorator </p>
+<p>Coffee Decorator - allows for clever type matching in the implementation</p>
+<p>&nbsp;</p>
+<p><strong>Coffee Decorator</strong></p>
+<p>Next, we have the concept of adding <strong>ingredients</strong> </p>
+<p>Let&#39;s create a class called <strong>WithMilk</strong>, and <strong>WithSugar</strong></p>
+<p>&nbsp;</p>
+<p>For all the ingredients that we have, we can add additional classes just like this.</p>
+<p>&nbsp;</p>
+<p><strong>WithMilk</strong> implements the Coffee Decorator </p>
+<ul>
+<li>Cost - $0.50</li>
+
+</ul>
+<p><strong>WithSugar</strong> implements the Coffee Decorator </p>
+<ul>
+<li>Cost - $0.25</li>
+
+</ul>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/coffee_dec.png" referrerpolicy="no-referrer"></p>
+<p>Both of these classes implement the Coffee Decorator. And the Coffee Decorator implements coffee, so WithSugar and WithMilk are of type Coffee... but through this relationship chain that we just built!</p>
+<p>&nbsp;</p>
+<p>The basic idea is that now when we construct an instance of our Espresso, and we add additional things to it:</p>
+<ul>
+<li>adding milk ($0.50)</li>
+<li>adding sugar ($0.25)</li>
+
+</ul>
+<p>These added costs will be <strong>added dynamically</strong> </p>
+<p>We will compute the cost function as the sum of all the ingredients, and the base - in this case - Espresso. </p>
+<h4 id='decorator-pattern-code'>Decorator Pattern Code</h4>
+<p><code>Coffee.java</code></p>
+<pre><code class='language-java' lang='java'>public abstract class Coffee {
+
+    String description = &quot;Unknown Coffee&quot;;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public abstract double cost();
+}
+</code></pre>
+<ul>
+<li>Coffee is abstract </li>
+<li>Defines a cost function which is abstract since coffee is abstract</li>
+<li>Enforing that all subclasses need to define their cost function</li>
+<li>anyone that implements the CoffeeDecorator, needs to implement the getDescription method and the cost function </li>
+
+</ul>
+<p><code>Espresso.java</code></p>
+<pre><code class='language-java' lang='java'>public class Espresso extends Coffee {
+
+    public Espresso() {
+        description = &quot;Espresso&quot;;
+    }
+
+    @Override
+    public double cost() {
+        return 1.99;
+    }
+
+}
+</code></pre>
+<ul>
+<li>default constructor sets the description</li>
+<li>base cost would be 1.99</li>
+
+</ul>
+<p><code>CoffeeDecorator.java</code></p>
+<pre><code class='language-java' lang='java'>public abstract class CoffeeDecorator extends Coffee {
+    public abstract String getDescription();
+}
+</code></pre>
+<ul>
+<li>abstract class that extends Coffee </li>
+<li>CoffeeDecorator is coffee and you must override getDescription method</li>
+
+</ul>
+<p><code>WithMilk.java</code></p>
+<pre><code class='language-java' lang='java'>public class WithMilk extends CoffeeDecorator {
+
+    Coffee coffee;
+
+    public WithMilk(Coffee coffee) {
+        this.coffee = coffee;
+    }
+
+    @Override
+    public String getDescription() {
+        return coffee.getDescription() + &quot;, Milk&quot;;
+    }
+
+    @Override
+    public double cost() {
+        return coffee.cost() + .50;
+    }
+}
+</code></pre>
+<ul>
+<li>this is where the decorator magic happens!</li>
+<li>We have have to override desciption and cost</li>
+<li>Keeps a refrence to the parent coffee object that it was called upon. We are holding reference to a coffee object</li>
+<li>Whenever the constructor is called (WithMilk), we need to take an already existing coffee object (you would use espresso in this case since this is our base object), and we are holding a reference to it </li>
+<li>in getDescripton and cost, this is where the magic happens. We return the coffee&#39;s get description function, and we append Milk to it (in this case)</li>
+<li>the object now contains an additional property (which is milk )</li>
+
+</ul>
+<p><code>WithSugar.java</code></p>
+<pre><code class='language-java' lang='java'>public class WithSugar extends CoffeeDecorator {
+
+    Coffee coffee;
+
+    public WithSugar(Coffee coffee) {
+        this.coffee = coffee;
+    }
+
+    @Override
+    public String getDescription() {
+        return coffee.getDescription() + &quot;, Sugar&quot;;
+    }
+
+    @Override
+    public double cost() {
+        return coffee.cost() + .25;
+    }
+}
+
+</code></pre>
+<ul>
+<li>basically the same as Milk! </li>
+
+</ul>
+<p><code>Decorator.java</code></p>
+<pre><code class='language-java' lang='java'>public class Decorator {
+    public static void main(String[] args) {
+
+        Coffee espresso = new Espresso(); 
+        printCoffee(espresso); 
+        // we should see 1.99, and it should be espresso
+
+        espresso = new WithMilk(espresso);
+        printCoffee(espresso);
+        // let&#39;s take that espresso object, and add some milk 
+
+        espresso = new WithSugar(espresso);
+        printCoffee(espresso);
+
+    }
+
+    private static void printCoffee(Coffee c) {
+        System.out.println(&quot;Cost: &quot; + c.cost() + &quot;, Description: &quot; + c.getDescription());
+    }
+}
+</code></pre>
+<ul>
+<li>let&#39;s test this out!</li>
+
+</ul>
+<p><strong>References</strong></p>
+<p>Design Patterns in this tutorial have been inspired from the following resource:</p>
+<p>Sierra, K. and Bates, B., 2008. <em>Head First Java</em>. Sebastopol: O&#39;Reilly Media, Inc.</p>
+
+
+
+
+<h1 id='observer-observable-pattern'>Observer-Observable Pattern</h1>
+<p>Where delegation was for <strong>one to one</strong> relationships, Observer is used for <strong>one to many</strong> relationships. </p>
+<ul>
+<li>When one object changes state, all of its dependents are notified and updated automatically. </li>
+<li>One object is the (subject) and then we have multiple (dependents) that care about that object. </li>
+
+</ul>
+<h4 id='weather-station'>Weather Station</h4>
+<p>Let&#39;s take the example of a <strong>weather station</strong>. The weather station&#39;s job is to collect information like temperature, humidity, etc. </p>
+<p>The Weather Station is the one.. in the <strong>one to many</strong> definition and we can call the one - the subject </p>
+<ul>
+<li>The <strong>observers</strong> will be <strong>many</strong></li>
+
+</ul>
+<p>&nbsp;</p>
+<p>The observers want the most up to date information that this weather station retrieves. So, imagine the weather station got new information once every hour and our first observer will be the <strong>current display</strong>. The second observer will be in charge of forecasting. </p>
+<ul>
+<li>In the observer pattern, we have something called a subscription (the <strong>obsevers</strong> need to register for a <strong>subscription</strong> for the <strong>subject</strong>)</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>The registration goes from the observer to the subject. Whenever something changes in the subject, the subject will broadcast a message to all of its observers. </p>
+<ul>
+<li>New data gets populated into the weather station and the subject will broadcast a message to all of its observers. </li>
+
+</ul>
+<p>&nbsp;</p>
+<p>We can handle this in many ways. We could have an update in the Current Display which gets called by the subject. And in that  update function, you have a handler that does whatever it needs to do when the data changes.</p>
+<p>&nbsp;</p>
+<p>In the case of the CurrentDisplay, we could set a local variable. In the Forecasting Display, we could set a list of all the historical things.</p>
+<p>&nbsp;</p>
+<p><strong>Recap</strong>: One subject and mulitple observers (fan out)</p>
+<p>&nbsp;</p>
+<h4 id='why-do-we-use-observer-pattern'>Why do we use observer pattern?</h4>
+<p>If the observers were responsible for getting the data from the subject, they would have to constantly <strong>poll</strong> the <strong>observer</strong> to ask (Did anything change? Did anything change? ...  This would not be effecient)</p>
+<p>The number of observers would ultimately multiply the number of polling required. </p>
+<h4 id='the-solution-1'>The solution</h4>
+<p>We do the opposite. </p>
+<p>All we have is one update ocurring, and that&#39;s getting pushed to all the observers. </p>
+<ul>
+<li>allows for <strong>loose coupling</strong> (allows systems to operate independently) - the subjects <strong>doesn&#39;t have to know</strong> about the observers</li>
+<li>great for testability when you&#39;re only testing one component</li>
+
+</ul>
+<h4 id='class-diagram-example'>Class Diagram Example</h4>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/observer.png" referrerpolicy="no-referrer"></p>
+<p>Let&#39;s define an interface called Subject (the thing that broadcasts the messages out)</p>
+<p>&nbsp;</p>
+<p><strong>Subject (interface)</strong></p>
+<ul>
+<li>register() - add&#39;s an observer</li>
+<li>remove() - removes an observer</li>
+<li>notify() - broadcasts a message to all the observers</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>Next, let&#39;s create a <strong>concrete class</strong> called WeatherStation. The WeatherStation will implement the Subject interface and it will define the three methods above (register, remove, notify) </p>
+<p>&nbsp;</p>
+<p>Next we need a separate inteface to represent the observers. </p>
+<p>&nbsp;</p>
+<p>We will call this interface Observer </p>
+<p><strong>Observer (interface)</strong></p>
+<ul>
+<li>update()</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>The observers will implement the update method because that&#39;s what&#39;s going to tell the weather station what it should do with the observer when a change event happens. </p>
+<p>&nbsp;</p>
+<p><strong>The Subject:</strong></p>
+<ul>
+<li><p>WeatherStation</p>
+<ul>
+<li>temp</li>
+<li>humidty </li>
+
+</ul>
+</li>
+
+</ul>
+<p>&nbsp;</p>
+<p><strong>Our Observers:</strong></p>
+<ul>
+<li><p>CurrentConditions (implements Observer)</p>
+<ul>
+<li>temp</li>
+<li>humidy</li>
+<li>getCurrent()</li>
+
+</ul>
+</li>
+<li><p>ForecastConditions (implements Observer)</p>
+<ul>
+<li>lastSevenDays()</li>
+
+</ul>
+</li>
+
+</ul>
+<p>&nbsp;</p>
+<p><strong>Recap</strong>:</p>
+<p>We have a WeatherStation that is our Subject. We register the current conditions concrete classes which are of interface observer type. Whenever there is an update the temp and humidity, let&#39;s propogate that update into the observer classes by calling the update method. </p>
+<p>&nbsp;</p>
+<h4 id='code-example'>Code Example:</h4>
+<p><code>Subject.java</code></p>
+<pre><code class='language-java' lang='java'>interface Subject {
+    public void registerObserver(Observer o); // takes in an observer
+    public void removeObserver(Observer o);
+    public void notifyObservers(); // calls the update method for all the observers
+}
+</code></pre>
+<p><code>Observer.java</code></p>
+<pre><code class='language-java' lang='java'>interface Observer {
+    public void update(int temp, int humidity); // whenever the update is triggered, here is the new measurement
+}
+</code></pre>
+<p><code>WeatherStation.java</code></p>
+<pre><code class='language-java' lang='java'>class WeatherStation implements Subject {
+    private List&lt;Observer&gt; observers;
+    private int temp; // keep track of last recorded temp and humidity
+    private int humidity;
+
+    public WeatherStation() {
+        this.observers = new ArrayList&lt;&gt;();
+    }
+
+    @Override
+    public void registerObserver(Observer o) {
+        observers.add(o);
+      // take in the observer being passed and add it to the observer array
+    }
+
+    @Override
+    public void removeObserver(Observer o) {
+        int observerIndex = observers.indexOf(o); //Do I have this observer?
+        if (observerIndex &gt;= 0) {
+            observers.remove(observerIndex);
+        }
+    }
+
+    @Override
+    public void notifyObservers() {
+        observers.forEach(o -&gt; o.update(temp, humidity));
+      // taking all of the observers, and for every one, calling the update method with the temperature and the humidity
+    }
+
+    public void measurementsChanged(int temp, int humidity) {
+      // called on the weather station object. (whenever someone does a recording of that weather station, they will call the weather station&#39;s measurementsChanged function, pass in the new temp and huidity, set locally, and then call the notify obserers method, )
+        this.temp = temp;
+        this.humidity = humidity;
+        notifyObservers();
+    }
+}
+</code></pre>
+<p><code>ForecastDisplay.java</code></p>
+<pre><code class='language-java' lang='java'>class ForecastDisplay implements Observer {
+
+    private List&lt;Integer&gt; tempHistory;
+    private List&lt;Integer&gt; humidityHistory;
+
+    public ForecastDisplay(Subject weatherStation) {
+        tempHistory = new ArrayList&lt;&gt;();
+        humidityHistory = new ArrayList&lt;&gt;();
+        weatherStation.registerObserver(this); // subscribe to the Subject
+    }
+
+    @Override
+    public void update(int temp, int humidity) {
+        this.tempHistory.add(temp);
+        this.humidityHistory.add(temp);
+        display7DayHistory();
+    }
+
+    public void display7DayHistory() {
+        //Print Last 7 days History of Temperature and Humidity
+        System.out.println(&quot;Temperature History: &quot; +
+                tempHistory.subList(Math.max(tempHistory.size() - 7, 0), tempHistory.size()));
+        System.out.println(&quot;Humidity History: &quot; +
+                humidityHistory.subList(Math.max(humidityHistory.size() - 7, 0), humidityHistory.size()));
+
+    }
+}
+</code></pre>
+<p><code>CurrentConditionsDisplay.java</code></p>
+<pre><code class='language-java' lang='java'>class CurrentConditionsDisplay implements Observer {
+
+    private int temp;
+    private int humidity;
+
+    public CurrentConditionsDisplay(Subject weatherStation) {
+      // this referes to this instance of the current conditions display class. We are registering ourselves with the subject
+        weatherStation.registerObserver(this);
+    }
+
+    @Override
+    public void update(int temp, int humidity) {
+        this.temp = temp;
+        this.humidity = humidity;
+        displayCurrent();
+    }
+
+    public void displayCurrent() {
+        System.out.println(&quot;Current Temperature: &quot; + temp);
+        System.out.println(&quot;Current Humidity: &quot; + humidity);
+    }
+}
+</code></pre>
+<p><code>ObserverPattern.java</code></p>
+<pre><code class='language-java' lang='java'>public class ObserverPattern {
+
+    public static void main(String[] args) throws InterruptedException {
+        //Create the data object (publisher / topic)
+        WeatherStation weatherStation = new WeatherStation();
+
+        //Create and register our displays (observers / subscribers)
+        CurrentConditionsDisplay currentConditionsDisplay =
+                new CurrentConditionsDisplay(weatherStation);
+        ForecastDisplay forecastDisplay = new ForecastDisplay(weatherStation);
+
+        //Simulate updates
+        for (int i = 0; i &lt; 5; i++) {
+            System.out.println(&quot;\n--- Update &quot; + i + &quot; ---&quot;);
+
+            int randomTemp = getRandomint(-50, 40);
+            int randomHumidity = getRandomint(0, 100);
+
+            weatherStation.measurementsChanged(randomTemp, randomHumidity);
+
+            Thread.sleep(1000);
+        }
+    }
+
+    private static int getRandomint(int min, int max) {
+        Random rand = new Random();
+        return rand.nextInt(max + 1 - min) + min;
+    }
+}
+</code></pre>
+<p>Don&#39;t forget to add your imports!</p>
+<ul>
+<li><code>import java.util.ArrayList;</code></li>
+<li><code>import java.util.List;</code></li>
+<li><code>import java.util.Random;</code></li>
+
+</ul>
+<p>&nbsp;</p>
+<p><strong>References</strong></p>
+<p>Design Patterns in this tutorial have been inspired from the following resource:</p>
+<p>Sierra, K. and Bates, B., 2008. <em>Head First Java</em>. Sebastopol: O&#39;Reilly Media, Inc.</p>
+
+
+
+
+
+<h1 id='algorithms-and-big-o'>Algorithms and Big O</h1>
+<p>As you are developing applications in the future, you must keep in mind time complexity. </p>
+<h4 id='birds-vs-humans'>Birds vs Humans</h4>
+<p>In 2009, A pigeon carrying a flash drive stick raced against the area’s fastest internet in South Africa to send a large file. </p>
+<p>Winston the pigeon, took 68 minutes to carry a USB stick 60 miles all because workers wanted to prove how slow wifi was. </p>
+<p><strong>How did the pigeon win the race?</strong></p>
+<p>Speed matters, and it matters even more at scale! </p>
+<p>Winston the pigeon won the race because large files take a long time to send over slow internet!</p>
+<p>Optimization is key.</p>
+<p>That&#39;s where Big O comes in with computer algorithms. </p>
+<h4 id='variables-introduced'>Variables Introduced</h4>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/bigo.png" style="float:left;zoom:40%;" /></p>
+<ul>
+<li><strong>O(1) —</strong> Constant Time: it only takes a single step for the algorithm to accomplish the task.</li>
+<li><strong>O(log n) —</strong> Logarithmic Time: The number of steps it takes to accomplish a task are decreased by some factor with each step.</li>
+<li><strong>O(n) —</strong> Scales Linearly Linear Time: The number of of steps required are directly related (1 to 1). twice amount of data = twice amount of time</li>
+<li><strong>O(n²) —</strong> Quadratic Time: The number of steps it takes to accomplish a task is square of n.</li>
+<li><strong>O(C^n) —</strong> Exponential: The number of steps it takes to accomplish a task is a constant to the n power (pretty large number).</li>
+
+</ul>
+<p>&nbsp;</p>
+<h4 id='rules'>Rules</h4>
+<ol start='' >
+<li><p>If you have two different steps in your algorithm, you add up those steps</p>
+<ul>
+<li>O(a), O(b) = O(a+b)</li>
+
+</ul>
+</li>
+<li><p>Drop constants </p>
+</li>
+<li><p>If you have different inputs, use different variables</p>
+</li>
+<li><p>Drop non-dominate terms</p>
+<ul>
+<li>O(n+n^2) → O(n^2)</li>
+
+</ul>
+</li>
+
+</ol>
+<h2 id='bubble-sort'>Bubble Sort</h2>
+<p>Take a look at the following visualization of Bubble Sort Sorting Algoritm : <a href='https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html' target='_blank' class='url'>https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html</a>. </p>
+<p>Algorithm visualizations are a great way to compare alrgoritms! </p>
+<p>Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.</p>
+<p>This simplicity comes at a price! Bubble Sort is quite slow.</p>
+<p>Bubble sort has an average and worst-case running time of <strong>O(n²)</strong>, so in most cases, a faster algorithm is more desirable.</p>
+<h2 id='quick-sort-example'>Quick Sort Example</h2>
+<p>Quick Sort is popular and effecient way to sort numbers!</p>
+<p>Let&#39;s take an array of integers</p>
+<pre><code class='language-java' lang='java'>[12,2,3,13,19]
+</code></pre>
+<p>We pick one element to be the pivot element</p>
+<p>We will pick the pivot elment randomly for now</p>
+<p>We walk through the array, and swap elements around so that the elments less than the pivot, come before all elements bigger than it </p>
+<p>We get a natural division in the array from this.</p>
+<p>Then we repeat this process to the left portion and right portion of the array</p>
+<p>We do this over and over again until its <strong>sorted</strong></p>
+<h4 id='lets-take-a-closer-look'>Let&#39;s take a closer look</h4>
+<pre><code class='language-java' lang='java'>[15,3,9,8,5,2,7,1,6]
+</code></pre>
+<p>Pick a pivor point randomly - let&#39;s say 7</p>
+<p>Then we walk through the array</p>
+<ul>
+<li>from left to right, swapping elements if they are out of order</li>
+<li>Right to left, swapping elements if they are out of order</li>
+
+</ul>
+<p>Every element less than 7 should be before every element greater than 7</p>
+<p>&nbsp;</p>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/quicksort.png" style="float:left;zoom:100%;" /></p>
+<p>First we have 6 and 15</p>
+<ul>
+<li>6 is smaller than 7 and 15 is bigger than 7  - these should be swapped!</li>
+<li>Move the left pointer until we find an element that should be on the other side</li>
+
+</ul>
+<pre><code class='language-java' lang='java'>[6,3,9,8,5,2,7,1,15]
+</code></pre>
+<p>Then, let&#39;s move the left pointer until we find an element that should be on the other side.</p>
+<p>We do this same thing for the right!</p>
+<ul>
+<li>9 and 1, those should be swapped as well.</li>
+
+</ul>
+<pre><code class='language-java' lang='java'>[6,3,1,8,5,2,7,9,15]
+</code></pre>
+<ul>
+<li>2 and 8, those should be swapped!</li>
+
+</ul>
+<pre><code class='language-java' lang='java'>[6,3,1,2,5,8,7,9,15]
+</code></pre>
+<h4 id='we-did-it'>We did it!</h4>
+<p>Now, we have an arrangement such that everything smaller than the pivot is on the left, and everything bigger than the pivot is on the right side. </p>
+<p>Now, we just do quick sort on these two halves</p>
+<p>Here&#39;s the left side:</p>
+<pre><code class='language-java' lang='java'>[6,3,1,2,5]
+</code></pre>
+<ul>
+<li>let&#39;s pick a random pivot </li>
+
+</ul>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/quicksort_half.png" style="float:left;zoom:100%;" /></p>
+<ul>
+<li>Once again, we have the left and right pointer</li>
+
+</ul>
+<p>We move the left pointer over until we have something that should be on the other side of 3. </p>
+<p>We move the right pointer over until we find something that should be swapped. </p>
+<ul>
+<li>6 and 2 should be swapped!</li>
+
+</ul>
+<p>As we continue to move the left pointer over, we realize that we are good on this side!</p>
+<h4 id='where-are-we-now'>Where are we now?</h4>
+<p>We currently have three sections:</p>
+<p><code>[2,3,1]</code> <code>[6,5]</code> <code>[8,7,9,15]</code></p>
+<p>We move our focus to the left side: <code>[2,3,1]</code></p>
+<p><img src="https://hosting.photobucket.com/images/i/jhuntcd/quick_sort_left_half.png?width=285&height=175&crop=fill" style="float:left;zoom:100%;" /></p>
+<ul>
+<li>we swap 3 and 1!</li>
+
+</ul>
+<p>we are left with <code>[2,1,3]</code>, and we are actually done with this part. </p>
+<p>&nbsp;</p>
+<p>Now we have he following sorted:</p>
+<p><code>[2,1]</code> <code>[3]</code> <code>[6,5]</code> <code>[8,7,9,15]</code></p>
+<p>&nbsp;</p>
+<ul>
+<li>Eventually we will wind up with a sorted array!</li>
+
+</ul>
+<p>&nbsp;</p>
+<h4 id='how-effecient-is-this-sorting-algorithm'>How effecient is this sorting algorithm?</h4>
+<p>&nbsp;</p>
+<h4 id='the-good-case'>The Good Case</h4>
+<p>Ideally, we are dividing the array in half each time - that depends on how we pick our pivot</p>
+<ul>
+<li>we would ideally pick the median as the pivot</li>
+
+</ul>
+<p>In this case we get O(nlogn)</p>
+<ul>
+<li>each element gets quicksort called on it log(n) times</li>
+<li>So there are n elements, and they go through log(n) swaps</li>
+<li>It will take O(nlogn) time overall (Average)</li>
+
+</ul>
+<h4 id='worst-case'>Worst Case</h4>
+<p>In the bad case: </p>
+<ul>
+<li>we always pick a very terrible pivot (the very first element in the array)</li>
+<li>then we have n^2 as our Big O</li>
+
+</ul>
+<p>&nbsp;</p>
+<h3 id='coding-quick-sort'>Coding Quick Sort</h3>
+<pre><code class='language-java' lang='java'>public class QuickSort {
+    public static void main(String[] args) {
+        Integer[] integerArray = new Integer[] { 12, 13, 24, 10, 3, 6, 90, 70 };
+        quickSort( integerArray, 0, integerArray.length - 1 ); // sort with quicksort
+        System.out.println(Arrays.toString(integerArray)); // check our results!
+    }
+    public static void quickSort(Integer[] array, int low, int high) {
+        if (array == null || array.length == 0){ //check for empty or null array
+            return;
+        }
+        if (low &gt;= high){
+            return;
+        }
+        
+        int middle = low + (high - low) / 2; //Get the pivot element from the middle of the list
+        int pivot = array[middle];
+
+        int i = low; // make left &lt; pivot
+        int j = high; // make right &gt; pivot
+
+        while (i &lt;= j) {
+            
+            while (array[i] &lt; pivot) { // Keep checking until all values on the left side array are lower than pivot
+                i++;
+            }
+            while (array[j] &gt; pivot) { // Keep checking until all values on the left side array are greater than pivot
+                j--;
+            }
+            //Now compare values from both side of lists to see if they need swapping
+            //After swapping move the iterator on both lists
+            if (i &lt;= j) {
+                swap (array, i, j);
+                i++;
+                j--;
+            }
+        }
+        // recursively sort the  two sub arrays (same operation as above)
+        if (low &lt; j){
+            quickSort(array, low, j);
+        }
+        if (high &gt; i){
+            quickSort(array, i, high);
+        }
+    }
+    public static void swap (Integer array[], int x, int y) {
+        int temp = array[x];
+        array[x] = array[y];
+        array[y] = temp;
+    }
+}
+</code></pre>
+
+
+
+
+
+<h1 id='palindrome-assignment'>Palindrome Assignment</h1>
+<p>To get your hands dirty, write a Java program that searches for words that are <strong>palindromes</strong></p>
+<p>Hint: Use <strong>recursion</strong> if you&#39;d like!</p>
+<p><strong>Your output should look like this:</strong></p>
+<pre><code>Enter the String for check:
+codingdojoissomuchfun
+codingdojoissomuchfun is not a palindrome
+</code></pre>
+<pre><code>Enter the String for check:
+racecar
+racecar is a palindrome
+</code></pre>
+
+
+<h1 id='merge-sort-assignment---optional'>Merge Sort Assignment - Optional</h1>
+<p>Just like QuickSort, <strong>Merge Sort</strong> is an algorithm where we divide and conquer! </p>
+<p>Merge Sort divides the input array into two halves, calls itself for the two halves, and then merges the two sorted halves. The merge() function is used for merging two halves</p>
+<p>Optional Assignment: </p>
+<ol start='' >
+<li>Implement Merge Sort in Java and upload your code</li>
+
+</ol>
+
+
+
+<h1 id='decision-making'>Decision Making</h1>
+<p>As programmers, we cannot and will not reinvent the wheel. </p>
+<ul>
+<li>How do you choose the right tech stack for your app? </li>
+<li>Which platforms, databases, programming languages, should we use? </li>
+<li>We should choose the right tools, platforms and libraries. </li>
+
+</ul>
+<p>&nbsp;</p>
+<p>We have questions to ask ourselves:</p>
+<ul>
+<li>What platforms do you want to use? What’s your personal preference?</li>
+<li>What’s your expertise? Which tools do you know best?</li>
+<li>Which solutions costs a lot of effort to implement? What do you have time for?</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>Start by making a list of “requirements”. Things like:</p>
+<ul>
+<li>Should the database be avaiable through the cloud?</li>
+<li>What&#39;s your budget? Maybe $50 max?</li>
+<li>You’re building a prototype now, but version 2 should scale to 100k users</li>
+<li>You want to keep the number of 3rd-party libraries to a minimum</li>
+
+</ul>
+<p>&nbsp;</p>
+<p>Here’s an example of such a potential tech stack:</p>
+<ul>
+<li>Databases:  Firebase, Parse Server, SQLite, Realm</li>
+<li>Platforms: iOS, Web, Android, J2ME</li>
+<li>Frameworks: Cocoa Touch, Angular, React</li>
+<li>Design Tools: Sketch, Photoshop</li>
+<li>Languages: Java, Swift, Objective-C, JavaScript, Kotlin, Python, C#</li>
+<li>Libraries: Alamofire, SDWebImage</li>
+
+</ul>
+<p>&nbsp;</p>
+<h3 id='dependencies-and-package-managers'>Dependencies and Package Managers</h3>
+<p>We should avoid spending time and effort solving problems that others have already solved. As a developer, the most common way of putting this principle into practice is by using third-party libraries</p>
+<p>At scale, life is easier when you rely on as few third-party libraries as you can get away with. Fortunately, you don&#39;t need that many.</p>
+<p>Let&#39;s take <strong>iOS Development</strong> for an example: </p>
+<p>Imagine you’re working on an iOS app, and you want to use a third-party library in your project. That third-party library, a depenency, includes code that you want to use in your app, such as for HTTP networking, working with databases, or handling JSON. </p>
+<p>Here are some popular libaries for iOS Developers:</p>
+<ol start='' >
+<li>AFNetworking</li>
+<li>Realm</li>
+<li>SDWebImage</li>
+<li>Alamofire</li>
+<li>MBProgressHUD</li>
+<li>SwiftyJSON</li>
+
+</ol>
+<h4 id='how-are-you-going-to-add-that-code-to-your-own-ios-app-project'>How are you going to “add” that code to your own iOS app project?</h4>
+<p>A few approaches might work:</p>
+<ol start='' >
+<li>You download the library’s code from GitHub, or from the author’s website, and copy it manually into your Xcode project</li>
+<li>You use a git submodule to add the code to your project, and then sync it via Git\</li>
+<li>You use a package manager, such as CocoaPods, Carthage or Swift Package Manager</li>
+
+</ol>
+<p>Of those 3 options, using a package manager makes the most sense. Here’s why:</p>
+<ul>
+<li>super convenient, only a couple of lines of code are needed for configuration</li>
+<li>helps you manage libraries your code depends on</li>
+<li>automatically adds the latest version of a library to your Xcode project</li>
+<li>you can specify exactly which version of a library you want</li>
+<li>resolves dependencies between libraries, so you won’t run into conflicts</li>
+<li>automatically downloads, compiles and links libraries, which speeds up project compile times</li>
+
+</ul>
+<h2 id='thinking-through-options'>Thinking Through Options</h2>
+<p>Firebase has supported real-time push and data binding from the start. It’s “serverless”, so you don’t have to run and maintain your own servers. </p>
+<ol start='' >
+<li>Firebase has two different kinds of cloud database platforms: (Realtime Database and Firestore). </li>
+<li>If you choose Firebase, you’ll have to apply the tech stack framework again to discover what this means for your app.</li>
+
+</ol>
+<h3 id='the-solution-2'>The Solution:</h3>
+<ol start='' >
+<li>Discover tools, frameworks, libraries and their alternatives</li>
+<li>Apply requirements to the things you found, filtering them</li>
+<li>Make a decision, based on the above, and stick with it</li>
+
+</ol>
+
+
+
+
+<h1 id='decision-making-assignment'>Decision Making Assignment</h1>
+<p>Using pen and paper, OR in a simple text-editor, write down a prediction for the following questions:</p>
+<ol>
+<li>The design patterns you plan to implement with both iOS Development and Android</li>
+<li>How you plan to incorporate the backend of your app with the front end ... using the principles of OOP. </li>
+<li>Which platfroms would you like to utilize in your app? For what reason? For example, what would be the benefits and drawbacks of using something like Firebase?</li>
+<li>Which languages are you most familiar with? How will this affect your decisions for the previous question? </li>
+
+</ol>
+</body>
+</html>
