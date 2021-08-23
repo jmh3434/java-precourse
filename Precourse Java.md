@@ -785,14 +785,14 @@ Core application logic that creates the **relationship between the view and the 
 
 Use Delegation in order to achieve the following
 
--   Delegation can be an alternative to inheritance.
+-   Delegation can be an alternative to inheritance
 -   Delegation means that you use an object of another class as an instance variable, and forward messages to the instance.
 
 When you delegate, you are simply calling up some class which knows what must be done. You do not really care how it does it, all you care about is that the class you are calling knows what needs doing.
 
 #### Example Using Delegation
 
-Passing the responsibility to someone else. In OOP, delegation is when you pass a task of an object to another one. 
+**We are passing the responsibility to someone else.** In OOP, delegation is when you pass a task of an object to another one. 
 
 Let's imagine that we need to build an application and for that we need:
 
@@ -936,7 +936,6 @@ public class DelegationDemonstration {
 
         SwiftDeveloper switDev = new SwiftDeveloper();
         UXDesigner designer = new UXDesigner();
-        KotlinDeveloper kotlinDev = new KotlinDeveloper();
 
         Employee james = new Employee(switDev,designer);
         Employee david = new Employee(kotlinDev,designer);
@@ -987,12 +986,6 @@ class UXDesigner implements  WhoCanDesign {
         System.out.println("I'm designing UX");
     }
 }
-class KotlinDeveloper implements WhoCanCode {
-    @Override
-    public void writeCode() {
-        System.out.println("I'm writing Kotlin Code");
-    }
-}
 ```
 
 **References**
@@ -1013,8 +1006,6 @@ Assignment Part 2
 
 -   it is important that you understand what is going on in the code. Please provide **comments** throughout each class and interface explaining what each part does in your code
 -   comment and explain the new class that you have implemented called "KotlinDeveloper"
-
-
 
 # Singleton Pattern In Java
 
@@ -1139,15 +1130,13 @@ Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, I
 
 The Stategy Pattern defines a family of algorithms and encapsulates each one and makes them interchangable. So when we are using **OOP**, we wrap a **class** around this functionality, and makes them interchangable. We could use an **interface** here so that you could swap out these behaviors at any point in time. The strategy let's the algorithm **vary indepndently** from the clients that use it. 
 
+We **encapsulate** a behavior into a class,  and make that class **interchangable** with other classes. This allows other classes to use it and use those low level **encapsulations** of behaviors, **without having to know how they are implemented or how they work**. 
 
 
-Encapsulate a behavior into a class,  and make that class **interchangable** with other classes. This allows other classes to use it and use those low level **encapsulations** of behaviors, **without having to know how they are implemented or how they work**. 
 
-
+### Example
 
 Let's use the example of a person. 
-
-
 
 People have different **behaviors associated with them**. 
 
@@ -1156,8 +1145,6 @@ People have different **behaviors associated with them**.
 What would happen if we wanted to add the ability to jump for the person?
 
 -   jump()
-
-
 
 Not all people can jump. In this example, only some people can jump -- only athletes can jump. For this example, other types of people can't jump. (Obviously non athlete's can jump, but this is just a good imaginary example!)
 
@@ -1187,8 +1174,6 @@ So we have the Athlete Person and the Scientist Person.
 
 So a Athlete Person is able to jump. It has the eat() function that it can override or inherit from the parent class.. It also has a jump() function. 
 
-
-
 But the Scientist Person only knows how to eat, this person does not know how to jump. 
 
 
@@ -1210,8 +1195,6 @@ This would work, and many programmers would do this very thing! So it makes sens
 But the problem with this implementation is .. what if we had a different subclass...
 
 a Musician Person.
-
-
 
 And the Musician Person (in this imaginary example) also needs to jump. We want the jump function to do the SAME thing that exists in the Athlete Person.
 
@@ -1323,8 +1306,6 @@ abstract class Person {
 -   We have an instance level variable called jumpBehavior of type JumpBehavior.
 -   We have a constructor that takes in that jumpBehavior and sets that variable.
 -   We have a performJump function that simply invokes the jumpBehavior jump function.
-
-
 
 #### Abstract Classes
 
@@ -2299,9 +2280,9 @@ public class QuickSort {
 
 # Palindrome Assignment
 
-To get your hands dirty, write a Java program that searches for words that are palindromes
+To get your hands dirty, write a Java program that searches for words that are **palindromes**
 
-Hint: Use recursion if you'd like!
+Hint: Use **recursion** if you'd like!
 
 **Your output should look like this:**
 
@@ -2330,8 +2311,6 @@ Optional Assignment:
 # Decision Making
 
 As programmers, we cannot and will not reinvent the wheel. 
-
-
 
 -   How do you choose the right tech stack for your app? 
 
@@ -2409,16 +2388,12 @@ Of those 3 options, using a package manager makes the most sense. Here’s why:
 -   resolves dependencies between libraries, so you won’t run into conflicts
 -   automatically downloads, compiles and links libraries, which speeds up project compile times
 
-
-
-#### Thinking Through Options
+## Thinking Through Options
 
 Firebase has supported real-time push and data binding from the start. It’s “serverless”, so you don’t have to run and maintain your own servers. 
 
 1.   Firebase has two different kinds of cloud database platforms: (Realtime Database and Firestore). 
 2.   If you choose Firebase, you’ll have to apply the tech stack framework again to discover what this means for your app.
-
-
 
 ### The Solution:
 
@@ -2428,3 +2403,9 @@ Firebase has supported real-time push and data binding from the start. It’s �
 
 # Decision Making Assignment
 
+Using pen and paper, OR in a simple text-editor, write down a prediction for the following questions:
+
+1.   The design patterns you plan to implement with both iOS Development and Android
+2.   How you plan to incorporate the backend of your app with the front end ... using the principles of OOP. 
+3.   Which platfroms would you like to utilize in your app? For what reason? For example, what would be the benefits and drawbacks of using something like Firebase?
+4.   Which languages are you most familiar with? How will this affect your decisions for the previous question? 
