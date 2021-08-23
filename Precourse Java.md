@@ -20,15 +20,15 @@ Using **Object Oriented** development techniques to help modularize, reduce, and
 
 Yes, there are multiple ways to write the same code. But, we can write our code in a way to make it more powerful, more effecient, more organized, and more useful.
 
-We will learn **Design Patterns** in Java to start wrapping our head around design patterns. 
+We will learn **Design Patterns** in Java to start wrapping our head around programming architecture. 
 
-#### What's the point?
+#### What's the Point?
 
 Computers can solve problems faster than humans and that's the power of computer programming. We will go over approaches to speed up computer performance for searching and optimization, analyzing **Big O** (worst and best case peformance for our computers). 
 
 #### Do we need to create everything ouselves?
 
-We should utilize the community for development purposes and leverage **frameworks** and **libraries** to create great work. Great programmers don't always recreate the wheel. Using **access control**, we can share code with the community and control what we share with others. 
+We should utilize the community for development purposes and leverage **frameworks** and **libraries** to create great work. Good programmers don't always recreate the wheel. Using **access control**, we can share code with the community and control what we share with others. 
 
 #### Which Tech Stack Should I use?
 
@@ -38,7 +38,7 @@ Many factors go into the technologies we decide to use as developers. From compu
 
 We will be using Java to demonstrate coding concepts that extend past Swift and Kotlin. Since both Swift, Kotlin, and Java are C based langugages, Java emerges as a language that is perfect for this learning opportunity. 
 
-It's important to note that Java is more verbose than Swift and Kotlin. With this in mind, be sure to focus on the main principles at hand and don't get too caught up on the small incatricies of Java.
+It's important to note that Java is more verbose than Swift and Kotlin. With this in mind, be sure to focus on the main principles at hand and don't get too caught up on the small intricacies of Java.
 
 ## Full Stack Development
 
@@ -48,37 +48,40 @@ When we are building applications with Swift and Kotlin, we will be building ful
 
 The front end is the visible part of an application facing the user (responsible for user experience)
 
--   Front End Language Examples: HTML, CSS, JavaScript
--   Front End Famework Examples: Angular, React
+-   Front End Language Examples: HTML, CSS, JavaScript etc. 
+-   Front End Famework Examples: Angular, React, Bootstrap, etc. 
 
 #### Back End
 
 The back end is what the client doesn't see. Think databases, backend logic, APIs, and servers. Take the example of a user submitting form data to a website. The user types in their email and password and this gets processed by the server and stored in a **database**. None of this processing or storage is seen by the user.
 
-So with the back end, we have backend languages, servers, databases, and APIs. 
+**Recap**: So with the back end, we have backend languages, servers, databases, and APIs. 
 
-Backend languages Examples:  Java, Python, PHP, Node.js, JavaScript
+
+
+Backend languages Examples:  Java, Python, PHP, Node.js, JavaScript, etc ..
 
 #### Server
 
--   A server is a computer or computers that send data over a network and receives and responds to requests
--   Just about any computer can function as a server. But, computers suited for this particular need do a better job of handling many requests at once for a very long time. 
+-   A server is a computer or computers that send data over a network
+-   receives and responds to requests
+-   Just about any computer can function as a server! But, computers suited for this particular need do a better job of handling many requests at once for a very long time. 
 
 ## Client Server Model
 
-The client server model describes how machines communicate with each other. 
+The client server model describes how machines communicate with each other. Apply this client sever model to what you already know about servers, databases, and APIs. 
 
 #### What's a Client?
 
--   Web Browser
--   iPhone, iPad, Tablet 
--   Python, Java, C++ program running on your computer
+-   A client could be a web browser
+-   A client could be an iPhone, iPad, Tablet 
+-   A client could even be a Python, Java, or C++ program running on your computer!
 
 
 
 Clients are the ones **requesting** information (they want to get information from somewhere else)
 
--   They speak to servers in some network protocol language (HTTP)
+-   Clients speak to servers in some network protocol language (HTTP usually)
 
 #### What's a Server?
 
@@ -91,12 +94,12 @@ The **server** is the **provider** of information
 
 The **client** requests informations through HTTP Requests
 
--   clients make requests to a server. Server receives that request
--   When the client calls the API, the server gets the information, queries the database, and return that information back to the client
+-   Clients make requests to a server and the server receives that request
+-   When the client calls the API, the server gets the information, queries the database, and returns that information back to the client
     -   Servers are listening for traffic on certain ports (API is associated with the server)
-    -   When API is called, the server knows how to perform a job, and return a result back to the client.
+    -   When an API is called, the server knows how to perform a job, and return a result back to the client.
 
-The client server model demonstrates how how the internet works everywhere in the world
+**Recap**: The client server model demonstrates how how the internet works everywhere in the world.
 
 # Database
 
@@ -105,23 +108,27 @@ A database is simply a collection of data stored in an organized way
 -   The database is stored on the **server**
 -   Types of databases:
     -   **NoSQL databases** 
-        -   are designed to handle the more complex, unstructured data, (such as texts, social media posts, photos, videos, email) 
-        -   stores unstructured or semi-structured data, often in key-value pairs or JSON documents.
+        -   NoSQL databases are designed to handle the more complex, unstructured data, (such as texts, social media posts, photos, videos, email) 
+        -   NoSQL database store unstructured or semi-structured data, often in key-value pairs or JSON documents.
     -   **Relational databases** 
-        -   store related data tables (relational)
-        -   common technology for decades
+        -   Relational databases store related data tables (relational)
+        -   Relational databases have been a common technology for decades
 
 #### What is SQL?
 
 Instead of being a programming language similar to what we'll use for iOS and Android applications, **SQL** is a language that enables storing, retrieving, and manipulating data in databases.
 
-SQL stands for **Structured Query Language**  - SELECT * FROM CUSTOMERS
+SQL stands for **Structured Query Language**  - e.g.  `SELECT * FROM CUSTOMERS`
 
-SQL allows for Create, Read, Update, and Delete (CRUD)
+-   SQL allows for Create, Read, Update, and Delete (CRUD) with a database. 
+
+(SQL is often pronounced in two ways. 
+
+You can pronounce it by speaking each letter individually like “S-Q-L”, or pronounce it using the word “sequel”
 
 
 
-RDMS (Relational Database Engines)
+A relational database management system (RDBMS) is a program that allows you to create, update, and administer a relational database. For example:
 
 -   MySQL
 -   PostgreSQL
@@ -129,17 +136,19 @@ RDMS (Relational Database Engines)
 
 
 
+## Structure and Access Differences
+
 #### Relational Database with SQL
 
-Structure - interact with tables 
+**Structure**
 
--   rows (individual entitiies) and columns (types)
--   must have a primary key (unique ID that identifies a specific row)
--   foreign keys are links to other tables
--   we have constraints (VARCHAR is only a certain size allowed, etc.)
+-   Rows (the individual entitiies) and columns (the types)
+-   Must have a primary key (unique ID that identifies a specific row)
+-   Roreign keys are links to other tables
+-   We have constraints (VARCHAR is only a certain size allowed, etc.)
 -   We have **relationships** with other **tables** which allow for powerful queries!  ( e.g. Give me all accounts with an ID of ...)
 
-Accesss
+**Access**
 
 -   Raw SQL
 -   Direct database connection
@@ -147,24 +156,20 @@ Accesss
 
 #### NoSQL
 
-Anything that is non relational 
+NoSQL databases are anything that is non relational. They are built to **scale up** with high performance, but queries are less flexible. 
 
-Many implementations:
+NoSQL databases have many implementations:
 
 -   Table
 -   Document
 -   Graph
 
-Built to scale with high performance, but queries are less flexible
-
-
-
-Structure
+**Structure**
 
 -   Tables, JSON (Documents), Graphs (think Facebook with friends having friends)
 -   Key Value Strorage
 
-Access
+**Access**
 
 -   REST APIs - hit a specific endpoint with a specific functionality associated with it 
 -   CRUD in vendor specific lanaguage 
@@ -175,8 +180,8 @@ Access
 
 **SQL**
 
--   peforming flexible queries (stay flexible)
--   relational queries 
+-   Peforming flexible queries (stay flexible)
+-   Relational queries 
 
 **NoSQL**
 
@@ -220,16 +225,15 @@ Part 2 - create a **NoSQL** database design given the following data
 
 APIs are not meant to be seen or used by the end user. Instead, an API generally uses **RESTful** design to give others a large amount of organized data (usually in the form of JSON or XML)
 
--   RESTful APIs follow a set of rules regarding how they should send and receive information (architectural style)
--   a set of programming instructions and functions used to access a website or web-based software application.
+-   RESTful APIs follow a set of rules regarding how they should send and receive information (this is an architectural style)
+-   A set of programming instructions and functions used to access a website or web-based software application.
 
 #### Practical Uses
 
-Want a build a weather app? We could use the OpenWeather API
+-   Want to get the latest wind data for you current area? Use the Windy API
+-   Want a build a weather app? We could use the OpenWeather API
 
-Want to put a Google map on your website? use the Google Map API
-
-Want to get the latest wind data for you current area? Use the Windy API
+-   Want to put a Google map on your website? use the Google Map API
 
 ## What's an API
 
@@ -239,7 +243,7 @@ How does the bank know that I paid my bill?
 
 -   I clicked on button (submit button) on their website? What does clicking a button accomplish?
 
-#### Work is Being Done with APIs
+#### Well, Work is Being Done with APIs
 
 Information about the user and the account your acting on is transmitted as an **instruction** to another computer on the banking system's network. 
 
@@ -249,9 +253,9 @@ Inside the **instruction**, contains all the information about the bill you're t
 
 The machine on the other end:
 
--   received the instruction
--   understood the instruction
--   submitted the transaction
+-   Received the instruction
+-   Understood the instruction
+-   Submitted the transaction
 
 
 
@@ -259,7 +263,7 @@ How does the computer on the back end know how to interpret the information?
 
 
 
-This is all solved by the API
+Answer: This is all solved by the API
 
 **Application Programming Interface**
 
@@ -267,14 +271,14 @@ This is all solved by the API
 
 To use an API, we just have to meet the expectations given by the API.
 
-For example, let's take the previous example of paying a bill online. We might have a "PayBill" 
+For example, let's take the previous example of paying a bill online. We might have a "PayBill" endpoint:
 
--    /PayBill
-
-
+-    `/PayBill`
 
 
-The programmer who creates it, may say that this API will take:
+
+
+The programmer who creates it, may say that **this API will take**:
 
 -   String  - **accountNumber**
 -   Integer  - **amount**
@@ -284,11 +288,11 @@ The programmer who creates it, may say that this API will take:
 
 When the pay bill API is invoked, it returns the balance of the user's account in an integer field called balance.
 
+The other application's (using the API) can look at the API's that the Banking Application exposes
 
 
-The other application's can look at the API's that the Banking Application exposes
 
-
+#### Why Would I Build an API?
 
 We can create an API that provides:
 
@@ -301,16 +305,14 @@ You can think of an API as a **contract**.
 
 The creator defines the name of the api, what the api does, the arguments it will take in, and the output it will spit out. 
 
--   payBill
--   what it does
--   input (accountId, amount, receiver)
--   output (balance)
-
-
+-   `payBill`
+-   What does it do?
+-   Input (accountId, amount, receiver)
+-   Output (balance)
 
 ### An APIs Real Use
 
-The internet has infomation and packets flying all over the place between systems. If you think about it, without structure, this would just be chaos and madness. 
+The internet has infomation and packets flying all over the place between systems. If you think about it, without structure, this would just be chaos and madness!
 
 An API forces developers to create a plan for what they want their system to do, and encode those behaviors into APIs that will be exposed to clients.  
 
@@ -318,17 +320,11 @@ An API forces developers to create a plan for what they want their system to do,
 
 APIs provide abstraction between systems
 
-A caller (client) does not need to know **how** the API is implemented, only **what** the API promises to do 
+-   A caller (client) does not need to know **how** the API is implemented, only **what** the API promises to do 
 
-
-
-The API takes an input, performs a job, and produces a certain ouput. An API is predictable and consistent!
-
-
+-   The API takes an input, performs a job, and produces a certain ouput. An API is predictable and consistent!
 
 As developers, we rely heavily on the developer community to allow our code to scale and become more safe and powerful very quickly. With this in mind, it's important to know that we can actually **combine APIs**! This is how we can build things together as developer community. We can plug powerful code into more powerful code. 
-
-
 
 ## API Use
 
@@ -346,9 +342,9 @@ Here, we can see the **different APIs made available** to us.
 
 
 
-POST – this is used to update information and when performing an action
+**POST** – this is used to update information and when performing an action
 
-GET – this is used for retrieving information 
+**GET** – this is used for retrieving information 
 
 
 
@@ -356,14 +352,12 @@ Take a look at the **parameters** needed for using these **endpoints**!
 
 Click on the [API Reference](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/post-and-engage/api-reference/post-statuses-update). 
 
--   we are looking at the formal agreements in addition to the inputs (parameters) and output 
+-   we are looking at the **formal agreements** in addition to the inputs (**parameters**) and output 
 -   a lot of these parameters are optional
 
 
 
 Mainly, we are interested in the status – our new Twitter status
-
-
 
 #### Example Request
 
@@ -409,11 +403,11 @@ curl -XPOST
 
 To summarize, when a company like Twitter offers an API to their customers, it simply means Twitter created a set of **dedicated URLs that return data responses**. The responses won’t contain the presentation or the User Interface (like a website). 
 
-Even more, any piece of software that can be distinctively separated from its environment. APIs are seen all over the web and can be used in your code. 
+To add on to this powerful idea and practice, any piece of software that can be **distinctively separated from its environment**. APIs are seen all over the web and can be used in your code. 
 
 # Android Studio (For Java Development)
 
-**Note**: You can skip this part if you've already downloaded Android Studio
+### **Note: You can skip this part if you've already downloaded Android Studio**
 
 Now that we have some of the basic concepts down for programming, lets jump right in and download Android Studio. The reason we are using Android Studio for our learning purposes instead of an IDE like Eclipse is that it makes setting up our environment easy (such as downloading the SDK and readying our environment for development)
 
