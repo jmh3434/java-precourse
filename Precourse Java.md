@@ -1016,14 +1016,14 @@ The Singleton pattern ensures a class has only one instance and provides a globa
 #### Singleton Use
 
 1.   Allows for lazy loading. This means that we can initialize your object creation - only when you need it. We could use a global variable which would be created at the init step up your project. 
-2.   When you only need one instance. One example could be a Database Connection. Maybe in some applications you only want one database connection. Restrict databases connections through a class. 
+2.   When you only need one instance. One example could be a Database Connection. Maybe in some applications you only want one database connection. Restrict database connections through a class. 
      -   What if you are building a Tesla Car Guidance System - it only makes sense to have one instance of the guidance system initialized at one time because the system could be performing actions on the hardware of the car. Don't want conflicting instructions in a moving car!
 
 #### How it works
 
 Three main things to know about the Singleton pattern.
 
-1.   Create a class with a private constructor. (We are closing the abiliy of external classes to create an instance of this class)
+1.   Create a class with a private constructor. (We are closing the ability of external classes to create an instance of this class)
 
 2.   We need a **private static instance** of the class we are using. 
 
@@ -1056,7 +1056,7 @@ Take the example of two threads
 -   thread 1
 -   thread 2
 
-These two threads operate on the same machine and they want an instance of the teslacar. Remember that in the `TeslaCar` class, it will be controlling the guidance system, so its super important to only create one instance of the teslacar.. never more than 1!
+These two threads operate on the same machine and they want an instance of the teslacar. Remember that in the `TeslaCar` class, it will be controlling the guidance system, so it's super important to only create one instance of the teslacar.. never more than 1!
 
 Let's say the first thread enters our code block from above. 
 
@@ -1066,11 +1066,11 @@ What happens if we have thread 2 which also calls this method at exactly the sam
 
 Both of these threads both think that the instance is null. 
 
-Whichevever thread finishes last will override the teslacar with whatever instance it has created. 
+Which evever thread finishes last will override the teslacar with whatever instance it has created. 
 
 #### The Fix
 
-We could use a sychronized block which ensures that only one thread can enter a piece of code at once so we don't run into this problem.
+We could use a synchronized block which ensures that only one thread can enter a piece of code at once so we don't run into this problem.
 
 ### The Code
 
@@ -1108,15 +1108,15 @@ public class Singleton {
 -   create a private constructor of the Teslacar type that does nothing (prevent external callers from creating an instance UNLESS they are using our factory method)
 -   Factory method - check to see if the car is null (Is this the first time entering this block?)
     -   taking care of multithreading with synchronized keyword
-    -   create a new instance of the Teslacar and assign it to car!
+    -   create a new instance of the Teslacar and assign it to the car!
 
 #### Summary Singleton
 
-If you take look in the console, you'll see the same instance of the Teslacar object. 
+If you take a look in the console, you'll see the same instance of the Teslacar object. 
 
 -   we know we created the Singleton correctly!
 
-Singleton - We ensured that a class only has once instance and provided a global point of access to it. 
+Singleton - We ensured that a class only has one instance and provided a global point of access to it. 
 
 
 
