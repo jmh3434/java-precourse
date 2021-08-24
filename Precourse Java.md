@@ -1128,9 +1128,9 @@ Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, I
 
 # Strategy Pattern
 
-The Stategy Pattern defines a family of algorithms and encapsulates each one and makes them interchangable. So when we are using **OOP**, we wrap a **class** around this functionality, and makes them interchangable. We could use an **interface** here so that you could swap out these behaviors at any point in time. The strategy let's the algorithm **vary indepndently** from the clients that use it. 
+The Strategy Pattern defines a family of algorithms and encapsulates each one and makes them interchangeable. So when we are using **OOP**, we wrap a **class** around this functionality, and makes them interchangeable. We could use an **interface** here so that you could swap out these behaviors at any point in time. The strategy lets the algorithm **vary independently** from the clients that use it. 
 
-We **encapsulate** a behavior into a class,  and make that class **interchangable** with other classes. This allows other classes to use it and use those low level **encapsulations** of behaviors, **without having to know how they are implemented or how they work**. 
+We **encapsulate** a behavior into a class,  and make that class **interchangeable** with other classes. This allows other classes to use it and use those low level **encapsulations** of behaviors, **without having to know how they are implemented or how they work**. 
 
 ### Example
 
@@ -1144,7 +1144,7 @@ What would happen if we wanted to add the ability to jump for the person?
 
 -   jump()
 
-Not all people can jump. In this example, only some people can jump -- only athletes can jump. For this example, other types of people can't jump. (Obviously non athlete's can jump, but this is just a good imaginary example!)
+Not all people can jump. In this example, only some people can jump -- only athletes can jump. For example, other types of people can't jump. (Obviously non athletes can jump, but this is just a good imaginary example!)
 
 
 
@@ -1196,9 +1196,9 @@ So then the Musician Person would also need to implement the jump function as we
 
 #### This is where the Strategy pattern comes in!
 
-Recap: We have a Person superclass, and we want to implement the jump function for some if its subclasses. A natural way to do this is with an **interace** called Jumpable with a jump function. For the **classes** that want to implement jumpable interface, they can have their own jump function.
+Recap: We have a Person superclass, and we want to implement the jump function for some if its subclasses. A natural way to do this is with an **interface** called Jumpable with a jump function. For the **classes** that want to implement the jumpable interface, they can have their own jump function.
 
-The problem - Now any other class that want's the same jump funciton needs to redefine the same jump function used in the other classes. This isn't reusable.
+The problem - Now any other class that want's the same jump function needs to redefine the same jump function used in the other classes. This isn't reusable.
 
 ### The Solution - Strategy Pattern
 
@@ -1226,7 +1226,7 @@ Let's say that the JumpBehavior interface had a **function** called jump() that 
 
 Now this JumpWithLegs **class** can define **jump()** in any way it wants, and then create an instance of this **JumpWithLegs** class, and pass that in to many different People such as the Athlete Person and the Musician Person. 
 
-So now instead of recyling that jump function like we saw previously, we can just create that **single instance**, and pass that to the Person, and allow that to be used by any of the other classes.
+So now instead of recycling that jump function like we saw previously, we can just create that **single instance**, and pass that to the Person, and allow that to be used by any of the other classes.
 
 So what do we need to change to our UML class diagram? 
 
@@ -1242,7 +1242,7 @@ Then we could change the constructor of the Person class to take in a Jump Behav
 
 If we had many different types of the implementing classes (of the jump behavior interface), these could be swapped out at runtime. 
 
-So now, the Athlete Person, when its instantiated, can call the performJump() function, and it will jump. 
+So now, the Athlete Person, when it's instantiated, can call the performJump() function, and it will jump. 
 
 And the Scientist Person, if we have a different implementing class.... something called NoJump(), this type of person doesn't jump 
 
@@ -1302,7 +1302,7 @@ class JumpWithLegs implements JumpBehavior {
 ```
 
 -   Concrete class implements the JumpBehavior interface
--   We are ovveriding that JumpBehavior interface by actually implementing it.. printing out "I'm Jumping"
+-   We are overriding that JumpBehavior interface by actually implementing it.. printing out "I'm Jumping"
 
 
 
@@ -1319,7 +1319,7 @@ class AthletePerson extends Person {
 }
 ```
 
--   Athlete Person is an implemention of that abstract Person class. 
+-   Athlete Person is an implementation of that abstract Person class. 
 
 -   It uses super to call the base constructor 
 
@@ -1342,7 +1342,7 @@ class StrategyPattern {
 }
 ```
 
--   We instatiate an instance of the JumpBehavior and create a new instance of the AthletePerson and passing in jumpWithLegs.
+-   We instantiate an instance of the JumpBehavior and create a new instance of the AthletePerson and pass in jumpWithLegs.
 
 -   We only need to define jumpWithLegs once. 
 
@@ -1352,7 +1352,7 @@ class StrategyPattern {
 
 Remember that these behaviors can be interchanged with any implementing classes of type JumpBehavior.
 
-So we can swap out the behaviors of these People at runtime using a setter function. The Strategy Pattern **encapsulates behavior** in a concrete class and lets you pass it around and resuse it!
+So we can swap out the behaviors of these People at runtime using a setter function. The Strategy Pattern **encapsulates behavior** in a concrete class and lets you pass it around and reuse it!
 
 ​                                                                                                                                                                                                
 
