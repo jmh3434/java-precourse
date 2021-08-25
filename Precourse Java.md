@@ -1421,7 +1421,7 @@ A classic example could be an Animal class that is a superclass and then a dog w
 
 The decorator relies more on **composition** than **inheritance**. 
 
-By using the decorator pattern you can impoersonate a class, and add additional funcionality without any users of that class knowing that its different from the original class. 
+By using the decorator pattern you can impersonate a class, and add additional functionality without any users of that class knowing that it's different from the original class. 
 
 #### How we would code a problem WITHOUT the Decorator Pattern
 
@@ -1466,7 +1466,7 @@ Say we introduce the concept of **ingredients**. Now, we have an additional cost
 -   milk 
 -   sugar 
 
-How do we incorporate the ingredients conecept into our relationship of classes?
+How do we incorporate the ingredients concept into our relationship of classes?
 
 -   We could create maybe a **List of Ingredients** 
     -   each of these types of ingredients (cream, milk, and sugar) would be a different implementation with different costs
@@ -1507,7 +1507,7 @@ It's cost will be different
 
 -   Cost - $1.99
 
-#### Introduce the **Coffee Decorator**! 
+#### Introducing the **Coffee Decorator**! 
 
 This class will "impersonate" coffee. It will **implement** Coffee, but it will allow us to **add ingredients dynamically**
 
@@ -1571,7 +1571,7 @@ public abstract class Coffee {
 
 -   Coffee is abstract 
 -   Defines a cost function which is abstract since coffee is abstract
--   Enforing that all subclasses need to define their cost function
+-   Enforcing that all subclasses need to define their cost function
 -   anyone that implements the CoffeeDecorator, needs to implement the getDescription method and the cost function 
 
 `Espresso.java`
@@ -1629,10 +1629,10 @@ public class WithMilk extends CoffeeDecorator {
 ```
 
 -   this is where the decorator magic happens!
--   We have have to override desciption and cost
--   Keeps a refrence to the parent coffee object that it was called upon. We are holding reference to a coffee object
+-   We have have to override description and cost
+-   Keeps a reference to the parent coffee object that it was called upon. We are holding reference to a coffee object
 -   Whenever the constructor is called (WithMilk), we need to take an already existing coffee object (you would use espresso in this case since this is our base object), and we are holding a reference to it 
--   in getDescripton and cost, this is where the magic happens. We return the coffee's get description function, and we append Milk to it (in this case)
+-   in getDescription and cost, this is where the magic happens. We return the coffee's get description function, and we append Milk to it (in this case)
 -   the object now contains an additional property (which is milk )
 
 `WithSugar.java`
