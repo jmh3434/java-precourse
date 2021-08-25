@@ -2006,7 +2006,7 @@ That's where Big O comes in with computer algorithms.
 
 -   **O(1) —** Constant Time: it only takes a single step for the algorithm to accomplish the task.
 -   **O(log n) —** Logarithmic Time: The number of steps it takes to accomplish a task are decreased by some factor with each step.
--   **O(n) —** Scales Linearly Linear Time: The number of of steps required are directly related (1 to 1). twice amount of data = twice amount of time
+-   **O(n) —** Scales Linearly Linear Time: The number of steps required are directly related (1 to 1). twice amount of data = twice amount of time
 -   **O(n²) —** Quadratic Time: The number of steps it takes to accomplish a task is square of n.
 -   **O(C^n) —** Exponential: The number of steps it takes to accomplish a task is a constant to the n power (pretty large number).
 
@@ -2018,16 +2018,16 @@ That's where Big O comes in with computer algorithms.
      -   O(a), O(b) = O(a+b)
 2.   Drop constants 
 3.   If you have different inputs, use different variables
-4.   Drop non-dominate terms
+4.   Drop non-dominant terms
      -   O(n+n^2) → O(n^2)
 
 ## Bubble Sort
 
-Take a look at the following visualization of Bubble Sort Sorting Algoritm : https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html. 
+Take a look at the following visualization of Bubble Sort Sorting Algorithm : https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html. 
 
-Algorithm visualizations are a great way to compare alrgoritms! 
+Algorithm visualizations are a great way to compare algorithms! 
 
-Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
+Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order.
 
 This simplicity comes at a price! Bubble Sort is quite slow.
 
@@ -2035,7 +2035,7 @@ Bubble sort has an average and worst-case running time of **O(n²)**, so in most
 
 ## Quick Sort Example
 
-Quick Sort is popular and effecient way to sort numbers!
+Quick Sort is a popular and efficient way to sort numbers!
 
 Let's take an array of integers
 
@@ -2045,9 +2045,9 @@ Let's take an array of integers
 
 We pick one element to be the pivot element
 
-We will pick the pivot elment randomly for now
+We will pick the pivot element randomly for now
 
-We walk through the array, and swap elements around so that the elments less than the pivot, come before all elements bigger than it 
+We walk through the array, and swap elements around so that the elements less than the pivot, come before all elements bigger than it 
 
 We get a natural division in the array from this.
 
@@ -2061,7 +2061,7 @@ We do this over and over again until its **sorted**
 [15,3,9,8,5,2,7,1,6]
 ```
 
-Pick a pivor point randomly - let's say 7
+Pick a pivot point randomly - let's say 7
 
 Then we walk through the array
 
@@ -2141,7 +2141,7 @@ we are left with `[2,1,3]`, and we are actually done with this part.
 
 
 
-Now we have he following sorted:
+Now we have the following sorted:
 
 `[2,1]` `[3]` `[6,5]` `[8,7,9,15]`
 
@@ -2151,7 +2151,7 @@ Now we have he following sorted:
 
 
 
-#### How effecient is this sorting algorithm?
+#### How efficient is this sorting algorithm?
 
 
 
