@@ -1016,14 +1016,14 @@ The Singleton pattern ensures a class has only one instance and provides a globa
 #### Singleton Use
 
 1.   Allows for lazy loading. This means that we can initialize your object creation - only when you need it. We could use a global variable which would be created at the init step up your project. 
-2.   When you only need one instance. One example could be a Database Connection. Maybe in some applications you only want one database connection. Restrict databases connections through a class. 
+2.   When you only need one instance. One example could be a Database Connection. Maybe in some applications you only want one database connection. Restrict database connections through a class. 
      -   What if you are building a Tesla Car Guidance System - it only makes sense to have one instance of the guidance system initialized at one time because the system could be performing actions on the hardware of the car. Don't want conflicting instructions in a moving car!
 
 #### How it works
 
 Three main things to know about the Singleton pattern.
 
-1.   Create a class with a private constructor. (We are closing the abiliy of external classes to create an instance of this class)
+1.   Create a class with a private constructor. (We are closing the ability of external classes to create an instance of this class)
 
 2.   We need a **private static instance** of the class we are using. 
 
@@ -1056,7 +1056,7 @@ Take the example of two threads
 -   thread 1
 -   thread 2
 
-These two threads operate on the same machine and they want an instance of the teslacar. Remember that in the `TeslaCar` class, it will be controlling the guidance system, so its super important to only create one instance of the teslacar.. never more than 1!
+These two threads operate on the same machine and they want an instance of the teslacar. Remember that in the `TeslaCar` class, it will be controlling the guidance system, so it's super important to only create one instance of the teslacar.. never more than 1!
 
 Let's say the first thread enters our code block from above. 
 
@@ -1066,11 +1066,11 @@ What happens if we have thread 2 which also calls this method at exactly the sam
 
 Both of these threads both think that the instance is null. 
 
-Whichevever thread finishes last will override the teslacar with whatever instance it has created. 
+Which evever thread finishes last will override the teslacar with whatever instance it has created. 
 
 #### The Fix
 
-We could use a sychronized block which ensures that only one thread can enter a piece of code at once so we don't run into this problem.
+We could use a synchronized block which ensures that only one thread can enter a piece of code at once so we don't run into this problem.
 
 ### The Code
 
@@ -1108,15 +1108,15 @@ public class Singleton {
 -   create a private constructor of the Teslacar type that does nothing (prevent external callers from creating an instance UNLESS they are using our factory method)
 -   Factory method - check to see if the car is null (Is this the first time entering this block?)
     -   taking care of multithreading with synchronized keyword
-    -   create a new instance of the Teslacar and assign it to car!
+    -   create a new instance of the Teslacar and assign it to the car!
 
 #### Summary Singleton
 
-If you take look in the console, you'll see the same instance of the Teslacar object. 
+If you take a look in the console, you'll see the same instance of the Teslacar object. 
 
 -   we know we created the Singleton correctly!
 
-Singleton - We ensured that a class only has once instance and provided a global point of access to it. 
+Singleton - We ensured that a class only has one instance and provided a global point of access to it. 
 
 
 
@@ -1128,9 +1128,9 @@ Sierra, K. and Bates, B., 2008. *Head First Java*. Sebastopol: O'Reilly Media, I
 
 # Strategy Pattern
 
-The Stategy Pattern defines a family of algorithms and encapsulates each one and makes them interchangable. So when we are using **OOP**, we wrap a **class** around this functionality, and makes them interchangable. We could use an **interface** here so that you could swap out these behaviors at any point in time. The strategy let's the algorithm **vary indepndently** from the clients that use it. 
+The Strategy Pattern defines a family of algorithms and encapsulates each one and makes them interchangeable. So when we are using **OOP**, we wrap a **class** around this functionality, and makes them interchangeable. We could use an **interface** here so that you could swap out these behaviors at any point in time. The strategy lets the algorithm **vary independently** from the clients that use it. 
 
-We **encapsulate** a behavior into a class,  and make that class **interchangable** with other classes. This allows other classes to use it and use those low level **encapsulations** of behaviors, **without having to know how they are implemented or how they work**. 
+We **encapsulate** a behavior into a class,  and make that class **interchangeable** with other classes. This allows other classes to use it and use those low level **encapsulations** of behaviors, **without having to know how they are implemented or how they work**. 
 
 ### Example
 
@@ -1144,7 +1144,7 @@ What would happen if we wanted to add the ability to jump for the person?
 
 -   jump()
 
-Not all people can jump. In this example, only some people can jump -- only athletes can jump. For this example, other types of people can't jump. (Obviously non athlete's can jump, but this is just a good imaginary example!)
+Not all people can jump. In this example, only some people can jump -- only athletes can jump. For example, other types of people can't jump. (Obviously non athletes can jump, but this is just a good imaginary example!)
 
 
 
@@ -1196,9 +1196,9 @@ So then the Musician Person would also need to implement the jump function as we
 
 #### This is where the Strategy pattern comes in!
 
-Recap: We have a Person superclass, and we want to implement the jump function for some if its subclasses. A natural way to do this is with an **interace** called Jumpable with a jump function. For the **classes** that want to implement jumpable interface, they can have their own jump function.
+Recap: We have a Person superclass, and we want to implement the jump function for some if its subclasses. A natural way to do this is with an **interface** called Jumpable with a jump function. For the **classes** that want to implement the jumpable interface, they can have their own jump function.
 
-The problem - Now any other class that want's the same jump funciton needs to redefine the same jump function used in the other classes. This isn't reusable.
+The problem - Now any other class that want's the same jump function needs to redefine the same jump function used in the other classes. This isn't reusable.
 
 ### The Solution - Strategy Pattern
 
@@ -1226,7 +1226,7 @@ Let's say that the JumpBehavior interface had a **function** called jump() that 
 
 Now this JumpWithLegs **class** can define **jump()** in any way it wants, and then create an instance of this **JumpWithLegs** class, and pass that in to many different People such as the Athlete Person and the Musician Person. 
 
-So now instead of recyling that jump function like we saw previously, we can just create that **single instance**, and pass that to the Person, and allow that to be used by any of the other classes.
+So now instead of recycling that jump function like we saw previously, we can just create that **single instance**, and pass that to the Person, and allow that to be used by any of the other classes.
 
 So what do we need to change to our UML class diagram? 
 
@@ -1242,7 +1242,7 @@ Then we could change the constructor of the Person class to take in a Jump Behav
 
 If we had many different types of the implementing classes (of the jump behavior interface), these could be swapped out at runtime. 
 
-So now, the Athlete Person, when its instantiated, can call the performJump() function, and it will jump. 
+So now, the Athlete Person, when it's instantiated, can call the performJump() function, and it will jump. 
 
 And the Scientist Person, if we have a different implementing class.... something called NoJump(), this type of person doesn't jump 
 
@@ -1302,7 +1302,7 @@ class JumpWithLegs implements JumpBehavior {
 ```
 
 -   Concrete class implements the JumpBehavior interface
--   We are ovveriding that JumpBehavior interface by actually implementing it.. printing out "I'm Jumping"
+-   We are overriding that JumpBehavior interface by actually implementing it.. printing out "I'm Jumping"
 
 
 
@@ -1319,7 +1319,7 @@ class AthletePerson extends Person {
 }
 ```
 
--   Athlete Person is an implemention of that abstract Person class. 
+-   Athlete Person is an implementation of that abstract Person class. 
 
 -   It uses super to call the base constructor 
 
@@ -1342,7 +1342,7 @@ class StrategyPattern {
 }
 ```
 
--   We instatiate an instance of the JumpBehavior and create a new instance of the AthletePerson and passing in jumpWithLegs.
+-   We instantiate an instance of the JumpBehavior and create a new instance of the AthletePerson and pass in jumpWithLegs.
 
 -   We only need to define jumpWithLegs once. 
 
@@ -1352,7 +1352,7 @@ class StrategyPattern {
 
 Remember that these behaviors can be interchanged with any implementing classes of type JumpBehavior.
 
-So we can swap out the behaviors of these People at runtime using a setter function. The Strategy Pattern **encapsulates behavior** in a concrete class and lets you pass it around and resuse it!
+So we can swap out the behaviors of these People at runtime using a setter function. The Strategy Pattern **encapsulates behavior** in a concrete class and lets you pass it around and reuse it!
 
 ​                                                                                                                                                                                                
 
@@ -1421,7 +1421,7 @@ A classic example could be an Animal class that is a superclass and then a dog w
 
 The decorator relies more on **composition** than **inheritance**. 
 
-By using the decorator pattern you can impoersonate a class, and add additional funcionality without any users of that class knowing that its different from the original class. 
+By using the decorator pattern you can impersonate a class, and add additional functionality without any users of that class knowing that it's different from the original class. 
 
 #### How we would code a problem WITHOUT the Decorator Pattern
 
@@ -1466,7 +1466,7 @@ Say we introduce the concept of **ingredients**. Now, we have an additional cost
 -   milk 
 -   sugar 
 
-How do we incorporate the ingredients conecept into our relationship of classes?
+How do we incorporate the ingredients concept into our relationship of classes?
 
 -   We could create maybe a **List of Ingredients** 
     -   each of these types of ingredients (cream, milk, and sugar) would be a different implementation with different costs
@@ -1507,7 +1507,7 @@ It's cost will be different
 
 -   Cost - $1.99
 
-#### Introduce the **Coffee Decorator**! 
+#### Introducing the **Coffee Decorator**! 
 
 This class will "impersonate" coffee. It will **implement** Coffee, but it will allow us to **add ingredients dynamically**
 
@@ -1571,7 +1571,7 @@ public abstract class Coffee {
 
 -   Coffee is abstract 
 -   Defines a cost function which is abstract since coffee is abstract
--   Enforing that all subclasses need to define their cost function
+-   Enforcing that all subclasses need to define their cost function
 -   anyone that implements the CoffeeDecorator, needs to implement the getDescription method and the cost function 
 
 `Espresso.java`
@@ -1629,10 +1629,10 @@ public class WithMilk extends CoffeeDecorator {
 ```
 
 -   this is where the decorator magic happens!
--   We have have to override desciption and cost
--   Keeps a refrence to the parent coffee object that it was called upon. We are holding reference to a coffee object
+-   We have have to override description and cost
+-   Keeps a reference to the parent coffee object that it was called upon. We are holding reference to a coffee object
 -   Whenever the constructor is called (WithMilk), we need to take an already existing coffee object (you would use espresso in this case since this is our base object), and we are holding a reference to it 
--   in getDescripton and cost, this is where the magic happens. We return the coffee's get description function, and we append Milk to it (in this case)
+-   in getDescription and cost, this is where the magic happens. We return the coffee's get description function, and we append Milk to it (in this case)
 -   the object now contains an additional property (which is milk )
 
 `WithSugar.java`
@@ -1714,7 +1714,7 @@ The Weather Station is the one.. in the **one to many** definition and we can ca
 
 The observers want the most up to date information that this weather station retrieves. So, imagine the weather station got new information once every hour and our first observer will be the **current display**. The second observer will be in charge of forecasting. 
 
--   In the observer pattern, we have something called a subscription (the **obsevers** need to register for a **subscription** for the **subject**)
+-   In the observer pattern, we have something called a subscription (the **observers** need to register for a **subscription** for the **subject**)
 
 
 
@@ -1732,13 +1732,13 @@ In the case of the CurrentDisplay, we could set a local variable. In the Forecas
 
 
 
-**Recap**: One subject and mulitple observers (fan out)
+**Recap**: One subject and multiple observers (fan out)
 
 
 
-#### Why do we use observer pattern?
+#### Why do we use the observer pattern?
 
-If the observers were responsible for getting the data from the subject, they would have to constantly **poll** the **observer** to ask (Did anything change? Did anything change? ...  This would not be effecient)
+If the observers were responsible for getting the data from the subject, they would have to constantly **poll** the **observer** to ask (Did anything change? Did anything change? ...  This would not be efficient)
 
 The number of observers would ultimately multiply the number of polling required. 
 
@@ -1746,7 +1746,7 @@ The number of observers would ultimately multiply the number of polling required
 
 We do the opposite. 
 
-All we have is one update ocurring, and that's getting pushed to all the observers. 
+All we have is one update occurring, and that's getting pushed to all the observers. 
 
 -   allows for **loose coupling** (allows systems to operate independently) - the subjects **doesn't have to know** about the observers
 -   great for testability when you're only testing one component
@@ -1761,7 +1761,7 @@ Let's define an interface called Subject (the thing that broadcasts the messages
 
 **Subject (interface)**
 
--   register() - add's an observer
+-   register() - adds an observer
 -   remove() - removes an observer
 -   notify() - broadcasts a message to all the observers
 
@@ -1771,7 +1771,7 @@ Next, let's create a **concrete class** called WeatherStation. The WeatherStatio
 
 
 
-Next we need a separate inteface to represent the observers. 
+Next we need a separate interface to represent the observers. 
 
 
 
@@ -1791,7 +1791,7 @@ The observers will implement the update method because that's what's going to te
 
 -   WeatherStation
     -   temp
-    -   humidty 
+    -   humidity 
 
 
 
@@ -1799,7 +1799,7 @@ The observers will implement the update method because that's what's going to te
 
 -   CurrentConditions (implements Observer)
     -   temp
-    -   humidy
+    -   humidity
     -   getCurrent()
 -   ForecastConditions (implements Observer)
     -   lastSevenDays()
@@ -1808,7 +1808,7 @@ The observers will implement the update method because that's what's going to te
 
 **Recap**:
 
-We have a WeatherStation that is our Subject. We register the current conditions concrete classes which are of interface observer type. Whenever there is an update the temp and humidity, let's propogate that update into the observer classes by calling the update method. 
+We have a WeatherStation that is our Subject. We register the current conditions concrete classes which are of interface observer type. Whenever there is an update of the temp and humidity, let's propagate that update into the observer classes by calling the update method. 
 
 
 
@@ -2006,7 +2006,7 @@ That's where Big O comes in with computer algorithms.
 
 -   **O(1) —** Constant Time: it only takes a single step for the algorithm to accomplish the task.
 -   **O(log n) —** Logarithmic Time: The number of steps it takes to accomplish a task are decreased by some factor with each step.
--   **O(n) —** Scales Linearly Linear Time: The number of of steps required are directly related (1 to 1). twice amount of data = twice amount of time
+-   **O(n) —** Scales Linearly Linear Time: The number of steps required are directly related (1 to 1). twice amount of data = twice amount of time
 -   **O(n²) —** Quadratic Time: The number of steps it takes to accomplish a task is square of n.
 -   **O(C^n) —** Exponential: The number of steps it takes to accomplish a task is a constant to the n power (pretty large number).
 
@@ -2018,16 +2018,16 @@ That's where Big O comes in with computer algorithms.
      -   O(a), O(b) = O(a+b)
 2.   Drop constants 
 3.   If you have different inputs, use different variables
-4.   Drop non-dominate terms
+4.   Drop non-dominant terms
      -   O(n+n^2) → O(n^2)
 
 ## Bubble Sort
 
-Take a look at the following visualization of Bubble Sort Sorting Algoritm : https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html. 
+Take a look at the following visualization of Bubble Sort Sorting Algorithm : https://www.cs.usfca.edu/~galles/visualization/ComparisonSort.html. 
 
-Algorithm visualizations are a great way to compare alrgoritms! 
+Algorithm visualizations are a great way to compare algorithms! 
 
-Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in wrong order.
+Bubble Sort is the simplest sorting algorithm that works by repeatedly swapping the adjacent elements if they are in the wrong order.
 
 This simplicity comes at a price! Bubble Sort is quite slow.
 
@@ -2035,7 +2035,7 @@ Bubble sort has an average and worst-case running time of **O(n²)**, so in most
 
 ## Quick Sort Example
 
-Quick Sort is popular and effecient way to sort numbers!
+Quick Sort is a popular and efficient way to sort numbers!
 
 Let's take an array of integers
 
@@ -2045,9 +2045,9 @@ Let's take an array of integers
 
 We pick one element to be the pivot element
 
-We will pick the pivot elment randomly for now
+We will pick the pivot element randomly for now
 
-We walk through the array, and swap elements around so that the elments less than the pivot, come before all elements bigger than it 
+We walk through the array, and swap elements around so that the elements less than the pivot, come before all elements bigger than it 
 
 We get a natural division in the array from this.
 
@@ -2061,7 +2061,7 @@ We do this over and over again until its **sorted**
 [15,3,9,8,5,2,7,1,6]
 ```
 
-Pick a pivor point randomly - let's say 7
+Pick a pivot point randomly - let's say 7
 
 Then we walk through the array
 
@@ -2141,7 +2141,7 @@ we are left with `[2,1,3]`, and we are actually done with this part.
 
 
 
-Now we have he following sorted:
+Now we have the following sorted:
 
 `[2,1]` `[3]` `[6,5]` `[8,7,9,15]`
 
@@ -2151,7 +2151,7 @@ Now we have he following sorted:
 
 
 
-#### How effecient is this sorting algorithm?
+#### How efficient is this sorting algorithm?
 
 
 
@@ -2277,13 +2277,13 @@ We have questions to ask ourselves:
 
 -   What platforms do you want to use? What’s your personal preference?
 -   What’s your expertise? Which tools do you know best?
--   Which solutions costs a lot of effort to implement? What do you have time for?
+-   Which solutions cost a lot of effort to implement? What do you have time for?
 
 
 
 Start by making a list of “requirements”. Things like:
 
--   Should the database be avaiable through the cloud?
+-   Should the database be available through the cloud?
 -   What's your budget? Maybe $50 max?
 -   You’re building a prototype now, but version 2 should scale to 100k users
 -   You want to keep the number of 3rd-party libraries to a minimum
@@ -2309,9 +2309,9 @@ At scale, life is easier when you rely on as few third-party libraries as you ca
 
 Let's take **iOS Development** for an example: 
 
-Imagine you’re working on an iOS app, and you want to use a third-party library in your project. That third-party library, a depenency, includes code that you want to use in your app, such as for HTTP networking, working with databases, or handling JSON. 
+Imagine you’re working on an iOS app, and you want to use a third-party library in your project. That third-party library, a dependency, includes code that you want to use in your app, such as for HTTP networking, working with databases, or handling JSON. 
 
-Here are some popular libaries for iOS Developers:
+Here are some popular libraries for iOS Developers:
 
 1. AFNetworking
 2. Realm
@@ -2328,7 +2328,7 @@ A few approaches might work:
 
 1.   You download the library’s code from GitHub, or from the author’s website, and copy it manually into your Xcode project
 
-2.   You use a git submodule to add the code to your project, and then sync it via Git\
+2.   You use a git submodule to add the code to your project, and then sync it via Git
 3.   You use a package manager, such as CocoaPods, Carthage or Swift Package Manager
 
 Of those 3 options, using a package manager makes the most sense. Here’s why:
