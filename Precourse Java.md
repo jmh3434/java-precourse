@@ -2277,13 +2277,13 @@ We have questions to ask ourselves:
 
 -   What platforms do you want to use? What’s your personal preference?
 -   What’s your expertise? Which tools do you know best?
--   Which solutions costs a lot of effort to implement? What do you have time for?
+-   Which solutions cost a lot of effort to implement? What do you have time for?
 
 
 
 Start by making a list of “requirements”. Things like:
 
--   Should the database be avaiable through the cloud?
+-   Should the database be available through the cloud?
 -   What's your budget? Maybe $50 max?
 -   You’re building a prototype now, but version 2 should scale to 100k users
 -   You want to keep the number of 3rd-party libraries to a minimum
@@ -2309,9 +2309,9 @@ At scale, life is easier when you rely on as few third-party libraries as you ca
 
 Let's take **iOS Development** for an example: 
 
-Imagine you’re working on an iOS app, and you want to use a third-party library in your project. That third-party library, a depenency, includes code that you want to use in your app, such as for HTTP networking, working with databases, or handling JSON. 
+Imagine you’re working on an iOS app, and you want to use a third-party library in your project. That third-party library, a dependency, includes code that you want to use in your app, such as for HTTP networking, working with databases, or handling JSON. 
 
-Here are some popular libaries for iOS Developers:
+Here are some popular libraries for iOS Developers:
 
 1. AFNetworking
 2. Realm
@@ -2328,7 +2328,7 @@ A few approaches might work:
 
 1.   You download the library’s code from GitHub, or from the author’s website, and copy it manually into your Xcode project
 
-2.   You use a git submodule to add the code to your project, and then sync it via Git\
+2.   You use a git submodule to add the code to your project, and then sync it via Git
 3.   You use a package manager, such as CocoaPods, Carthage or Swift Package Manager
 
 Of those 3 options, using a package manager makes the most sense. Here’s why:
