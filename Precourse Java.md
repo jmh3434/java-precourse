@@ -1714,7 +1714,7 @@ The Weather Station is the one.. in the **one to many** definition and we can ca
 
 The observers want the most up to date information that this weather station retrieves. So, imagine the weather station got new information once every hour and our first observer will be the **current display**. The second observer will be in charge of forecasting. 
 
--   In the observer pattern, we have something called a subscription (the **obsevers** need to register for a **subscription** for the **subject**)
+-   In the observer pattern, we have something called a subscription (the **observers** need to register for a **subscription** for the **subject**)
 
 
 
@@ -1732,13 +1732,13 @@ In the case of the CurrentDisplay, we could set a local variable. In the Forecas
 
 
 
-**Recap**: One subject and mulitple observers (fan out)
+**Recap**: One subject and multiple observers (fan out)
 
 
 
-#### Why do we use observer pattern?
+#### Why do we use the observer pattern?
 
-If the observers were responsible for getting the data from the subject, they would have to constantly **poll** the **observer** to ask (Did anything change? Did anything change? ...  This would not be effecient)
+If the observers were responsible for getting the data from the subject, they would have to constantly **poll** the **observer** to ask (Did anything change? Did anything change? ...  This would not be efficient)
 
 The number of observers would ultimately multiply the number of polling required. 
 
@@ -1746,7 +1746,7 @@ The number of observers would ultimately multiply the number of polling required
 
 We do the opposite. 
 
-All we have is one update ocurring, and that's getting pushed to all the observers. 
+All we have is one update occurring, and that's getting pushed to all the observers. 
 
 -   allows for **loose coupling** (allows systems to operate independently) - the subjects **doesn't have to know** about the observers
 -   great for testability when you're only testing one component
@@ -1761,7 +1761,7 @@ Let's define an interface called Subject (the thing that broadcasts the messages
 
 **Subject (interface)**
 
--   register() - add's an observer
+-   register() - adds an observer
 -   remove() - removes an observer
 -   notify() - broadcasts a message to all the observers
 
@@ -1771,7 +1771,7 @@ Next, let's create a **concrete class** called WeatherStation. The WeatherStatio
 
 
 
-Next we need a separate inteface to represent the observers. 
+Next we need a separate interface to represent the observers. 
 
 
 
@@ -1791,7 +1791,7 @@ The observers will implement the update method because that's what's going to te
 
 -   WeatherStation
     -   temp
-    -   humidty 
+    -   humidity 
 
 
 
@@ -1799,7 +1799,7 @@ The observers will implement the update method because that's what's going to te
 
 -   CurrentConditions (implements Observer)
     -   temp
-    -   humidy
+    -   humidity
     -   getCurrent()
 -   ForecastConditions (implements Observer)
     -   lastSevenDays()
@@ -1808,7 +1808,7 @@ The observers will implement the update method because that's what's going to te
 
 **Recap**:
 
-We have a WeatherStation that is our Subject. We register the current conditions concrete classes which are of interface observer type. Whenever there is an update the temp and humidity, let's propogate that update into the observer classes by calling the update method. 
+We have a WeatherStation that is our Subject. We register the current conditions concrete classes which are of interface observer type. Whenever there is an update of the temp and humidity, let's propagate that update into the observer classes by calling the update method. 
 
 
 
